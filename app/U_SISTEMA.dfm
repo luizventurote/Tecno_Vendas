@@ -2498,9 +2498,11 @@ object F_SISTEMA: TF_SISTEMA
     end
     object Cliente1: TMenuItem
       Caption = 'Clientes'
+      OnClick = Cliente1Click
     end
     object Produto1: TMenuItem
       Caption = 'Produtos'
+      OnClick = Produto1Click
     end
     object Estoque1: TMenuItem
       Caption = 'Estoque'
@@ -2513,6 +2515,7 @@ object F_SISTEMA: TF_SISTEMA
     end
     object Usurios1: TMenuItem
       Caption = 'Usu'#225'rios'
+      OnClick = Usurios1Click
     end
   end
 end

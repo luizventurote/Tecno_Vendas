@@ -2486,22 +2486,6 @@ object F_SISTEMA: TF_SISTEMA
         Width = 50
       end>
   end
-  object Edit1: TEdit
-    Left = 272
-    Top = 96
-    Width = 121
-    Height = 21
-    TabOrder = 1
-    Text = 'Edit1'
-  end
-  object Edit2: TEdit
-    Left = 304
-    Top = 176
-    Width = 121
-    Height = 21
-    TabOrder = 2
-    Text = 'Edit2'
-  end
   object MainMenu1: TMainMenu
     Left = 64
     Top = 80
@@ -2514,6 +2498,7 @@ object F_SISTEMA: TF_SISTEMA
     end
     object Cliente1: TMenuItem
       Caption = 'Clientes'
+      OnClick = Cliente1Click
     end
     object Produto1: TMenuItem
       Caption = 'Produtos'
@@ -2529,6 +2514,7 @@ object F_SISTEMA: TF_SISTEMA
     end
     object Usurios1: TMenuItem
       Caption = 'Usu'#225'rios'
+      OnClick = Usurios1Click
     end
   end
 end

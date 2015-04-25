@@ -1,6 +1,6 @@
 object F_PERMISSOES: TF_PERMISSOES
   Left = 871
-  Top = 243
+  Top = 242
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Permiss'#245'es de telas'

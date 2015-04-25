@@ -1,0 +1,7 @@
+inherited F_CLIENTE: TF_CLIENTE
+  Left = 430
+  Top = 237
+  Caption = 'Cliente'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

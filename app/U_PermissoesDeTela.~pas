@@ -42,6 +42,10 @@ var usuario_tela_qtd : integer; // QUANTIDADE DE TELAS CADASTRADAS NO USUÁRIO SE
 var i, j : integer;
 begin
 
+  // SELECIONA UM USUÁRIO
+  // ---------------------------------------------------------------------------
+  usuario := 1;
+
   // CARREGA AS TELAS CADASTRADAS NO BANCO
   // ---------------------------------------------------------------------------
   DM.Q_PermissoesDeUsuario.SQL.Text := 'select * from Tela';
@@ -119,7 +123,7 @@ begin
   // APAGA OS REGISTROS NO BANCO
   // ---------------------------------------------------------------------------
   DM.Q_PermissoesDeUsuario.SQL.Text := 'DELETE FROM Tela_Usuario WHERE idUsuario = :usuarioID';
-  DM.Q_PermissoesDeUsuario.ParamByName('usuarioID').AsString := IntToStr(usuario);
+  DM.Q_PermissoesDeUsuario.ParamByName('usuarioID').AsString := '1';
   DM.Q_PermissoesDeUsuario.ExecSQL;
 
 
@@ -130,7 +134,7 @@ begin
       if( ListBox1.Selected[i] ) then
     begin
       DM.Q_PermissoesDeUsuario.SQL.Text := 'INSERT INTO Tela_Usuario (idTela, idUsuario) VALUES (:idTela, :usuarioID);';
-      DM.Q_PermissoesDeUsuario.ParamByName('usuarioID').AsString := IntToStr(usuario);
+      DM.Q_PermissoesDeUsuario.ParamByName('usuarioID').AsString := '1';
       DM.Q_PermissoesDeUsuario.ParamByName('idTela').AsString := ListBox1.Items[i];
       DM.Q_PermissoesDeUsuario.ExecSQL;
     end;
@@ -144,7 +148,7 @@ begin
   btnEditar.Enabled := true;
   btnCancelar.Enabled := false;
 
-  F_PERMISSOES.Close;
+
 
 end;
 

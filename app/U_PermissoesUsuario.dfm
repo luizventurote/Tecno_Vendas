@@ -1,11 +1,9 @@
-object F_PERMISSOES: TF_PERMISSOES
-  Left = 871
-  Top = 243
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Permiss'#245'es de telas'
-  ClientHeight = 364
-  ClientWidth = 374
+object F_PermissoesUsuario: TF_PermissoesUsuario
+  Left = 480
+  Top = 256
+  Width = 390
+  Height = 404
+  Caption = 'Permiss'#245'es de Usu'#225'rio'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,7 +11,6 @@ object F_PERMISSOES: TF_PERMISSOES
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  Position = poScreenCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -34,15 +31,15 @@ object F_PERMISSOES: TF_PERMISSOES
     MultiSelect = True
     TabOrder = 0
   end
-  object btnSalvar: TButton
-    Left = 288
+  object btnCancelar: TButton
+    Left = 16
     Top = 328
     Width = 75
     Height = 25
-    Caption = 'Salvar'
+    Caption = 'Cancelar'
     Enabled = False
     TabOrder = 1
-    OnClick = btnSalvarClick
+    TabStop = False
   end
   object btnEditar: TButton
     Left = 104
@@ -52,7 +49,6 @@ object F_PERMISSOES: TF_PERMISSOES
     Caption = 'Editar'
     TabOrder = 2
     TabStop = False
-    OnClick = btnEditarClick
   end
   object ListBoxTelasUsuario: TListBox
     Left = 232
@@ -63,15 +59,13 @@ object F_PERMISSOES: TF_PERMISSOES
     TabOrder = 3
     Visible = False
   end
-  object btnCancelar: TButton
-    Left = 16
+  object btnSalvar: TButton
+    Left = 288
     Top = 328
     Width = 75
     Height = 25
-    Caption = 'Cancelar'
+    Caption = 'Salvar'
     Enabled = False
     TabOrder = 4
-    TabStop = False
-    OnClick = btnCancelarClick
   end
 end

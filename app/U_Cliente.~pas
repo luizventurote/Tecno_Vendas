@@ -1,0 +1,25 @@
+unit U_Cliente;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, U_Base, DB, Grids, DBGrids, StdCtrls, ComCtrls, Buttons,
+  ExtCtrls;
+
+type
+  TF_CLIENTE = class(TF_BASE)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  F_CLIENTE: TF_CLIENTE;
+
+implementation
+
+{$R *.dfm}
+
+end.
