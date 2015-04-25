@@ -27243,6 +27243,22 @@ object F_BASE: TF_BASE
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     Layout = blGlyphTop
   end
+  object Edit1: TEdit
+    Left = 176
+    Top = 136
+    Width = 121
+    Height = 21
+    TabOrder = 11
+    Text = 'Edit1'
+  end
+  object Edit2: TEdit
+    Left = 248
+    Top = 280
+    Width = 121
+    Height = 21
+    TabOrder = 12
+    Text = 'Edit2'
+  end
   object DataSource1: TDataSource
     Left = 304
     Top = 16

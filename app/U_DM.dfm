@@ -1,7 +1,7 @@
 object DM: TDM
   OldCreateOrder = False
-  Left = 383
-  Top = 194
+  Left = 482
+  Top = 208
   Height = 282
   Width = 358
   object sistema_vendas: TDatabase
@@ -86,5 +86,9 @@ object DM: TDM
     DataSet = Q_Usuario
     Left = 96
     Top = 112
+  end
+  object Q_PermissoesDeUsuario: TQuery
+    Left = 160
+    Top = 32
   end
 end

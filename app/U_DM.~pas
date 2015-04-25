@@ -19,10 +19,12 @@ type
     M_Usuarionome: TStringField;
     M_Usuariosenha: TStringField;
     M_Usuariologin: TStringField;
+    Q_PermissoesDeUsuario: TQuery;
   private
     { Private declarations }
   public
     { Public declarations }
+    editColor: string;
   end;
 
 var

@@ -14,6 +14,7 @@ object F_SISTEMA: TF_SISTEMA
   OldCreateOrder = False
   WindowState = wsMaximized
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
