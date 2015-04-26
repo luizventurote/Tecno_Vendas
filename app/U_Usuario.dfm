@@ -12,33 +12,33 @@ inherited F_USUARIO: TF_USUARIO
         object Label1: TLabel
           Left = 16
           Top = 24
-          Width = 44
+          Width = 11
           Height = 13
-          Caption = 'idUsuario'
+          Caption = 'ID'
           FocusControl = editID
         end
         object Label2: TLabel
           Left = 16
           Top = 64
-          Width = 26
+          Width = 28
           Height = 13
-          Caption = 'nome'
+          Caption = 'Nome'
           FocusControl = editNome
         end
         object Label3: TLabel
           Left = 16
-          Top = 104
-          Width = 29
+          Top = 144
+          Width = 31
           Height = 13
-          Caption = 'senha'
+          Caption = 'Senha'
           FocusControl = DBEdit3
         end
         object Label4: TLabel
           Left = 16
-          Top = 144
-          Width = 22
+          Top = 104
+          Width = 26
           Height = 13
-          Caption = 'login'
+          Caption = 'Login'
           FocusControl = DBEdit4
         end
         object editID: TDBEdit
@@ -46,8 +46,11 @@ inherited F_USUARIO: TF_USUARIO
           Top = 40
           Width = 134
           Height = 21
+          TabStop = False
           DataField = 'idUsuario'
           DataSource = DS
+          Enabled = False
+          ReadOnly = True
           TabOrder = 0
         end
         object editNome: TDBEdit
@@ -61,21 +64,21 @@ inherited F_USUARIO: TF_USUARIO
         end
         object DBEdit3: TDBEdit
           Left = 16
-          Top = 120
-          Width = 589
+          Top = 160
+          Width = 241
           Height = 21
           DataField = 'senha'
           DataSource = DS
-          TabOrder = 2
+          TabOrder = 3
         end
         object DBEdit4: TDBEdit
           Left = 16
-          Top = 160
-          Width = 589
+          Top = 120
+          Width = 241
           Height = 21
           DataField = 'login'
           DataSource = DS
-          TabOrder = 3
+          TabOrder = 2
         end
         object BitBtn1: TBitBtn
           Left = 16

@@ -1,8 +1,8 @@
 object DM: TDM
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Left = 254
-  Top = 259
+  Left = 439
+  Top = 246
   Height = 521
   Width = 342
   object sistema_vendas: TDatabase
@@ -94,7 +94,7 @@ object DM: TDM
   end
   object Q_PermissoesDeUsuario: TQuery
     DatabaseName = 'sistema_vendas'
-    Left = 128
+    Left = 160
     Top = 32
   end
   object P_Cliente: TDataSetProvider

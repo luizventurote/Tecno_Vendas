@@ -66,6 +66,7 @@ object DM: TDM
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Usuario'
+    AfterInsert = M_UsuarioAfterInsert
     AfterPost = M_UsuarioAfterPost
     AfterCancel = M_UsuarioAfterCancel
     AfterDelete = M_UsuarioAfterDelete
@@ -254,5 +255,10 @@ object DM: TDM
     object M_Produtocod_barra: TIntegerField
       FieldName = 'cod_barra'
     end
+  end
+  object Q_Aux: TQuery
+    DatabaseName = 'sistema_vendas'
+    Left = 264
+    Top = 32
   end
 end

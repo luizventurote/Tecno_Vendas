@@ -3,7 +3,7 @@ unit U_DM;
 interface
 
 uses
-  SysUtils, Classes, DB, DBTables, Provider, DBClient;
+  SysUtils, Classes, DB, DBTables, Provider, DBClient, Dialogs;
 
 type
   TDM = class(TDataModule)
@@ -52,15 +52,18 @@ type
     M_Produtoqtd_estoque: TIntegerField;
     M_Produtovalor: TFloatField;
     M_Produtocod_barra: TIntegerField;
+    Q_Aux: TQuery;
     procedure M_UsuarioAfterPost(DataSet: TDataSet);
     procedure M_UsuarioAfterDelete(DataSet: TDataSet);
     procedure M_UsuarioAfterCancel(DataSet: TDataSet);
     procedure DataModuleDestroy(Sender: TObject);
+    procedure M_UsuarioAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
     { Public declarations }
     usuario_ativo: string;
+    function buscaProximoParametro(p:string):integer;
   end;
 
 var
@@ -88,6 +91,36 @@ end;
 procedure TDM.DataModuleDestroy(Sender: TObject);
 begin
   sistema_vendas.Close;
+end;
+
+
+// -----------------------------------------------------------------------------
+// Busca o próximo parâmetro
+// -----------------------------------------------------------------------------
+function TDM.buscaProximoParametro(p: string): integer;
+var i : integer;
+begin
+  Q_Aux.SQL.Text := 'select valor from parametros where parametro =:p';
+  Q_Aux.ParamByName('p').AsString := p;
+  Q_Aux.Open;
+  
+  if not Q_Aux.IsEmpty then
+  begin
+    i := StrToInt(Q_Aux.Fields[0].AsString);
+    Q_Aux.SQL.Text := 'update parametros set valor =:v where parametro =:p';
+    Q_Aux.ParamByName('p').AsString := p;
+    Q_Aux.ParamByName('v').AsString := IntToStr(i+1);
+    Q_Aux.ExecSQL;
+    buscaProximoParametro := i;
+  end
+  else
+    showmessage('Parametro Inválido');
+end;
+
+procedure TDM.M_UsuarioAfterInsert(DataSet: TDataSet);
+begin
+  M_UsuarioidUsuario.AsInteger := buscaProximoParametro('SeqUsuario');
+
 end;
 
 end.

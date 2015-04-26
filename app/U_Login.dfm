@@ -1,6 +1,6 @@
 object F_LOGIN: TF_LOGIN
-  Left = 767
-  Top = 205
+  Left = 742
+  Top = 219
   BorderStyle = bsNone
   Caption = 'Login - TecnoVendas'
   ClientHeight = 323
