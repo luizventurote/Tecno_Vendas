@@ -112,6 +112,15 @@ type
     M_ContasReceberCliente: TStringField;
     M_ContasReceberDuplicata: TStringField;
     M_ProdutoProduto: TStringField;
+    M_PedidoProduto: TClientDataSet;
+    P_PedidoProduto: TDataSetProvider;
+    Q_PedidoProduto: TQuery;
+    Q_PedidoProdutoidProduto: TIntegerField;
+    Q_PedidoProdutoidPedido: TIntegerField;
+    Q_PedidoProdutoqtd: TIntegerField;
+    M_PedidoProdutoidProduto: TIntegerField;
+    M_PedidoProdutoidPedido: TIntegerField;
+    M_PedidoProdutoqtd: TIntegerField;
     procedure M_UsuarioAfterPost(DataSet: TDataSet);
     procedure M_UsuarioAfterDelete(DataSet: TDataSet);
     procedure M_UsuarioAfterCancel(DataSet: TDataSet);

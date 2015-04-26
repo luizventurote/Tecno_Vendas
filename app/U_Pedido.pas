@@ -23,16 +23,18 @@ type
     DBEdit6: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
     GroupBox1: TGroupBox;
+    DS_ProdutoItem: TDataSource;
+    gridProdutos: TDBGrid;
     Label7: TLabel;
     DBLookupComboBox2: TDBLookupComboBox;
     DS_Produto: TDataSource;
-    editProdutoID: TDBEdit;
-    btnAddProduto: TButton;
-    Label8: TLabel;
     editProdutoQtd: TEdit;
-    gridProdutos: TDBGrid;
-    procedure btnAdicionarClick(Sender: TObject);
+    btnAddProduto: TButton;
+    editProdutoID: TDBEdit;
     procedure btnAddProdutoClick(Sender: TObject);
+    procedure editPedidoIDChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure atualizarGridDeprodutos();
   private
     { Private declarations }
   public
@@ -48,7 +50,29 @@ uses U_DM;
 
 {$R *.dfm}
 
-procedure TF_PEDIDO.btnAdicionarClick(Sender: TObject);
+procedure TF_PEDIDO.btnAddProdutoClick(Sender: TObject);
+begin
+  inherited;
+
+  DM.Q_Aux.SQL.Text := 'INSERT INTO Produto_Pedido_Item (idProduto, idPedido, qtd) VALUES (:idProduto, :idPedido, :qtd);';
+  DM.Q_Aux.ParamByName('idProduto').AsString := editProdutoID.Text;
+  DM.Q_Aux.ParamByName('idPedido').AsString := editPedidoID.Text;
+  DM.Q_Aux.ParamByName('qtd').AsString := editProdutoQtd.Text;
+  DM.Q_Aux.ExecSQL;
+
+  atualizarGridDeprodutos();
+
+end;
+
+procedure TF_PEDIDO.editPedidoIDChange(Sender: TObject);
+begin
+  inherited;
+
+  atualizarGridDeprodutos();
+
+end;
+
+procedure TF_PEDIDO.FormCreate(Sender: TObject);
 begin
   inherited;
 
@@ -57,25 +81,14 @@ begin
   
 end;
 
-procedure TF_PEDIDO.btnAddProdutoClick(Sender: TObject);
+procedure TF_PEDIDO.atualizarGridDeprodutos();
 begin
-  inherited;
 
-  //DM.Q_Aux.SQL.Text := 'INSERT INTO Produto_Pedido_Item (idProduto, idPedido, qtd) VALUES (:idProduto, :idPedido, :qtd);';
-  //DM.Q_Aux.ParamByName('idProduto').AsString := editProdutoID.Text;
-  //DM.Q_Aux.ParamByName('idPedido').AsString := editPedidoID.Text;
-  //DM.Q_Aux.ParamByName('qtd').AsString := editProdutoQtd.Text;
-  //DM.Q_Aux.ExecSQL;
+  DM.Q_PedidoProduto.SQL.Text := 'select * from Produto_Pedido_Item where idPedido = :usuarioID';
+  DM.Q_PedidoProduto.ParamByName('usuarioID').AsString := editPedidoID.Text;
 
-  DM.Q_Aux.SQL.Clear;
-  DM.Q_Aux.SQL.Text := 'select * from Produto_Pedido_Item where idPedido = 14;';
-  //DM.Q_Aux.ParamByName('usuarioID').AsString := IntToStr( usuario );
-  DM.Q_Aux.Open;
-  DM.Q_Aux.First;
-
-    ShowMessage( DM.Q_Aux.FieldByName('qtd').AsString );
-
-    DS_Produto := DM.Q_Aux.DataSource;
+  DS_ProdutoItem.DataSet.Close;
+  DS_ProdutoItem.DataSet.Open;
 
 end;
 

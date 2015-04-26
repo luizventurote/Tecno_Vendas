@@ -1,7 +1,8 @@
 inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
-  Left = 419
-  Top = 130
+  Left = 404
+  Top = 242
   Caption = 'Contas a Receber'
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
@@ -46,7 +47,7 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
           Width = 55
           Height = 13
           Caption = 'vencimento'
-          FocusControl = DBEdit5
+          FocusControl = editVencimento
         end
         object Label6: TLabel
           Left = 24
@@ -92,7 +93,7 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
           DataSource = DS
           TabOrder = 3
         end
-        object DBEdit5: TDBEdit
+        object editVencimento: TDBEdit
           Left = 24
           Top = 200
           Width = 273
@@ -100,6 +101,8 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
           DataField = 'vencimento'
           DataSource = DS
           TabOrder = 4
+          OnChange = editVencimentoChange
+          OnExit = editVencimentoExit
         end
         object editDataBaixa: TDBEdit
           Left = 24
@@ -130,8 +133,40 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
         end
       end
     end
+    object TabSheet1: TTabSheet
+      Caption = 'Contas em atraso'
+      ImageIndex = 2
+      object DBGrid2: TDBGrid
+        Left = 0
+        Top = 64
+        Width = 1033
+        Height = 373
+        Align = alCustom
+        DataSource = DS_ContasAtrasadas
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+      end
+      object btnAtualizarContas: TBitBtn
+        Left = 16
+        Top = 16
+        Width = 75
+        Height = 25
+        Caption = 'Atualizar'
+        TabOrder = 1
+        OnClick = btnAtualizarContasClick
+      end
+    end
   end
   inherited DS: TDataSource
     DataSet = DM.M_ContasReceber
+  end
+  object DS_ContasAtrasadas: TDataSource
+    DataSet = DM.Q_Aux
+    Left = 344
+    Top = 16
   end
 end

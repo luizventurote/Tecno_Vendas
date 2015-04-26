@@ -1,6 +1,6 @@
 inherited F_PEDIDO: TF_PEDIDO
-  Left = 332
-  Top = 133
+  Left = 465
+  Top = 159
   Caption = 'Pedido'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -65,6 +65,7 @@ inherited F_PEDIDO: TF_PEDIDO
           DataField = 'idPedido'
           DataSource = DS
           TabOrder = 0
+          OnChange = editPedidoIDChange
         end
         object DBEdit2: TDBEdit
           Left = 24
@@ -136,59 +137,52 @@ inherited F_PEDIDO: TF_PEDIDO
             Caption = 'Produto'
             FocusControl = DBLookupComboBox2
           end
-          object Label8: TLabel
-            Left = 296
-            Top = 24
-            Width = 55
-            Height = 13
-            Caption = 'Quantidade'
-          end
-          object DBLookupComboBox2: TDBLookupComboBox
-            Left = 72
-            Top = 40
-            Width = 210
-            Height = 21
-            DataField = 'Produto'
-            DataSource = DS_Produto
-            TabOrder = 0
-          end
-          object editProdutoID: TDBEdit
-            Left = 8
-            Top = 40
-            Width = 57
-            Height = 21
-            DataField = 'idProduto'
-            DataSource = DS_Produto
-            TabOrder = 1
-          end
-          object btnAddProduto: TButton
-            Left = 432
-            Top = 38
-            Width = 75
-            Height = 25
-            Caption = 'Adicionar'
-            TabOrder = 2
-            OnClick = btnAddProdutoClick
-          end
-          object editProdutoQtd: TEdit
-            Left = 296
-            Top = 40
-            Width = 121
-            Height = 21
-            TabOrder = 3
-          end
           object gridProdutos: TDBGrid
             Left = 8
             Top = 80
             Width = 569
             Height = 297
-            DataSource = DS_Produto
-            TabOrder = 4
+            DataSource = DS_ProdutoItem
+            TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+          end
+          object DBLookupComboBox2: TDBLookupComboBox
+            Left = 64
+            Top = 40
+            Width = 218
+            Height = 21
+            DataField = 'Produto'
+            DataSource = DS_Produto
+            TabOrder = 1
+          end
+          object editProdutoQtd: TEdit
+            Left = 304
+            Top = 40
+            Width = 121
+            Height = 21
+            TabOrder = 2
+          end
+          object btnAddProduto: TButton
+            Left = 443
+            Top = 37
+            Width = 74
+            Height = 23
+            Caption = 'Add'
+            TabOrder = 3
+            OnClick = btnAddProdutoClick
+          end
+          object editProdutoID: TDBEdit
+            Left = 8
+            Top = 40
+            Width = 49
+            Height = 21
+            DataField = 'idProduto'
+            DataSource = DS_Produto
+            TabOrder = 4
           end
         end
       end
@@ -197,9 +191,14 @@ inherited F_PEDIDO: TF_PEDIDO
   inherited DS: TDataSource
     DataSet = DM.M_Pedido
   end
+  object DS_ProdutoItem: TDataSource
+    DataSet = DM.M_PedidoProduto
+    Left = 344
+    Top = 16
+  end
   object DS_Produto: TDataSource
     DataSet = DM.M_Produto
-    Left = 344
+    Left = 384
     Top = 16
   end
 end

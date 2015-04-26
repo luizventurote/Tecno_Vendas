@@ -1,8 +1,8 @@
 object DM: TDM
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Left = 670
-  Top = 309
+  Left = 143
+  Top = 171
   Height = 591
   Width = 714
   object sistema_vendas: TDatabase
@@ -588,6 +588,49 @@ object DM: TDM
       Origin = 'SISTEMA_VENDAS.contas_receber.data_baixa'
       ProviderFlags = [pfInUpdate]
       Size = 50
+    end
+  end
+  object M_PedidoProduto: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_PedidoProduto'
+    Left = 592
+    Top = 184
+    object M_PedidoProdutoidProduto: TIntegerField
+      FieldName = 'idProduto'
+    end
+    object M_PedidoProdutoidPedido: TIntegerField
+      FieldName = 'idPedido'
+    end
+    object M_PedidoProdutoqtd: TIntegerField
+      FieldName = 'qtd'
+    end
+  end
+  object P_PedidoProduto: TDataSetProvider
+    DataSet = Q_PedidoProduto
+    Left = 464
+    Top = 184
+  end
+  object Q_PedidoProduto: TQuery
+    DatabaseName = 'sistema_vendas'
+    SQL.Strings = (
+      'select * from Produto_Pedido_Item')
+    Left = 344
+    Top = 184
+    object Q_PedidoProdutoidProduto: TIntegerField
+      FieldName = 'idProduto'
+      Origin = 'SISTEMA_VENDAS.Produto_Pedido_Item.idProduto'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Q_PedidoProdutoidPedido: TIntegerField
+      FieldName = 'idPedido'
+      Origin = 'SISTEMA_VENDAS.Produto_Pedido_Item.idPedido'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Q_PedidoProdutoqtd: TIntegerField
+      FieldName = 'qtd'
+      Origin = 'SISTEMA_VENDAS.Produto_Pedido_Item.qtd'
+      ProviderFlags = [pfInUpdate]
     end
   end
 end

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, U_Base, DB, Grids, DBGrids, StdCtrls, ComCtrls, Buttons,
-  ExtCtrls, DBCtrls, Mask;
+  ExtCtrls, DBCtrls, Mask, DBClient, Provider;
 
 type
   TF_PEDIDO = class(TF_BASE)
@@ -23,16 +23,17 @@ type
     DBEdit6: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
     GroupBox1: TGroupBox;
+    DS_ProdutoItem: TDataSource;
+    gridProdutos: TDBGrid;
     Label7: TLabel;
     DBLookupComboBox2: TDBLookupComboBox;
     DS_Produto: TDataSource;
-    editProdutoID: TDBEdit;
-    btnAddProduto: TButton;
-    Label8: TLabel;
     editProdutoQtd: TEdit;
-    gridProdutos: TDBGrid;
-    procedure btnAdicionarClick(Sender: TObject);
+    btnAddProduto: TButton;
+    editProdutoID: TDBEdit;
     procedure btnAddProdutoClick(Sender: TObject);
+    procedure editPedidoIDChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,35 +49,37 @@ uses U_DM;
 
 {$R *.dfm}
 
-procedure TF_PEDIDO.btnAdicionarClick(Sender: TObject);
+procedure TF_PEDIDO.btnAddProdutoClick(Sender: TObject);
+begin
+  inherited;
+
+  DM.Q_Aux.SQL.Text := 'INSERT INTO Produto_Pedido_Item (idProduto, idPedido, qtd) VALUES (:idProduto, :idPedido, :qtd);';
+  DM.Q_Aux.ParamByName('idProduto').AsString := editProdutoID.Text;
+  DM.Q_Aux.ParamByName('idPedido').AsString := editPedidoID.Text;
+  DM.Q_Aux.ParamByName('qtd').AsString := editProdutoQtd.Text;
+  DM.Q_Aux.ExecSQL;
+
+end;
+
+procedure TF_PEDIDO.editPedidoIDChange(Sender: TObject);
+begin
+  inherited;
+
+  DM.Q_PedidoProduto.SQL.Text := 'select * from Produto_Pedido_Item where idPedido = :usuarioID';
+  DM.Q_PedidoProduto.ParamByName('usuarioID').AsString := editPedidoID.Text;
+
+  DS_ProdutoItem.DataSet.Close;
+  DS_ProdutoItem.DataSet.Open;
+
+end;
+
+procedure TF_PEDIDO.FormCreate(Sender: TObject);
 begin
   inherited;
 
   DS_Produto.DataSet.Close;
   DS_Produto.DataSet.Open;
   
-end;
-
-procedure TF_PEDIDO.btnAddProdutoClick(Sender: TObject);
-begin
-  inherited;
-
-  //DM.Q_Aux.SQL.Text := 'INSERT INTO Produto_Pedido_Item (idProduto, idPedido, qtd) VALUES (:idProduto, :idPedido, :qtd);';
-  //DM.Q_Aux.ParamByName('idProduto').AsString := editProdutoID.Text;
-  //DM.Q_Aux.ParamByName('idPedido').AsString := editPedidoID.Text;
-  //DM.Q_Aux.ParamByName('qtd').AsString := editProdutoQtd.Text;
-  //DM.Q_Aux.ExecSQL;
-
-  DM.Q_Aux.SQL.Clear;
-  DM.Q_Aux.SQL.Text := 'select * from Produto_Pedido_Item where idPedido = 14;';
-  //DM.Q_Aux.ParamByName('usuarioID').AsString := IntToStr( usuario );
-  DM.Q_Aux.Open;
-  //DM.Q_Aux.First;
-
-  //DS_Produto := DM.Q_Aux.DataSource;
-
-    gridProdutos.DataSource := DM.Q_Aux.DataSource
-
 end;
 
 end.

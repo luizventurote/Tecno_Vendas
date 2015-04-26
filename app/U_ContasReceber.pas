@@ -18,12 +18,19 @@ type
     Label4: TLabel;
     DBEdit4: TDBEdit;
     Label5: TLabel;
-    DBEdit5: TDBEdit;
+    editVencimento: TDBEdit;
     Label6: TLabel;
     editDataBaixa: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
+    TabSheet1: TTabSheet;
+    DBGrid2: TDBGrid;
+    DS_ContasAtrasadas: TDataSource;
+    btnAtualizarContas: TBitBtn;
     procedure btnSalvarClick(Sender: TObject);
+    procedure editVencimentoChange(Sender: TObject);
+    procedure editVencimentoExit(Sender: TObject);
+    procedure btnAtualizarContasClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,6 +62,57 @@ begin
   except
     showmessage('data invalida');
   end;
+
+end;
+
+procedure TF_CONTAS_RECEBER.editVencimentoChange(Sender: TObject);
+begin
+  inherited;
+
+  // Verifica data antes de salvar
+  try
+
+    if not (editDataBaixa.Text = '') then
+    begin
+      strtodate(editDataBaixa.text);
+    end;
+
+    inherited;
+
+  except
+    showmessage('data invalida');
+  end;
+
+end;
+
+procedure TF_CONTAS_RECEBER.editVencimentoExit(Sender: TObject);
+begin
+  inherited;
+
+  // Verifica data antes de salvar
+  try
+
+    if not (editVencimento.Text = '') then
+    begin
+      strtodate(editVencimento.text);
+    end;
+
+  except
+    MessageDlg('Data invalida!',mtError, [mbOk],0);
+    editVencimento.SetFocus;
+  end;
+
+end;
+
+procedure TF_CONTAS_RECEBER.btnAtualizarContasClick(Sender: TObject);
+begin
+  inherited;
+
+
+  DM.Q_Aux.SQL.Text := 'select DATEDIFF ( DAY , GETDATE() , convert(datetime,vencimento,103) ) Prazo, vencimento, idContasReceber id_conta from Contas_Receber;';
+
+  DS_ContasAtrasadas.DataSet.Close;
+  DS_ContasAtrasadas.DataSet.Open;
 
 end;
 

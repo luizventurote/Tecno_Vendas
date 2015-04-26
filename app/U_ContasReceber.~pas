@@ -18,12 +18,14 @@ type
     Label4: TLabel;
     DBEdit4: TDBEdit;
     Label5: TLabel;
-    DBEdit5: TDBEdit;
+    editVencimento: TDBEdit;
     Label6: TLabel;
     editDataBaixa: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
     procedure btnSalvarClick(Sender: TObject);
+    procedure editVencimentoChange(Sender: TObject);
+    procedure editVencimentoExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,15 +44,58 @@ uses U_DM;
 procedure TF_CONTAS_RECEBER.btnSalvarClick(Sender: TObject);
 begin
 
+  // Verifica data antes de salvar
+  try
 
-try
-strtodate(editDataBaixa.text);
-inherited;
-except
-showmessage('data invalida');
+    if not (editDataBaixa.Text = '') then
+    begin
+      strtodate(editDataBaixa.text);
+    end;
+
+    inherited;
+
+  except
+    showmessage('data invalida');
+  end;
+
 end;
 
+procedure TF_CONTAS_RECEBER.editVencimentoChange(Sender: TObject);
+begin
+  inherited;
 
+  // Verifica data antes de salvar
+  try
+
+    if not (editDataBaixa.Text = '') then
+    begin
+      strtodate(editDataBaixa.text);
+    end;
+
+    inherited;
+
+  except
+    showmessage('data invalida');
+  end;
+
+end;
+
+procedure TF_CONTAS_RECEBER.editVencimentoExit(Sender: TObject);
+begin
+  inherited;
+
+  // Verifica data antes de salvar
+  try
+
+    if not (editVencimento.Text = '') then
+    begin
+      strtodate(editVencimento.text);
+    end;
+
+  except
+    MessageDlg('Data invalida!',mtError, [mbOk],0);
+    editVencimento.SetFocus;
+  end;
 
 end;
 
