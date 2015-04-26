@@ -27212,6 +27212,15 @@ object F_BASE: TF_BASE
         Height = 105
         Align = alTop
         TabOrder = 0
+        object btnExportExcel: TBitBtn
+          Left = 872
+          Top = 64
+          Width = 147
+          Height = 25
+          Caption = 'Exportar para Excel'
+          TabOrder = 0
+          OnClick = btnExportExcelClick
+        end
       end
       object DBGrid1: TDBGrid
         Left = 0

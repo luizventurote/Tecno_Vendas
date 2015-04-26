@@ -53,16 +53,101 @@ type
     M_Produtovalor: TFloatField;
     M_Produtocod_barra: TIntegerField;
     Q_Aux: TQuery;
+    Q_EntradaEstq: TQuery;
+    P_EntradaEstq: TDataSetProvider;
+    M_EntradaEstq: TClientDataSet;
+    Q_EntradaEstqidEntradaEstoque: TIntegerField;
+    Q_EntradaEstqidUsuario: TIntegerField;
+    Q_EntradaEstqidProduto: TIntegerField;
+    Q_EntradaEstqqtd_entradas: TIntegerField;
+    M_EntradaEstqidEntradaEstoque: TIntegerField;
+    M_EntradaEstqidUsuario: TIntegerField;
+    M_EntradaEstqidProduto: TIntegerField;
+    M_EntradaEstqqtd_entradas: TIntegerField;
+    M_EntradaEstqUsuario: TStringField;
+    M_EntradaEstqProduto: TStringField;
+    M_Pedido: TClientDataSet;
+    P_Pedido: TDataSetProvider;
+    Q_Pedido: TQuery;
+    Q_PedidoidPedido: TIntegerField;
+    Q_PedidoidCliente: TIntegerField;
+    Q_Pedidodata_pedido: TStringField;
+    Q_Pedidoprazo_pagamento: TIntegerField;
+    Q_Pedidovalor: TFloatField;
+    Q_Pedidoqtd: TIntegerField;
+    M_PedidoidPedido: TIntegerField;
+    M_PedidoidCliente: TIntegerField;
+    M_Pedidodata_pedido: TStringField;
+    M_Pedidoprazo_pagamento: TIntegerField;
+    M_Pedidovalor: TFloatField;
+    M_Pedidoqtd: TIntegerField;
+    M_PedidoCliente: TStringField;
+    M_Faturamento: TClientDataSet;
+    P_Faturamento: TDataSetProvider;
+    Q_Faturamento: TQuery;
+    Q_FaturamentoidFaturamento: TIntegerField;
+    Q_FaturamentoidPedido: TIntegerField;
+    Q_Faturamentonum_nota_fiscal: TIntegerField;
+    Q_Faturamentodata: TStringField;
+    M_FaturamentoidFaturamento: TIntegerField;
+    M_FaturamentoidPedido: TIntegerField;
+    M_Faturamentonum_nota_fiscal: TIntegerField;
+    M_Faturamentodata: TStringField;
+    M_FaturamentoPedido: TStringField;
+    M_ContasReceber: TClientDataSet;
+    P_ContasReceber: TDataSetProvider;
+    Q_ContasReceber: TQuery;
+    Q_ContasReceberidContasReceber: TIntegerField;
+    Q_ContasReceberidCliente: TIntegerField;
+    Q_ContasReceberidDuplicata: TIntegerField;
+    Q_ContasRecebernum_nota_fiscal: TIntegerField;
+    Q_ContasRecebervencimento: TStringField;
+    Q_ContasReceberdata_baixa: TStringField;
+    M_ContasReceberidContasReceber: TIntegerField;
+    M_ContasReceberidCliente: TIntegerField;
+    M_ContasReceberidDuplicata: TIntegerField;
+    M_ContasRecebernum_nota_fiscal: TIntegerField;
+    M_ContasRecebervencimento: TStringField;
+    M_ContasReceberdata_baixa: TStringField;
+    M_ContasReceberCliente: TStringField;
+    M_ContasReceberDuplicata: TStringField;
+    M_ProdutoProduto: TStringField;
     procedure M_UsuarioAfterPost(DataSet: TDataSet);
     procedure M_UsuarioAfterDelete(DataSet: TDataSet);
     procedure M_UsuarioAfterCancel(DataSet: TDataSet);
     procedure DataModuleDestroy(Sender: TObject);
     procedure M_UsuarioAfterInsert(DataSet: TDataSet);
+    procedure M_ClienteAfterInsert(DataSet: TDataSet);
+    procedure M_ProdutoAfterInsert(DataSet: TDataSet);
+    procedure M_ClienteAfterCancel(DataSet: TDataSet);
+    procedure M_ClienteAfterDelete(DataSet: TDataSet);
+    procedure M_ClienteAfterPost(DataSet: TDataSet);
+    procedure M_ProdutoAfterPost(DataSet: TDataSet);
+    procedure M_ProdutoAfterDelete(DataSet: TDataSet);
+    procedure M_ProdutoAfterCancel(DataSet: TDataSet);
+    procedure M_EntradaEstqAfterCancel(DataSet: TDataSet);
+    procedure M_EntradaEstqAfterDelete(DataSet: TDataSet);
+    procedure M_EntradaEstqAfterPost(DataSet: TDataSet);
+    procedure M_EntradaEstqAfterInsert(DataSet: TDataSet);
+    procedure M_PedidoAfterCancel(DataSet: TDataSet);
+    procedure M_PedidoAfterDelete(DataSet: TDataSet);
+    procedure M_PedidoAfterPost(DataSet: TDataSet);
+    procedure M_PedidoAfterInsert(DataSet: TDataSet);
+    procedure M_FaturamentoAfterCancel(DataSet: TDataSet);
+    procedure M_FaturamentoAfterDelete(DataSet: TDataSet);
+    procedure M_FaturamentoAfterPost(DataSet: TDataSet);
+    procedure M_FaturamentoAfterInsert(DataSet: TDataSet);
+    procedure M_ContasReceberAfterCancel(DataSet: TDataSet);
+    procedure M_ContasReceberAfterDelete(DataSet: TDataSet);
+    procedure M_ContasReceberAfterPost(DataSet: TDataSet);
+    procedure M_ContasReceberAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
     { Public declarations }
     usuario_ativo: string;
+    id_usuario_ativo: integer;
+    nome_usuario_ativo: string;
     function buscaProximoParametro(p:string):integer;
   end;
 
@@ -120,7 +205,126 @@ end;
 procedure TDM.M_UsuarioAfterInsert(DataSet: TDataSet);
 begin
   M_UsuarioidUsuario.AsInteger := buscaProximoParametro('SeqUsuario');
+end;
 
+procedure TDM.M_ClienteAfterInsert(DataSet: TDataSet);
+begin
+  M_ClienteidCliente.AsInteger := buscaProximoParametro('SeqCliente');
+end;
+
+procedure TDM.M_ProdutoAfterInsert(DataSet: TDataSet);
+begin
+  M_ProdutoidProduto.AsInteger := buscaProximoParametro('SeqProduto');
+end;
+
+procedure TDM.M_ClienteAfterCancel(DataSet: TDataSet);
+begin
+  M_Cliente.CancelUpdates;
+end;
+
+procedure TDM.M_ClienteAfterDelete(DataSet: TDataSet);
+begin
+  M_Cliente.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_ClienteAfterPost(DataSet: TDataSet);
+begin
+  M_Cliente.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_ProdutoAfterPost(DataSet: TDataSet);
+begin
+  M_Produto.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_ProdutoAfterDelete(DataSet: TDataSet);
+begin
+  M_Produto.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_ProdutoAfterCancel(DataSet: TDataSet);
+begin
+  M_Produto.CancelUpdates;
+end;
+
+procedure TDM.M_EntradaEstqAfterCancel(DataSet: TDataSet);
+begin
+  M_EntradaEstq.CancelUpdates;
+end;
+
+procedure TDM.M_EntradaEstqAfterDelete(DataSet: TDataSet);
+begin
+  M_EntradaEstq.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_EntradaEstqAfterPost(DataSet: TDataSet);
+begin
+  M_EntradaEstq.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_EntradaEstqAfterInsert(DataSet: TDataSet);
+begin
+  M_EntradaEstqidEntradaEstoque.AsInteger := buscaProximoParametro('SeqEntradaEstoque');
+end;
+
+procedure TDM.M_PedidoAfterCancel(DataSet: TDataSet);
+begin
+  M_Pedido.CancelUpdates;
+end;
+
+procedure TDM.M_PedidoAfterDelete(DataSet: TDataSet);
+begin
+  M_Pedido.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_PedidoAfterPost(DataSet: TDataSet);
+begin
+  M_Pedido.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_PedidoAfterInsert(DataSet: TDataSet);
+begin
+  M_PedidoidPedido.AsInteger := buscaProximoParametro('SeqPedido');
+end;
+
+procedure TDM.M_FaturamentoAfterCancel(DataSet: TDataSet);
+begin
+  M_Faturamento.CancelUpdates;
+end;
+
+procedure TDM.M_FaturamentoAfterDelete(DataSet: TDataSet);
+begin
+  M_Faturamento.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_FaturamentoAfterPost(DataSet: TDataSet);
+begin
+  M_Faturamento.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_FaturamentoAfterInsert(DataSet: TDataSet);
+begin
+  M_FaturamentoidFaturamento.AsInteger := buscaProximoParametro('SeqFaturamento');
+end;
+
+procedure TDM.M_ContasReceberAfterCancel(DataSet: TDataSet);
+begin
+  M_ContasReceber.CancelUpdates;
+end;
+
+procedure TDM.M_ContasReceberAfterDelete(DataSet: TDataSet);
+begin
+  M_ContasReceber.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_ContasReceberAfterPost(DataSet: TDataSet);
+begin
+  M_ContasReceber.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_ContasReceberAfterInsert(DataSet: TDataSet);
+begin
+  M_ContasReceberidContasReceber.AsInteger := buscaProximoParametro('SeqContasReceber');
 end;
 
 end.

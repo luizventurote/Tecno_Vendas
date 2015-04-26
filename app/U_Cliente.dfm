@@ -2,9 +2,11 @@ inherited F_CLIENTE: TF_CLIENTE
   Left = 465
   Top = 208
   Caption = 'Cliente'
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
+    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -45,7 +47,7 @@ inherited F_CLIENTE: TF_CLIENTE
           Width = 20
           Height = 13
           Caption = 'cnpj'
-          FocusControl = DBEdit5
+          FocusControl = editCNPJ
         end
         object Label6: TLabel
           Left = 16
@@ -78,6 +80,8 @@ inherited F_CLIENTE: TF_CLIENTE
           Height = 21
           DataField = 'idCliente'
           DataSource = DS
+          Enabled = False
+          ReadOnly = True
           TabOrder = 0
         end
         object DBEdit2: TDBEdit
@@ -107,7 +111,7 @@ inherited F_CLIENTE: TF_CLIENTE
           DataSource = DS
           TabOrder = 3
         end
-        object DBEdit5: TDBEdit
+        object editCNPJ: TDBEdit
           Left = 16
           Top = 200
           Width = 654
@@ -115,11 +119,12 @@ inherited F_CLIENTE: TF_CLIENTE
           DataField = 'cnpj'
           DataSource = DS
           TabOrder = 4
+          OnExit = editCNPJExit
         end
         object DBEdit6: TDBEdit
           Left = 16
           Top = 240
-          Width = 30
+          Width = 41
           Height = 21
           DataField = 'estado'
           DataSource = DS

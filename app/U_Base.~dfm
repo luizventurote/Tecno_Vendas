@@ -1,6 +1,6 @@
 object F_BASE: TF_BASE
-  Left = 415
-  Top = 220
+  Left = 399
+  Top = 204
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'TelaBase'
@@ -27188,7 +27188,7 @@ object F_BASE: TF_BASE
     Top = 104
     Width = 1041
     Height = 465
-    ActivePage = tbDados
+    ActivePage = tbFiltros
     Align = alCustom
     TabOrder = 10
     object tbDados: TTabSheet
@@ -27212,6 +27212,15 @@ object F_BASE: TF_BASE
         Height = 105
         Align = alTop
         TabOrder = 0
+        object btnExportExcel: TBitBtn
+          Left = 872
+          Top = 64
+          Width = 147
+          Height = 25
+          Caption = 'Exportar para Excel'
+          TabOrder = 0
+          OnClick = btnExportExcelClick
+        end
       end
       object DBGrid1: TDBGrid
         Left = 0

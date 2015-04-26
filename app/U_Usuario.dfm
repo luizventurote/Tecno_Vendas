@@ -1,6 +1,6 @@
 inherited F_USUARIO: TF_USUARIO
-  Left = 437
-  Top = 232
+  Left = 352
+  Top = 241
   Caption = 'Usu'#225'rio'
   OldCreateOrder = True
   PixelsPerInch = 96

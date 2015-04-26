@@ -1,0 +1,5 @@
+inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
+  Caption = 'Entrada no estoque'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

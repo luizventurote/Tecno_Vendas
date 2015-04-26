@@ -1,7 +1,7 @@
 object F_SISTEMA: TF_SISTEMA
-  Left = 427
-  Top = 278
-  Width = 1142
+  Left = 398
+  Top = 164
+  Width = 934
   Height = 597
   Caption = 'TecnoVendas'
   Color = clBtnFace
@@ -20,7 +20,7 @@ object F_SISTEMA: TF_SISTEMA
   object Image1: TImage
     Left = 0
     Top = 429
-    Width = 1126
+    Width = 918
     Height = 91
     Align = alBottom
     Anchors = [akLeft, akBottom]
@@ -2478,7 +2478,7 @@ object F_SISTEMA: TF_SISTEMA
   object StatusBar1: TStatusBar
     Left = 0
     Top = 520
-    Width = 1126
+    Width = 918
     Height = 19
     Panels = <
       item
@@ -2498,23 +2498,49 @@ object F_SISTEMA: TF_SISTEMA
     end
     object Cliente1: TMenuItem
       Caption = 'Clientes'
+      Visible = False
       OnClick = Cliente1Click
     end
     object Produto1: TMenuItem
       Caption = 'Produtos'
+      Visible = False
       OnClick = Produto1Click
     end
     object Estoque1: TMenuItem
       Caption = 'Estoque'
+      Visible = False
       object Entradanoestoque1: TMenuItem
         Caption = 'Entrada no estoque'
+        Visible = False
+        OnClick = Entradanoestoque1Click
       end
     end
-    object Pedido1: TMenuItem
-      Caption = 'Pedidos'
+    object Vendas1: TMenuItem
+      Caption = 'Vendas'
+      Visible = False
+      object Pedido1: TMenuItem
+        Caption = 'Pedido'
+        Visible = False
+        OnClick = Pedido1Click
+      end
+      object Faturamento1: TMenuItem
+        Caption = 'Faturamento'
+        Visible = False
+        OnClick = Faturamento1Click
+      end
+    end
+    object Contas1: TMenuItem
+      Caption = 'Contas'
+      Visible = False
+      object Contasareceber1: TMenuItem
+        Caption = 'Contas a receber'
+        Visible = False
+        OnClick = Contasareceber1Click
+      end
     end
     object Usurios1: TMenuItem
       Caption = 'Usu'#225'rios'
+      Visible = False
       OnClick = Usurios1Click
     end
   end

@@ -1,14 +1,14 @@
-unit U_Cliente;
+unit U_Faturamento;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, U_Base, DB, Grids, DBGrids, StdCtrls, ComCtrls, Buttons,
-  ExtCtrls, U_DM, Mask, DBCtrls;
+  ExtCtrls, DBCtrls, Mask;
 
 type
-  TF_CLIENTE = class(TF_BASE)
+  TF_FATURAMENTO = class(TF_BASE)
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;
@@ -17,14 +17,7 @@ type
     DBEdit3: TDBEdit;
     Label4: TLabel;
     DBEdit4: TDBEdit;
-    Label5: TLabel;
-    DBEdit5: TDBEdit;
-    Label6: TLabel;
-    DBEdit6: TDBEdit;
-    Label7: TLabel;
-    DBEdit7: TDBEdit;
-    Label8: TLabel;
-    DBEdit8: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
   private
     { Private declarations }
   public
@@ -32,9 +25,11 @@ type
   end;
 
 var
-  F_CLIENTE: TF_CLIENTE;
+  F_FATURAMENTO: TF_FATURAMENTO;
 
 implementation
+
+uses U_DM;
 
 {$R *.dfm}
 

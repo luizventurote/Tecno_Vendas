@@ -17,8 +17,12 @@ type
     Produto1: TMenuItem;
     Estoque1: TMenuItem;
     Entradanoestoque1: TMenuItem;
-    Pedido1: TMenuItem;
     Usurios1: TMenuItem;
+    Vendas1: TMenuItem;
+    Pedido1: TMenuItem;
+    Faturamento1: TMenuItem;
+    Contas1: TMenuItem;
+    Contasareceber1: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Fechar1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -27,10 +31,15 @@ type
     procedure Cliente1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Produto1Click(Sender: TObject);
+    procedure Entradanoestoque1Click(Sender: TObject);
+    procedure Pedido1Click(Sender: TObject);
+    procedure Faturamento1Click(Sender: TObject);
+    procedure Contasareceber1Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    function liberarTela(idtela: integer):Boolean;
   end;
 
 var
@@ -39,7 +48,8 @@ var
 implementation
 
 uses U_Login, U_Usuario, U_Cliente, U_PermissoesDeTela,
-  U_PermissoesUsuario, U_Produto;
+  U_PermissoesUsuario, U_Produto, U_EntradaEstoque, U_Pedido,
+  U_Faturamento, U_ContasReceber;
 
 {$R *.dfm}
 
@@ -57,6 +67,7 @@ end;
 procedure TF_SISTEMA.FormCreate(Sender: TObject);
 var
   index: integer;
+  tela: integer;
 begin
 
   // Faz referência de uma procedure em um evento
@@ -67,7 +78,71 @@ begin
       end;
 
   // Exibe o usuário ativo no sistema
-  StatusBar1.Panels[0].Text := 'Usuário: ' + DM.usuario_ativo;
+  StatusBar1.Panels[0].Text := 'Usuário: ' + DM.nome_usuario_ativo + ' | Id: ' + IntToStr( DM.id_usuario_ativo);
+
+  // Permissões de tela
+  tela := 100;
+
+  DM.Q_Aux.SQL.Clear;
+  DM.Q_Aux.SQL.Text := 'select * from Tela_Usuario where idUsuario = :usuarioID';
+  DM.Q_Aux.ParamByName('usuarioID').AsString := IntToStr( DM.id_usuario_ativo );
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+
+  While not (DM.Q_Aux.Eof) do
+  begin
+    tela := StrToInt( DM.Q_Aux.FieldByName('idTela').AsString );
+    liberarTela(tela);
+    DM.Q_Aux.Next;
+  end;
+
+  DM.Q_Aux.Close;
+
+end;
+
+// Liberação de telas
+function TF_SISTEMA.liberarTela(idtela: integer):Boolean;
+begin
+
+  // Tela Cliente
+  if idtela = 100 then
+    Cliente1.Visible := true;
+
+  // Tela Produtos
+  if idtela = 200 then
+    Produto1.Visible := true;
+
+  // Tela Entrada Estoque
+  if idtela = 310 then
+  begin
+    Estoque1.Visible := true;
+    Entradanoestoque1.Visible := true;
+  end;
+
+  // Tela Pedido
+  if idtela = 410 then
+  begin
+    Vendas1.Visible := true;
+    Pedido1.Visible := true;
+  end;
+
+  // Tela Estoque
+  if idtela = 420 then
+  begin
+    Vendas1.Visible := true;
+    Faturamento1.Visible := true;
+  end;
+
+  // Tela Contas a Receber
+  if idtela = 510 then
+  begin
+    Contas1.Visible := true;
+    Contasareceber1.Visible := true;
+  end;
+
+  // Tela Usuários
+  if idtela = 600 then
+    Usurios1.Visible := true;
 
 end;
 
@@ -124,6 +199,36 @@ begin
   Application.CreateForm(TF_PRODUTO, F_PRODUTO);
   F_PRODUTO.show;
 
+end;
+
+procedure TF_SISTEMA.Entradanoestoque1Click(Sender: TObject);
+begin
+  // Abre From
+  Application.CreateForm(TF_ENTRADA_ESTOQUE, F_ENTRADA_ESTOQUE);
+  F_ENTRADA_ESTOQUE.show;
+end;
+
+procedure TF_SISTEMA.Pedido1Click(Sender: TObject);
+begin
+
+  // Abre From
+  Application.CreateForm(TF_PEDIDO, F_PEDIDO);
+  F_PEDIDO.show;
+
+end;
+
+procedure TF_SISTEMA.Faturamento1Click(Sender: TObject);
+begin
+  // Abre From
+  Application.CreateForm(TF_FATURAMENTO, F_FATURAMENTO);
+  F_FATURAMENTO.show;
+end;
+
+procedure TF_SISTEMA.Contasareceber1Click(Sender: TObject);
+begin
+  // Abre From
+  Application.CreateForm(TF_CONTAS_RECEBER, F_CONTAS_RECEBER);
+  F_CONTAS_RECEBER.show;
 end;
 
 end.

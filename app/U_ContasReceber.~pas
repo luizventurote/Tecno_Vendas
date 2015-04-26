@@ -1,14 +1,14 @@
-unit U_Cliente;
+unit U_ContasReceber;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, U_Base, DB, Grids, DBGrids, StdCtrls, ComCtrls, Buttons,
-  ExtCtrls, U_DM, Mask, DBCtrls;
+  ExtCtrls, DBCtrls, Mask;
 
 type
-  TF_CLIENTE = class(TF_BASE)
+  TF_CONTAS_RECEBER = class(TF_BASE)
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;
@@ -20,11 +20,10 @@ type
     Label5: TLabel;
     DBEdit5: TDBEdit;
     Label6: TLabel;
-    DBEdit6: TDBEdit;
-    Label7: TLabel;
-    DBEdit7: TDBEdit;
-    Label8: TLabel;
-    DBEdit8: TDBEdit;
+    editDataBaixa: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,10 +31,27 @@ type
   end;
 
 var
-  F_CLIENTE: TF_CLIENTE;
+  F_CONTAS_RECEBER: TF_CONTAS_RECEBER;
 
 implementation
 
+uses U_DM;
+
 {$R *.dfm}
+
+procedure TF_CONTAS_RECEBER.btnSalvarClick(Sender: TObject);
+begin
+
+
+try
+strtodate(editDataBaixa.text);
+inherited;
+except
+showmessage('data invalida');
+end;
+
+
+
+end;
 
 end.

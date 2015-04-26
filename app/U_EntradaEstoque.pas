@@ -1,30 +1,24 @@
-unit U_Cliente;
+unit U_EntradaEstoque;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, U_Base, DB, Grids, DBGrids, StdCtrls, ComCtrls, Buttons,
-  ExtCtrls, U_DM, Mask, DBCtrls;
+  ExtCtrls, Mask, DBCtrls;
 
 type
-  TF_CLIENTE = class(TF_BASE)
+  TF_ENTRADA_ESTOQUE = class(TF_BASE)
     Label1: TLabel;
-    DBEdit1: TDBEdit;
-    Label2: TLabel;
-    DBEdit2: TDBEdit;
-    Label3: TLabel;
-    DBEdit3: TDBEdit;
     Label4: TLabel;
-    DBEdit4: TDBEdit;
     Label5: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    Label2: TLabel;
+    DBLookupComboBox2: TDBLookupComboBox;
     DBEdit5: TDBEdit;
-    Label6: TLabel;
-    DBEdit6: TDBEdit;
-    Label7: TLabel;
-    DBEdit7: TDBEdit;
-    Label8: TLabel;
-    DBEdit8: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit1: TDBEdit;
   private
     { Private declarations }
   public
@@ -32,9 +26,11 @@ type
   end;
 
 var
-  F_CLIENTE: TF_CLIENTE;
+  F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE;
 
 implementation
+
+uses U_DM;
 
 {$R *.dfm}
 

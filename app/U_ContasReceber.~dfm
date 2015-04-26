@@ -1,8 +1,7 @@
-inherited F_CLIENTE: TF_CLIENTE
-  Left = 465
-  Top = 208
-  Caption = 'Cliente'
-  OldCreateOrder = True
+inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
+  Left = 419
+  Top = 130
+  Caption = 'Contas a Receber'
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
@@ -10,140 +9,122 @@ inherited F_CLIENTE: TF_CLIENTE
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
-          Left = 16
+          Left = 24
           Top = 24
-          Width = 40
+          Width = 82
           Height = 13
-          Caption = 'idCliente'
+          Caption = 'idContasReceber'
           FocusControl = DBEdit1
         end
         object Label2: TLabel
-          Left = 16
+          Left = 24
           Top = 64
-          Width = 26
+          Width = 32
           Height = 13
-          Caption = 'nome'
+          Caption = 'Cliente'
           FocusControl = DBEdit2
         end
         object Label3: TLabel
-          Left = 16
+          Left = 24
           Top = 104
-          Width = 38
+          Width = 45
           Height = 13
-          Caption = 'telefone'
+          Caption = 'Duplicata'
           FocusControl = DBEdit3
         end
         object Label4: TLabel
-          Left = 16
+          Left = 24
           Top = 144
-          Width = 50
+          Width = 77
           Height = 13
-          Caption = 'logradouro'
+          Caption = 'num_nota_fiscal'
           FocusControl = DBEdit4
         end
         object Label5: TLabel
-          Left = 16
+          Left = 24
           Top = 184
-          Width = 20
+          Width = 55
           Height = 13
-          Caption = 'cnpj'
+          Caption = 'vencimento'
           FocusControl = DBEdit5
         end
         object Label6: TLabel
-          Left = 16
+          Left = 24
           Top = 224
-          Width = 32
+          Width = 52
           Height = 13
-          Caption = 'estado'
-          FocusControl = DBEdit6
-        end
-        object Label7: TLabel
-          Left = 16
-          Top = 264
-          Width = 19
-          Height = 13
-          Caption = 'pais'
-          FocusControl = DBEdit7
-        end
-        object Label8: TLabel
-          Left = 16
-          Top = 304
-          Width = 35
-          Height = 13
-          Caption = 'numero'
-          FocusControl = DBEdit8
+          Caption = 'data_baixa'
+          FocusControl = editDataBaixa
         end
         object DBEdit1: TDBEdit
-          Left = 16
+          Left = 24
           Top = 40
           Width = 134
           Height = 21
-          DataField = 'idCliente'
+          DataField = 'idContasReceber'
           DataSource = DS
-          Enabled = False
-          ReadOnly = True
           TabOrder = 0
         end
         object DBEdit2: TDBEdit
-          Left = 16
+          Left = 24
           Top = 80
-          Width = 457
+          Width = 49
           Height = 21
-          DataField = 'nome'
+          DataField = 'idCliente'
           DataSource = DS
           TabOrder = 1
         end
         object DBEdit3: TDBEdit
-          Left = 16
+          Left = 24
           Top = 120
-          Width = 199
+          Width = 49
           Height = 21
-          DataField = 'telefone'
+          DataField = 'idDuplicata'
           DataSource = DS
           TabOrder = 2
         end
         object DBEdit4: TDBEdit
-          Left = 16
+          Left = 24
           Top = 160
-          Width = 458
+          Width = 134
           Height = 21
-          DataField = 'logradouro'
+          DataField = 'num_nota_fiscal'
           DataSource = DS
           TabOrder = 3
         end
         object DBEdit5: TDBEdit
-          Left = 16
+          Left = 24
           Top = 200
-          Width = 654
+          Width = 273
           Height = 21
-          DataField = 'cnpj'
+          DataField = 'vencimento'
           DataSource = DS
           TabOrder = 4
         end
-        object DBEdit6: TDBEdit
-          Left = 16
+        object editDataBaixa: TDBEdit
+          Left = 24
           Top = 240
-          Width = 41
+          Width = 273
           Height = 21
-          DataField = 'estado'
+          DataField = 'data_baixa'
           DataSource = DS
           TabOrder = 5
         end
-        object DBEdit7: TDBEdit
-          Left = 16
-          Top = 280
-          Width = 589
+        object DBLookupComboBox1: TDBLookupComboBox
+          Left = 80
+          Top = 80
+          Width = 217
           Height = 21
-          DataField = 'pais'
+          DataField = 'Cliente'
           DataSource = DS
           TabOrder = 6
         end
-        object DBEdit8: TDBEdit
-          Left = 16
-          Top = 320
-          Width = 134
+        object DBLookupComboBox2: TDBLookupComboBox
+          Left = 80
+          Top = 120
+          Width = 217
           Height = 21
-          DataField = 'numero'
+          DataField = 'Duplicata'
           DataSource = DS
           TabOrder = 7
         end
@@ -151,6 +132,6 @@ inherited F_CLIENTE: TF_CLIENTE
     end
   end
   inherited DS: TDataSource
-    DataSet = DM.M_Cliente
+    DataSet = DM.M_ContasReceber
   end
 end
