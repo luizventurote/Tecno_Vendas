@@ -52,6 +52,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure ExportToCSV(const aGrid : TDBGrid; const FileName : String);
     procedure btnExportExcelClick(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -471,9 +472,12 @@ End;  // ExportToCSV()
 // BTN EXPORTA DADOS PARA CSV
 // -----------------------------------------------------------------------------
 procedure TF_BASE.btnExportExcelClick(Sender: TObject);
+var
+S: string;
 begin
-    ExportToCSV(DBGrid1, 'dados.csv');
-    ShowMessage('Dados exportados com sucesso para o arquivo dados.csv.');
+  S := 'grid';
+  ExportToCSV(DBGrid1, S+'-dados.csv');
+  ShowMessage('Dados exportados com sucesso para o arquivo '+S+'-dados.csv.');
 end;
 
 
@@ -552,12 +556,9 @@ begin
 end;
 
 
-
-
-
-
-
-
+// -----------------------------------------------------------------------------
+// TESTA CNPJ
+// -----------------------------------------------------------------------------
 function TF_BASE.Cnpj(xCNPJ: String):Boolean;
 Var
   d1,d4,xx,nCount,fator,resto,digito1,digito2 : Integer;
@@ -621,11 +622,28 @@ for nCount := 1 to Length( xCNPJ )-2 do
 end;
 
 
+// -----------------------------------------------------------------------------
+// Renderiza valor do memo na grid
+// -----------------------------------------------------------------------------
+procedure TF_BASE.DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+t: String;
+begin
+  // número da coluna, começando em zero
+  if DataCol = 1 then
+    begin
 
+      with DBGrid1.Canvas do
+      begin
+        // pega o texto do campo memo
+        t:=Column.Field.Value;
+        TextOut(Rect.Left+2,Rect.Top+2,t);
+      end;
 
+  end;
 
-
-
+end;
 
 
 end.

@@ -12,13 +12,15 @@ type
     Label1: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
+    cbUsuario: TDBLookupComboBox;
     Label2: TLabel;
     DBLookupComboBox2: TDBLookupComboBox;
-    DBEdit5: TDBEdit;
-    DBEdit2: TDBEdit;
+    editUsuario: TDBEdit;
+    editProduto: TDBEdit;
     DBEdit3: TDBEdit;
-    DBEdit1: TDBEdit;
+    editEntradas: TDBEdit;
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnAdicionarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,5 +35,31 @@ implementation
 uses U_DM;
 
 {$R *.dfm}
+
+procedure TF_ENTRADA_ESTOQUE.btnSalvarClick(Sender: TObject);
+begin
+
+  // Seta o usuário que está logado no sistema
+  editUsuario.Text := IntToStr(dm.id_usuario_ativo);
+
+  inherited;
+
+  // Ativa a procedure para incrementar estoque
+  // ---------------------------------------------------------------------------
+  DM.Q_Aux.SQL.Text := 'exec UP_ESTOQUE @idProduto = :idProduto, @qtd_up = :qtdEntradas';
+  DM.Q_Aux.ParamByName('idProduto').AsString := editProduto.Text;
+  DM.Q_Aux.ParamByName('qtdEntradas').AsString := editEntradas.Text;
+  DM.Q_Aux.ExecSQL;
+
+end;
+
+procedure TF_ENTRADA_ESTOQUE.btnAdicionarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Seta o usuário que está logado no sistema
+  editUsuario.Text := IntToStr(dm.id_usuario_ativo);
+
+end;
 
 end.

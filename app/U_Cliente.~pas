@@ -18,13 +18,14 @@ type
     Label4: TLabel;
     DBEdit4: TDBEdit;
     Label5: TLabel;
-    DBEdit5: TDBEdit;
+    editCNPJ: TDBEdit;
     Label6: TLabel;
     DBEdit6: TDBEdit;
     Label7: TLabel;
     DBEdit7: TDBEdit;
     Label8: TLabel;
     DBEdit8: TDBEdit;
+    procedure editCNPJExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,5 +38,18 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TF_CLIENTE.editCNPJExit(Sender: TObject);
+begin
+  inherited;
+
+  If editCNPJ.Text<>'' Then
+    If F_BASE.Cnpj(editCNPJ.Text)=False Then
+    Begin
+      MessageDlg('CNPJ informado é incorreto!',mtError, [mbOk],0);
+      editCNPJ.SetFocus;
+    End;
+
+end;
 
 end.

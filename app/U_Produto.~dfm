@@ -1,7 +1,8 @@
 inherited F_PRODUTO: TF_PRODUTO
-  Left = 593
-  Top = 237
+  Left = 423
+  Top = 267
   Caption = 'Produto'
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
@@ -9,7 +10,7 @@ inherited F_PRODUTO: TF_PRODUTO
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
-          Left = 24
+          Left = 16
           Top = 24
           Width = 45
           Height = 13
@@ -17,7 +18,7 @@ inherited F_PRODUTO: TF_PRODUTO
           FocusControl = DBEdit1
         end
         object Label2: TLabel
-          Left = 24
+          Left = 16
           Top = 64
           Width = 46
           Height = 13
@@ -25,7 +26,7 @@ inherited F_PRODUTO: TF_PRODUTO
           FocusControl = DBMemo1
         end
         object Label3: TLabel
-          Left = 24
+          Left = 16
           Top = 176
           Width = 59
           Height = 13
@@ -33,7 +34,7 @@ inherited F_PRODUTO: TF_PRODUTO
           FocusControl = DBEdit2
         end
         object Label4: TLabel
-          Left = 24
+          Left = 16
           Top = 216
           Width = 23
           Height = 13
@@ -41,7 +42,7 @@ inherited F_PRODUTO: TF_PRODUTO
           FocusControl = DBEdit3
         end
         object Label5: TLabel
-          Left = 24
+          Left = 16
           Top = 256
           Width = 48
           Height = 13
@@ -49,7 +50,7 @@ inherited F_PRODUTO: TF_PRODUTO
           FocusControl = DBEdit4
         end
         object DBEdit1: TDBEdit
-          Left = 24
+          Left = 16
           Top = 40
           Width = 134
           Height = 21
@@ -58,7 +59,7 @@ inherited F_PRODUTO: TF_PRODUTO
           TabOrder = 0
         end
         object DBMemo1: TDBMemo
-          Left = 24
+          Left = 16
           Top = 80
           Width = 185
           Height = 89
@@ -67,7 +68,7 @@ inherited F_PRODUTO: TF_PRODUTO
           TabOrder = 1
         end
         object DBEdit2: TDBEdit
-          Left = 24
+          Left = 16
           Top = 192
           Width = 134
           Height = 21
@@ -76,7 +77,7 @@ inherited F_PRODUTO: TF_PRODUTO
           TabOrder = 2
         end
         object DBEdit3: TDBEdit
-          Left = 24
+          Left = 16
           Top = 232
           Width = 134
           Height = 21
@@ -85,7 +86,7 @@ inherited F_PRODUTO: TF_PRODUTO
           TabOrder = 3
         end
         object DBEdit4: TDBEdit
-          Left = 24
+          Left = 16
           Top = 272
           Width = 134
           Height = 21

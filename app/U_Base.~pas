@@ -52,10 +52,12 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure ExportToCSV(const aGrid : TDBGrid; const FileName : String);
     procedure btnExportExcelClick(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
     { Public declarations }
+    function Cnpj(xCNPJ: String):Boolean;
   end;
 
 var
@@ -551,13 +553,10 @@ begin
 end;
 
 
-
-
-
-
-
-
-function Cnpj(xCNPJ: String):Boolean;
+// -----------------------------------------------------------------------------
+// TESTA CNPJ
+// -----------------------------------------------------------------------------
+function TF_BASE.Cnpj(xCNPJ: String):Boolean;
 Var
   d1,d4,xx,nCount,fator,resto,digito1,digito2 : Integer;
    Check : String;
@@ -620,11 +619,28 @@ for nCount := 1 to Length( xCNPJ )-2 do
 end;
 
 
+// -----------------------------------------------------------------------------
+// Renderiza valor do memo na grid
+// -----------------------------------------------------------------------------
+procedure TF_BASE.DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+t: String;
+begin
+  // número da coluna, começando em zero
+  if DataCol = 1 then
+    begin
 
+      with DBGrid1.Canvas do
+      begin
+        // pega o texto do campo memo
+        t:=Column.Field.Value;
+        TextOut(Rect.Left+2,Rect.Top+2,t);
+      end;
 
+  end;
 
-
-
+end;
 
 
 end.

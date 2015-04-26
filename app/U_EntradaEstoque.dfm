@@ -1,11 +1,11 @@
 inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
-  Left = 510
-  Top = 174
+  Left = 401
+  Top = 110
   Caption = 'Entrada no estoque'
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -28,7 +28,7 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
           Width = 36
           Height = 13
           Caption = 'Usuario'
-          FocusControl = DBLookupComboBox1
+          FocusControl = cbUsuario
         end
         object Label2: TLabel
           Left = 16
@@ -38,7 +38,7 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
           Caption = 'Produto'
           FocusControl = DBLookupComboBox2
         end
-        object DBLookupComboBox1: TDBLookupComboBox
+        object cbUsuario: TDBLookupComboBox
           Left = 64
           Top = 80
           Width = 217
@@ -56,7 +56,7 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
           DataSource = DS
           TabOrder = 2
         end
-        object DBEdit5: TDBEdit
+        object editUsuario: TDBEdit
           Left = 16
           Top = 80
           Width = 41
@@ -64,9 +64,10 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
           TabStop = False
           DataField = 'idUsuario'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 3
         end
-        object DBEdit2: TDBEdit
+        object editProduto: TDBEdit
           Left = 16
           Top = 120
           Width = 41
@@ -86,7 +87,7 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
           ReadOnly = True
           TabOrder = 0
         end
-        object DBEdit1: TDBEdit
+        object editEntradas: TDBEdit
           Left = 16
           Top = 160
           Width = 134
