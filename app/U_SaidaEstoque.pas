@@ -1,26 +1,25 @@
-unit U_EntradaEstoque;
+unit U_SaidaEstoque;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, U_Base, DB, Grids, DBGrids, StdCtrls, ComCtrls, Buttons,
-  ExtCtrls, Mask, DBCtrls;
+  ExtCtrls, DBCtrls, Mask;
 
 type
-  TF_ENTRADA_ESTOQUE = class(TF_BASE)
+  TF_SAIDA_ESTOQUE = class(TF_BASE)
     Label1: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    cbUsuario: TDBLookupComboBox;
+    DBEdit1: TDBEdit;
     Label2: TLabel;
-    DBLookupComboBox2: TDBLookupComboBox;
     editUsuario: TDBEdit;
-    editProduto: TDBEdit;
+    Label3: TLabel;
     DBEdit3: TDBEdit;
-    editEntradas: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
     procedure btnSalvarClick(Sender: TObject);
-    procedure btnAdicionarClick(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
   private
     { Private declarations }
@@ -29,7 +28,7 @@ type
   end;
 
 var
-  F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE;
+  F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE;
 
 implementation
 
@@ -37,7 +36,7 @@ uses U_DM;
 
 {$R *.dfm}
 
-procedure TF_ENTRADA_ESTOQUE.btnSalvarClick(Sender: TObject);
+procedure TF_SAIDA_ESTOQUE.btnSalvarClick(Sender: TObject);
 begin
 
   // Seta o usuário que está logado no sistema
@@ -47,16 +46,7 @@ begin
 
 end;
 
-procedure TF_ENTRADA_ESTOQUE.btnAdicionarClick(Sender: TObject);
-begin
-  inherited;
-
-  // Seta o usuário que está logado no sistema
-  editUsuario.Text := IntToStr(dm.id_usuario_ativo);
-
-end;
-
-procedure TF_ENTRADA_ESTOQUE.btnDeletarClick(Sender: TObject);
+procedure TF_SAIDA_ESTOQUE.btnDeletarClick(Sender: TObject);
 begin
   //inherited;
   ShowMessage('Não é possível deletar registros');

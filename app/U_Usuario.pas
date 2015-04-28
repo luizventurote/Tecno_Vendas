@@ -42,7 +42,7 @@ begin
   // Abre From
   Application.CreateForm(TF_PERMISSOES, F_PERMISSOES);
   F_PERMISSOES.usuario := StrToInt( editID.Text );
-  F_PERMISSOES.show;
+  F_PERMISSOES.ShowModal;
 
 end;
 

@@ -1,4 +1,4 @@
-unit U_Faturamento;
+unit U_SaidaEstoque;
 
 interface
 
@@ -8,17 +8,17 @@ uses
   ExtCtrls, DBCtrls, Mask;
 
 type
-  TF_FATURAMENTO = class(TF_BASE)
+  TF_SAIDA_ESTOQUE = class(TF_BASE)
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
+    editUsuario: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
-    editData: TDBEdit;
+    DBEdit4: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
-    procedure btnAdicionarClick(Sender: TObject);
+    DBLookupComboBox2: TDBLookupComboBox;
     procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
@@ -27,7 +27,7 @@ type
   end;
 
 var
-  F_FATURAMENTO: TF_FATURAMENTO;
+  F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE;
 
 implementation
 
@@ -35,22 +35,14 @@ uses U_DM;
 
 {$R *.dfm}
 
-procedure TF_FATURAMENTO.btnAdicionarClick(Sender: TObject);
+procedure TF_SAIDA_ESTOQUE.btnSalvarClick(Sender: TObject);
 begin
+
+  // Seta o usuário que está logado no sistema
+  editUsuario.Text := IntToStr(dm.id_usuario_ativo);
+
   inherited;
 
-  // Insere a data
-  editData.Text := DateToStr(Date);
-
-end;
-
-procedure TF_FATURAMENTO.btnSalvarClick(Sender: TObject);
-begin
-  inherited;
-
-  // Insere a data
-  editData.Text := DateToStr(Date);
-  
 end;
 
 end.

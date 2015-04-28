@@ -121,6 +121,19 @@ type
     M_PedidoProdutoidProduto: TIntegerField;
     M_PedidoProdutoidPedido: TIntegerField;
     M_PedidoProdutoqtd: TIntegerField;
+    Q_SaidaEstoque: TQuery;
+    P_SaidaEstoque: TDataSetProvider;
+    M_SaidaEstoque: TClientDataSet;
+    Q_SaidaEstoqueidSaidaEstoque: TIntegerField;
+    Q_SaidaEstoqueidUsuario: TIntegerField;
+    Q_SaidaEstoqueidProduto: TIntegerField;
+    Q_SaidaEstoqueqtd_saida: TIntegerField;
+    M_SaidaEstoqueidSaidaEstoque: TIntegerField;
+    M_SaidaEstoqueidUsuario: TIntegerField;
+    M_SaidaEstoqueidProduto: TIntegerField;
+    M_SaidaEstoqueqtd_saida: TIntegerField;
+    M_SaidaEstoqueUsuario: TStringField;
+    M_SaidaEstoqueProduto: TStringField;
     procedure M_UsuarioAfterPost(DataSet: TDataSet);
     procedure M_UsuarioAfterDelete(DataSet: TDataSet);
     procedure M_UsuarioAfterCancel(DataSet: TDataSet);
@@ -150,6 +163,10 @@ type
     procedure M_ContasReceberAfterDelete(DataSet: TDataSet);
     procedure M_ContasReceberAfterPost(DataSet: TDataSet);
     procedure M_ContasReceberAfterInsert(DataSet: TDataSet);
+    procedure M_SaidaEstoqueAfterCancel(DataSet: TDataSet);
+    procedure M_SaidaEstoqueAfterDelete(DataSet: TDataSet);
+    procedure M_SaidaEstoqueAfterInsert(DataSet: TDataSet);
+    procedure M_SaidaEstoqueAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -334,6 +351,28 @@ end;
 procedure TDM.M_ContasReceberAfterInsert(DataSet: TDataSet);
 begin
   M_ContasReceberidContasReceber.AsInteger := buscaProximoParametro('SeqContasReceber');
+end;
+
+procedure TDM.M_SaidaEstoqueAfterCancel(DataSet: TDataSet);
+begin
+
+  M_SaidaEstoque.CancelUpdates;
+
+end;
+
+procedure TDM.M_SaidaEstoqueAfterDelete(DataSet: TDataSet);
+begin
+  M_SaidaEstoque.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_SaidaEstoqueAfterInsert(DataSet: TDataSet);
+begin
+  M_SaidaEstoqueidSaidaEstoque.AsInteger := buscaProximoParametro('SeqSaidaEstoque');
+end;
+
+procedure TDM.M_SaidaEstoqueAfterPost(DataSet: TDataSet);
+begin
+  M_SaidaEstoque.ApplyUpdates(-1);
 end;
 
 end.

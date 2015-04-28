@@ -11,15 +11,15 @@ type
   TF_FATURAMENTO = class(TF_BASE)
     Label1: TLabel;
     DBEdit1: TDBEdit;
-    DataSource1: TDataSource;
     Label2: TLabel;
     DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
-    DBEdit4: TDBEdit;
-    Label5: TLabel;
+    editData: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
+    procedure btnAdicionarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,5 +34,23 @@ implementation
 uses U_DM;
 
 {$R *.dfm}
+
+procedure TF_FATURAMENTO.btnAdicionarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Insere a data
+  editData.Text := DateToStr(Date);
+
+end;
+
+procedure TF_FATURAMENTO.btnSalvarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Insere a data
+  editData.Text := DateToStr(Date);
+  
+end;
 
 end.

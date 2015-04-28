@@ -1,8 +1,8 @@
 object DM: TDM
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Left = 143
-  Top = 171
+  Left = 586
+  Top = 272
   Height = 591
   Width = 714
   object sistema_vendas: TDatabase
@@ -631,6 +631,80 @@ object DM: TDM
       FieldName = 'qtd'
       Origin = 'SISTEMA_VENDAS.Produto_Pedido_Item.qtd'
       ProviderFlags = [pfInUpdate]
+    end
+  end
+  object Q_SaidaEstoque: TQuery
+    DatabaseName = 'sistema_vendas'
+    SQL.Strings = (
+      'select * from saida_estoque')
+    Left = 336
+    Top = 256
+    object Q_SaidaEstoqueidSaidaEstoque: TIntegerField
+      FieldName = 'idSaidaEstoque'
+      Origin = 'SISTEMA_VENDAS.saida_estoque.idSaidaEstoque'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Q_SaidaEstoqueidUsuario: TIntegerField
+      FieldName = 'idUsuario'
+      Origin = 'SISTEMA_VENDAS.saida_estoque.idUsuario'
+      ProviderFlags = [pfInUpdate]
+    end
+    object Q_SaidaEstoqueidProduto: TIntegerField
+      FieldName = 'idProduto'
+      Origin = 'SISTEMA_VENDAS.saida_estoque.idProduto'
+      ProviderFlags = [pfInUpdate]
+    end
+    object Q_SaidaEstoqueqtd_saida: TIntegerField
+      FieldName = 'qtd_saida'
+      Origin = 'SISTEMA_VENDAS.saida_estoque.qtd_saida'
+      ProviderFlags = [pfInUpdate]
+    end
+  end
+  object P_SaidaEstoque: TDataSetProvider
+    DataSet = Q_SaidaEstoque
+    Left = 424
+    Top = 256
+  end
+  object M_SaidaEstoque: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_SaidaEstoque'
+    AfterInsert = M_SaidaEstoqueAfterInsert
+    AfterPost = M_SaidaEstoqueAfterPost
+    AfterCancel = M_SaidaEstoqueAfterCancel
+    AfterDelete = M_SaidaEstoqueAfterDelete
+    Left = 512
+    Top = 256
+    object M_SaidaEstoqueidSaidaEstoque: TIntegerField
+      FieldName = 'idSaidaEstoque'
+    end
+    object M_SaidaEstoqueidUsuario: TIntegerField
+      FieldName = 'idUsuario'
+    end
+    object M_SaidaEstoqueidProduto: TIntegerField
+      FieldName = 'idProduto'
+    end
+    object M_SaidaEstoqueqtd_saida: TIntegerField
+      FieldName = 'qtd_saida'
+    end
+    object M_SaidaEstoqueUsuario: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Usuario'
+      LookupDataSet = Q_Usuario
+      LookupKeyFields = 'idUsuario'
+      LookupResultField = 'nome'
+      KeyFields = 'idUsuario'
+      Lookup = True
+    end
+    object M_SaidaEstoqueProduto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Produto'
+      LookupDataSet = Q_Produto
+      LookupKeyFields = 'idProduto'
+      LookupResultField = 'descricao'
+      KeyFields = 'idProduto'
+      Size = 40
+      Lookup = True
     end
   end
 end

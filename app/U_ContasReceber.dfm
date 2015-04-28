@@ -12,9 +12,9 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
         object Label1: TLabel
           Left = 24
           Top = 24
-          Width = 82
+          Width = 11
           Height = 13
-          Caption = 'idContasReceber'
+          Caption = 'ID'
           FocusControl = DBEdit1
         end
         object Label2: TLabel
@@ -36,25 +36,25 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
         object Label4: TLabel
           Left = 24
           Top = 144
-          Width = 77
+          Width = 103
           Height = 13
-          Caption = 'num_nota_fiscal'
+          Caption = 'N'#250'mero da nota fiscal'
           FocusControl = DBEdit4
         end
         object Label5: TLabel
           Left = 24
           Top = 184
-          Width = 55
+          Width = 56
           Height = 13
-          Caption = 'vencimento'
+          Caption = 'Vencimento'
           FocusControl = editVencimento
         end
         object Label6: TLabel
           Left = 24
           Top = 224
-          Width = 52
+          Width = 66
           Height = 13
-          Caption = 'data_baixa'
+          Caption = 'Data da baixa'
           FocusControl = editDataBaixa
         end
         object DBEdit1: TDBEdit

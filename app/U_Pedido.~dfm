@@ -1,6 +1,6 @@
 inherited F_PEDIDO: TF_PEDIDO
-  Left = 465
-  Top = 159
+  Left = 430
+  Top = 157
   Caption = 'Pedido'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -12,9 +12,9 @@ inherited F_PEDIDO: TF_PEDIDO
         object Label1: TLabel
           Left = 24
           Top = 24
-          Width = 41
+          Width = 11
           Height = 13
-          Caption = 'idPedido'
+          Caption = 'ID'
           FocusControl = editPedidoID
         end
         object Label2: TLabel
@@ -28,33 +28,33 @@ inherited F_PEDIDO: TF_PEDIDO
         object Label3: TLabel
           Left = 24
           Top = 104
-          Width = 59
+          Width = 23
           Height = 13
-          Caption = 'data_pedido'
+          Caption = 'Data'
           FocusControl = DBEdit3
         end
         object Label4: TLabel
           Left = 24
           Top = 144
-          Width = 85
+          Width = 98
           Height = 13
-          Caption = 'prazo_pagamento'
+          Caption = 'Prazo do pagamento'
           FocusControl = DBEdit4
         end
         object Label5: TLabel
           Left = 24
           Top = 184
-          Width = 23
+          Width = 47
           Height = 13
-          Caption = 'valor'
+          Caption = 'Valor total'
           FocusControl = DBEdit5
         end
         object Label6: TLabel
           Left = 24
           Top = 224
-          Width = 15
+          Width = 78
           Height = 13
-          Caption = 'qtd'
+          Caption = 'Quantidade total'
           FocusControl = DBEdit6
         end
         object editPedidoID: TDBEdit
@@ -84,6 +84,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Height = 21
           DataField = 'data_pedido'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 2
         end
         object DBEdit4: TDBEdit
@@ -122,12 +123,13 @@ inherited F_PEDIDO: TF_PEDIDO
           DataSource = DS
           TabOrder = 6
         end
-        object GroupBox1: TGroupBox
+        object gbProdutos: TGroupBox
           Left = 424
           Top = 24
           Width = 593
           Height = 393
           Caption = 'Produtos'
+          Enabled = False
           TabOrder = 7
           object Label7: TLabel
             Left = 8
@@ -136,6 +138,13 @@ inherited F_PEDIDO: TF_PEDIDO
             Height = 13
             Caption = 'Produto'
             FocusControl = DBLookupComboBox2
+          end
+          object Label8: TLabel
+            Left = 304
+            Top = 24
+            Width = 55
+            Height = 13
+            Caption = 'Quantidade'
           end
           object gridProdutos: TDBGrid
             Left = 8

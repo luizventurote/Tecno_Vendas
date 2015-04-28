@@ -1,7 +1,8 @@
 inherited F_FATURAMENTO: TF_FATURAMENTO
-  Left = 431
-  Top = 301
+  Left = 289
+  Top = 142
   Caption = 'Faturamento'
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
@@ -11,9 +12,9 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
         object Label1: TLabel
           Left = 16
           Top = 24
-          Width = 67
+          Width = 11
           Height = 13
-          Caption = 'idFaturamento'
+          Caption = 'ID'
           FocusControl = DBEdit1
         end
         object Label2: TLabel
@@ -27,18 +28,18 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
         object Label3: TLabel
           Left = 16
           Top = 104
-          Width = 77
+          Width = 103
           Height = 13
-          Caption = 'num_nota_fiscal'
+          Caption = 'N'#250'mero da nota fiscal'
           FocusControl = DBEdit3
         end
         object Label4: TLabel
           Left = 16
           Top = 144
-          Width = 21
+          Width = 23
           Height = 13
-          Caption = 'data'
-          FocusControl = DBEdit4
+          Caption = 'Data'
+          FocusControl = editData
         end
         object DBEdit1: TDBEdit
           Left = 16
@@ -67,13 +68,14 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
           DataSource = DS
           TabOrder = 2
         end
-        object DBEdit4: TDBEdit
+        object editData: TDBEdit
           Left = 16
           Top = 160
           Width = 209
           Height = 21
           DataField = 'data'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 3
         end
         object DBLookupComboBox1: TDBLookupComboBox

@@ -23,6 +23,9 @@ type
     Faturamento1: TMenuItem;
     Contas1: TMenuItem;
     Contasareceber1: TMenuItem;
+    TrocarUsurio1: TMenuItem;
+    Saidadeestoque1: TMenuItem;
+    Organizarestoque1: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Fechar1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -35,6 +38,9 @@ type
     procedure Pedido1Click(Sender: TObject);
     procedure Faturamento1Click(Sender: TObject);
     procedure Contasareceber1Click(Sender: TObject);
+    procedure TrocarUsurio1Click(Sender: TObject);
+    procedure Saidadeestoque1Click(Sender: TObject);
+    procedure Organizarestoque1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,7 +55,7 @@ implementation
 
 uses U_Login, U_Usuario, U_Cliente, U_PermissoesDeTela,
   U_PermissoesUsuario, U_Produto, U_EntradaEstoque, U_Pedido,
-  U_Faturamento, U_ContasReceber;
+  U_Faturamento, U_ContasReceber, U_SaidaEstoque;
 
 {$R *.dfm}
 
@@ -117,6 +123,7 @@ begin
   begin
     Estoque1.Visible := true;
     Entradanoestoque1.Visible := true;
+    Saidadeestoque1.Visible   := true;
   end;
 
   // Tela Pedido
@@ -126,7 +133,7 @@ begin
     Pedido1.Visible := true;
   end;
 
-  // Tela Estoque
+  // Tela Vendas
   if idtela = 420 then
   begin
     Vendas1.Visible := true;
@@ -172,7 +179,7 @@ begin
 
   // Abre From
   Application.CreateForm(TF_USUARIO, F_USUARIO);
-  F_USUARIO.show;
+  F_USUARIO.ShowModal;
 
 end;
 
@@ -181,7 +188,7 @@ begin
 
   // Abre From
   Application.CreateForm(TF_CLIENTE, F_CLIENTE);
-  F_CLIENTE.show;
+  F_CLIENTE.ShowModal;
 
 end;
 
@@ -189,7 +196,7 @@ procedure TF_SISTEMA.Button1Click(Sender: TObject);
 begin
 // Abre From
   Application.CreateForm(TF_PermissoesUsuario, F_PermissoesUsuario);
-  F_PermissoesUsuario.show;
+  F_PermissoesUsuario.ShowModal;
 end;
 
 procedure TF_SISTEMA.Produto1Click(Sender: TObject);
@@ -197,7 +204,7 @@ begin
 
   // Abre From
   Application.CreateForm(TF_PRODUTO, F_PRODUTO);
-  F_PRODUTO.show;
+  F_PRODUTO.ShowModal;
 
 end;
 
@@ -205,7 +212,7 @@ procedure TF_SISTEMA.Entradanoestoque1Click(Sender: TObject);
 begin
   // Abre From
   Application.CreateForm(TF_ENTRADA_ESTOQUE, F_ENTRADA_ESTOQUE);
-  F_ENTRADA_ESTOQUE.show;
+  F_ENTRADA_ESTOQUE.ShowModal;
 end;
 
 procedure TF_SISTEMA.Pedido1Click(Sender: TObject);
@@ -213,7 +220,7 @@ begin
 
   // Abre From
   Application.CreateForm(TF_PEDIDO, F_PEDIDO);
-  F_PEDIDO.show;
+  F_PEDIDO.ShowModal;
 
 end;
 
@@ -221,14 +228,41 @@ procedure TF_SISTEMA.Faturamento1Click(Sender: TObject);
 begin
   // Abre From
   Application.CreateForm(TF_FATURAMENTO, F_FATURAMENTO);
-  F_FATURAMENTO.show;
+  F_FATURAMENTO.ShowModal;
 end;
 
 procedure TF_SISTEMA.Contasareceber1Click(Sender: TObject);
 begin
   // Abre From
   Application.CreateForm(TF_CONTAS_RECEBER, F_CONTAS_RECEBER);
-  F_CONTAS_RECEBER.show;
+  F_CONTAS_RECEBER.ShowModal;
+end;
+
+procedure TF_SISTEMA.TrocarUsurio1Click(Sender: TObject);
+begin
+
+  F_SISTEMA.Hide;
+  F_LOGIN.Show;
+
+end;
+
+procedure TF_SISTEMA.Saidadeestoque1Click(Sender: TObject);
+begin
+
+  // Abre From
+  Application.CreateForm(TF_SAIDA_ESTOQUE, F_SAIDA_ESTOQUE);
+  F_SAIDA_ESTOQUE.ShowModal;
+
+end;
+
+procedure TF_SISTEMA.Organizarestoque1Click(Sender: TObject);
+begin
+
+  // ATUALIZA TODO O ESTOQUE
+  // ---------------------------------------------------------------------------
+  DM.Q_PermissoesDeUsuario.SQL.Text := 'EXEC UPDATE_ALL_ESTOQUE';
+  DM.Q_PermissoesDeUsuario.ExecSQL;
+
 end;
 
 end.

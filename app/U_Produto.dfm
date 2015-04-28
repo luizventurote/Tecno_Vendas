@@ -30,7 +30,7 @@ inherited F_PRODUTO: TF_PRODUTO
           Width = 113
           Height = 13
           Caption = 'Quantidade em estoque'
-          FocusControl = DBEdit2
+          FocusControl = editEstoque
         end
         object Label4: TLabel
           Left = 16
@@ -66,13 +66,14 @@ inherited F_PRODUTO: TF_PRODUTO
           DataSource = DS
           TabOrder = 1
         end
-        object DBEdit2: TDBEdit
+        object editEstoque: TDBEdit
           Left = 16
           Top = 192
           Width = 134
           Height = 21
           DataField = 'qtd_estoque'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 2
         end
         object DBEdit3: TDBEdit

@@ -14,11 +14,12 @@ type
     Label2: TLabel;
     DBMemo1: TDBMemo;
     Label3: TLabel;
-    DBEdit2: TDBEdit;
+    editEstoque: TDBEdit;
     Label4: TLabel;
     DBEdit3: TDBEdit;
     Label5: TLabel;
     DBEdit4: TDBEdit;
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,5 +35,13 @@ uses
   U_DM;
 
 {$R *.dfm}
+
+procedure TF_PRODUTO.btnSalvarClick(Sender: TObject);
+begin
+
+  editEstoque.Text := '0';
+  inherited;
+
+end;
 
 end.

@@ -55,9 +55,93 @@ BEGIN
 END
 
 
--- USO
-exec DOWN_ESTOQUE @idProduto = 1, @qtd_baixada = 15
+--- ******************************************************
+---  Procedimento para atualizar todo o estoque
+--- ******************************************************
+CREATE PROCEDURE UPDATE_ALL_ESTOQUE AS
+BEGIN
 
-exec UP_ESTOQUE @idProduto = 1, @qtd_up = 200
+	-- VARIÁVEIS
+	-----------------------------------------------------------
+	DECLARE 
+	@idEntradaEstoque	AS INT, 
+	@idProduto			AS INT, 
+	@qtd_entradas		AS INT,
+	@idSaidaEstoque 	AS INT, 
+	@qtd_saida			AS INT,
+	@qtd_estoque	AS INT		
+	
+	
+	-- ZERA O ESTOQUE
+	-----------------------------------------------------------
+	DECLARE CursorZerarEstoque CURSOR FOR  
+		SELECT idProduto, qtd_estoque FROM Produto
 
-select * from Produto where idProduto = 1
+	OPEN CursorZerarEstoque  
+ 
+	FETCH NEXT FROM CursorZerarEstoque INTO @idProduto, @qtd_estoque 
+	WHILE @@FETCH_STATUS = 0   
+	BEGIN   
+		
+		UPDATE Produto SET qtd_estoque = 0 WHERE idProduto = @idProduto
+		
+		-- Next
+		FETCH NEXT FROM CursorZerarEstoque INTO @idProduto, @qtd_estoque  
+	END   
+
+	CLOSE CursorZerarEstoque   
+	DEALLOCATE CursorZerarEstoque
+	
+		
+	-- CURSOR QUE INCREMENTA ESTOQUE
+	-----------------------------------------------------------
+	DECLARE CursorUpEstoque CURSOR FOR  
+		SELECT idEntradaEstoque, idProduto, qtd_entradas FROM Entrada_Estoque
+
+	OPEN CursorUpEstoque  
+ 
+	FETCH NEXT FROM CursorUpEstoque INTO @idEntradaEstoque, @idProduto, @qtd_entradas 
+	WHILE @@FETCH_STATUS = 0   
+	BEGIN   
+	
+		exec UP_ESTOQUE @idProduto = @idProduto, @qtd_up = @qtd_entradas
+		
+		-- Next
+		FETCH NEXT FROM CursorUpEstoque INTO @idEntradaEstoque, @idProduto, @qtd_entradas  
+	END   
+
+	CLOSE CursorUpEstoque   
+	DEALLOCATE CursorUpEstoque
+	
+	
+	-- CURSOR QUE DECREMENTA ESTOQUE
+	-----------------------------------------------------------
+	DECLARE CursorDownEstoque CURSOR FOR  
+		SELECT idSaidaEstoque, idProduto, qtd_saida FROM Saida_Estoque
+
+	OPEN CursorDownEstoque  
+ 
+	FETCH NEXT FROM CursorDownEstoque INTO @idSaidaEstoque, @idProduto, @qtd_saida 
+	WHILE @@FETCH_STATUS = 0   
+	BEGIN   
+		
+		exec DOWN_ESTOQUE @idProduto = @idProduto, @qtd_baixada = @qtd_saida
+		
+		-- Next
+		FETCH NEXT FROM CursorDownEstoque INTO @idSaidaEstoque, @idProduto, @qtd_saida  
+	END   
+
+	CLOSE CursorDownEstoque   
+	DEALLOCATE CursorDownEstoque
+	
+	
+END
+
+
+
+
+
+
+
+
+

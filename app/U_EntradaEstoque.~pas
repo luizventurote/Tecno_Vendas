@@ -21,6 +21,7 @@ type
     editEntradas: TDBEdit;
     procedure btnSalvarClick(Sender: TObject);
     procedure btnAdicionarClick(Sender: TObject);
+    procedure btnDeletarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,14 +39,11 @@ uses U_DM;
 
 procedure TF_ENTRADA_ESTOQUE.btnSalvarClick(Sender: TObject);
 begin
-  inherited;
 
-  // Ativa a procedure para incrementar estoque
-  // ---------------------------------------------------------------------------
-  DM.Q_Aux.SQL.Text := 'exec UP_ESTOQUE @idProduto = :idProduto, @qtd_up = :qtdEntradas';
-  DM.Q_Aux.ParamByName('idProduto').AsString := editProduto.Text;
-  DM.Q_Aux.ParamByName('qtdEntradas').AsString := editEntradas.Text;
-  DM.Q_Aux.ExecSQL;
+  // Seta o usuário que está logado no sistema
+  editUsuario.Text := IntToStr(dm.id_usuario_ativo);
+
+  inherited;
 
 end;
 
@@ -56,6 +54,12 @@ begin
   // Seta o usuário que está logado no sistema
   editUsuario.Text := IntToStr(dm.id_usuario_ativo);
 
+end;
+
+procedure TF_ENTRADA_ESTOQUE.btnDeletarClick(Sender: TObject);
+begin
+  //inherited;
+  ShowMessage('Não é possível deletar registros');
 end;
 
 end.

@@ -2491,6 +2491,10 @@ object F_SISTEMA: TF_SISTEMA
     Top = 80
     object Arquiv1: TMenuItem
       Caption = 'Arquivo'
+      object TrocarUsurio1: TMenuItem
+        Caption = 'Trocar Usu'#225'rio'
+        OnClick = TrocarUsurio1Click
+      end
       object Fechar1: TMenuItem
         Caption = 'Fechar'
         OnClick = Fechar1Click
@@ -2510,9 +2514,18 @@ object F_SISTEMA: TF_SISTEMA
       Caption = 'Estoque'
       Visible = False
       object Entradanoestoque1: TMenuItem
-        Caption = 'Entrada no estoque'
+        Caption = 'Entrada de estoque'
         Visible = False
         OnClick = Entradanoestoque1Click
+      end
+      object Saidadeestoque1: TMenuItem
+        Caption = 'Saida de estoque'
+        Visible = False
+        OnClick = Saidadeestoque1Click
+      end
+      object Organizarestoque1: TMenuItem
+        Caption = 'Organizar estoque'
+        OnClick = Organizarestoque1Click
       end
     end
     object Vendas1: TMenuItem

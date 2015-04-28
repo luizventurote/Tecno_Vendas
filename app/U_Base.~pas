@@ -472,9 +472,12 @@ End;  // ExportToCSV()
 // BTN EXPORTA DADOS PARA CSV
 // -----------------------------------------------------------------------------
 procedure TF_BASE.btnExportExcelClick(Sender: TObject);
+var
+S: string;
 begin
-    ExportToCSV(DBGrid1, 'dados.csv');
-    ShowMessage('Dados exportados com sucesso para o arquivo dados.csv.');
+  S := 'grid';
+  ExportToCSV(DBGrid1, S+'-dados.csv');
+  ShowMessage('Dados exportados com sucesso para o arquivo '+S+'-dados.csv.');
 end;
 
 

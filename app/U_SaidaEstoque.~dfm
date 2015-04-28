@@ -1,16 +1,14 @@
-inherited F_FATURAMENTO: TF_FATURAMENTO
-  Left = 431
-  Top = 301
-  Caption = 'Faturamento'
-  OldCreateOrder = True
+inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
+  Left = 518
+  Top = 188
+  Caption = 'Saida de estoque'
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
-          Left = 16
+          Left = 24
           Top = 24
           Width = 11
           Height = 13
@@ -18,79 +16,87 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
           FocusControl = DBEdit1
         end
         object Label2: TLabel
-          Left = 16
+          Left = 24
           Top = 64
-          Width = 33
+          Width = 36
           Height = 13
-          Caption = 'Pedido'
-          FocusControl = DBEdit2
+          Caption = 'Usu'#225'rio'
+          FocusControl = editUsuario
         end
         object Label3: TLabel
-          Left = 16
+          Left = 24
           Top = 104
-          Width = 103
+          Width = 37
           Height = 13
-          Caption = 'N'#250'mero da nota fiscal'
+          Caption = 'Produto'
           FocusControl = DBEdit3
         end
         object Label4: TLabel
-          Left = 16
+          Left = 24
           Top = 144
-          Width = 23
+          Width = 103
           Height = 13
-          Caption = 'Data'
-          FocusControl = editData
+          Caption = 'Quantidade de saidas'
+          FocusControl = DBEdit4
         end
         object DBEdit1: TDBEdit
-          Left = 16
+          Left = 24
           Top = 40
           Width = 134
           Height = 21
-          DataField = 'idFaturamento'
+          DataField = 'idSaidaEstoque'
           DataSource = DS
           TabOrder = 0
         end
-        object DBEdit2: TDBEdit
-          Left = 16
+        object editUsuario: TDBEdit
+          Left = 24
           Top = 80
-          Width = 73
+          Width = 49
           Height = 21
-          DataField = 'idPedido'
+          DataField = 'idUsuario'
           DataSource = DS
           TabOrder = 1
         end
         object DBEdit3: TDBEdit
-          Left = 16
+          Left = 24
           Top = 120
-          Width = 209
+          Width = 49
           Height = 21
-          DataField = 'num_nota_fiscal'
+          DataField = 'idProduto'
           DataSource = DS
           TabOrder = 2
         end
-        object editData: TDBEdit
-          Left = 16
+        object DBEdit4: TDBEdit
+          Left = 24
           Top = 160
-          Width = 209
+          Width = 134
           Height = 21
-          DataField = 'data'
+          DataField = 'qtd_saida'
           DataSource = DS
-          ReadOnly = True
           TabOrder = 3
         end
         object DBLookupComboBox1: TDBLookupComboBox
-          Left = 96
+          Left = 80
           Top = 80
-          Width = 129
+          Width = 274
           Height = 21
-          DataField = 'Pedido'
+          DataField = 'Usuario'
           DataSource = DS
           TabOrder = 4
+        end
+        object DBLookupComboBox2: TDBLookupComboBox
+          Left = 80
+          Top = 120
+          Width = 273
+          Height = 21
+          DataField = 'Produto'
+          DataSource = DS
+          TabOrder = 5
         end
       end
     end
   end
   inherited DS: TDataSource
-    DataSet = DM.M_Faturamento
+    DataSet = DM.M_SaidaEstoque
   end
 end

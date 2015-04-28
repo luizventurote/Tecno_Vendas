@@ -22,7 +22,7 @@ type
     Label6: TLabel;
     DBEdit6: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
-    GroupBox1: TGroupBox;
+    gbProdutos: TGroupBox;
     DS_ProdutoItem: TDataSource;
     gridProdutos: TDBGrid;
     Label7: TLabel;
@@ -31,10 +31,16 @@ type
     editProdutoQtd: TEdit;
     btnAddProduto: TButton;
     editProdutoID: TDBEdit;
+    Label8: TLabel;
     procedure btnAddProdutoClick(Sender: TObject);
     procedure editPedidoIDChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure atualizarGridDeprodutos();
+    procedure btnAdicionarClick(Sender: TObject);
+    procedure btnDeletarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,8 +65,11 @@ begin
   DM.Q_Aux.ParamByName('idPedido').AsString := editPedidoID.Text;
   DM.Q_Aux.ParamByName('qtd').AsString := editProdutoQtd.Text;
   DM.Q_Aux.ExecSQL;
+  DM.Q_Aux.Close;
 
   atualizarGridDeprodutos();
+
+  editProdutoQtd.Text := '0';
 
 end;
 
@@ -89,6 +98,51 @@ begin
 
   DS_ProdutoItem.DataSet.Close;
   DS_ProdutoItem.DataSet.Open;
+
+end;
+
+procedure TF_PEDIDO.btnAdicionarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Habilita goup box de produtos
+  gbProdutos.Enabled := true;
+
+end;
+
+procedure TF_PEDIDO.btnDeletarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Desabilita goup box de produtos
+  gbProdutos.Enabled := false;
+
+end;
+
+procedure TF_PEDIDO.btnCancelarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Desabilita goup box de produtos
+  gbProdutos.Enabled := false;
+
+end;
+
+procedure TF_PEDIDO.btnEditarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Habilita goup box de produtos
+  gbProdutos.Enabled := true;
+
+end;
+
+procedure TF_PEDIDO.btnSalvarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Desabilita goup box de produtos
+  gbProdutos.Enabled := false;
 
 end;
 
