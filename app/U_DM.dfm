@@ -1,8 +1,8 @@
 object DM: TDM
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Left = 586
-  Top = 272
+  Left = 416
+  Top = 260
   Height = 591
   Width = 714
   object sistema_vendas: TDatabase
@@ -230,10 +230,11 @@ object DM: TDM
       Origin = 'SISTEMA_VENDAS.produto.valor'
       ProviderFlags = [pfInUpdate]
     end
-    object Q_Produtocod_barra: TIntegerField
+    object Q_Produtocod_barra: TStringField
       FieldName = 'cod_barra'
       Origin = 'SISTEMA_VENDAS.produto.cod_barra'
       ProviderFlags = [pfInUpdate]
+      Size = 50
     end
   end
   object M_Produto: TClientDataSet
@@ -260,8 +261,9 @@ object DM: TDM
     object M_Produtovalor: TFloatField
       FieldName = 'valor'
     end
-    object M_Produtocod_barra: TIntegerField
+    object M_Produtocod_barra: TStringField
       FieldName = 'cod_barra'
+      Size = 50
     end
     object M_ProdutoProduto: TStringField
       FieldKind = fkLookup

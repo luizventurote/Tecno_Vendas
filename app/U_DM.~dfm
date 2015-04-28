@@ -1,8 +1,8 @@
 object DM: TDM
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Left = 243
-  Top = 458
+  Left = 586
+  Top = 272
   Height = 591
   Width = 714
   object sistema_vendas: TDatabase
@@ -669,10 +669,10 @@ object DM: TDM
     Aggregates = <>
     Params = <>
     ProviderName = 'P_SaidaEstoque'
-    AfterInsert = M_EntradaEstqAfterInsert
-    AfterPost = M_EntradaEstqAfterPost
-    AfterCancel = M_EntradaEstqAfterCancel
-    AfterDelete = M_EntradaEstqAfterDelete
+    AfterInsert = M_SaidaEstoqueAfterInsert
+    AfterPost = M_SaidaEstoqueAfterPost
+    AfterCancel = M_SaidaEstoqueAfterCancel
+    AfterDelete = M_SaidaEstoqueAfterDelete
     Left = 512
     Top = 256
     object M_SaidaEstoqueidSaidaEstoque: TIntegerField

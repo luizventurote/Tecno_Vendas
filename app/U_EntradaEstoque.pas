@@ -58,8 +58,8 @@ end;
 
 procedure TF_ENTRADA_ESTOQUE.btnDeletarClick(Sender: TObject);
 begin
-  //inherited;
-  ShowMessage('Não é possível deletar registros');
+  inherited;
+  //ShowMessage('Não é possível deletar registros');
 end;
 
 end.

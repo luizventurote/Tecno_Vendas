@@ -18,7 +18,7 @@ type
     Label4: TLabel;
     DBEdit3: TDBEdit;
     Label5: TLabel;
-    DBEdit4: TDBEdit;
+    editCodBarras: TDBEdit;
     procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }

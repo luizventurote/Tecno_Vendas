@@ -163,6 +163,10 @@ type
     procedure M_ContasReceberAfterDelete(DataSet: TDataSet);
     procedure M_ContasReceberAfterPost(DataSet: TDataSet);
     procedure M_ContasReceberAfterInsert(DataSet: TDataSet);
+    procedure M_SaidaEstoqueAfterCancel(DataSet: TDataSet);
+    procedure M_SaidaEstoqueAfterDelete(DataSet: TDataSet);
+    procedure M_SaidaEstoqueAfterInsert(DataSet: TDataSet);
+    procedure M_SaidaEstoqueAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -347,6 +351,28 @@ end;
 procedure TDM.M_ContasReceberAfterInsert(DataSet: TDataSet);
 begin
   M_ContasReceberidContasReceber.AsInteger := buscaProximoParametro('SeqContasReceber');
+end;
+
+procedure TDM.M_SaidaEstoqueAfterCancel(DataSet: TDataSet);
+begin
+
+  M_SaidaEstoque.CancelUpdates;
+
+end;
+
+procedure TDM.M_SaidaEstoqueAfterDelete(DataSet: TDataSet);
+begin
+  M_SaidaEstoque.ApplyUpdates(-1);
+end;
+
+procedure TDM.M_SaidaEstoqueAfterInsert(DataSet: TDataSet);
+begin
+  M_SaidaEstoqueidSaidaEstoque.AsInteger := buscaProximoParametro('SeqSaidaEstoque');
+end;
+
+procedure TDM.M_SaidaEstoqueAfterPost(DataSet: TDataSet);
+begin
+  M_SaidaEstoque.ApplyUpdates(-1);
 end;
 
 end.

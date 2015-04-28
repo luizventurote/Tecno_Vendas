@@ -1,11 +1,12 @@
 inherited F_PRODUTO: TF_PRODUTO
-  Left = 407
-  Top = 220
+  Left = 326
+  Top = 206
   Caption = 'Produto'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
+    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -46,7 +47,7 @@ inherited F_PRODUTO: TF_PRODUTO
           Width = 80
           Height = 13
           Caption = 'C'#243'digo de barras'
-          FocusControl = DBEdit4
+          FocusControl = editCodBarras
         end
         object DBEdit1: TDBEdit
           Left = 16
@@ -85,7 +86,7 @@ inherited F_PRODUTO: TF_PRODUTO
           DataSource = DS
           TabOrder = 3
         end
-        object DBEdit4: TDBEdit
+        object editCodBarras: TDBEdit
           Left = 16
           Top = 272
           Width = 134
