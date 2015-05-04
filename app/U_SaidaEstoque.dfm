@@ -1,6 +1,6 @@
 inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
   Left = 518
-  Top = 188
+  Top = 189
   Caption = 'Saida de estoque'
   OldCreateOrder = True
   PixelsPerInch = 96

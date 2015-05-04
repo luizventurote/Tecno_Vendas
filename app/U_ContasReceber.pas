@@ -109,7 +109,7 @@ begin
   inherited;
 
 
-  DM.Q_Aux.SQL.Text := 'select DATEDIFF ( DAY , GETDATE() , convert(datetime,vencimento,103) ) Prazo, vencimento, idContasReceber id_conta from Contas_Receber;';
+  DM.Q_Aux.SQL.Text := 'select vencimento, idContasReceber id_conta from Contas_Receber WHERE DATEDIFF ( DAY , GETDATE() , convert(datetime,vencimento,103) ) < 0';
 
   DS_ContasAtrasadas.DataSet.Close;
   DS_ContasAtrasadas.DataSet.Open;

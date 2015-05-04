@@ -1,6 +1,6 @@
 object F_BASE: TF_BASE
   Left = 399
-  Top = 204
+  Top = 206
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'TelaBase'

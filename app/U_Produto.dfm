@@ -1,6 +1,6 @@
 inherited F_PRODUTO: TF_PRODUTO
-  Left = 481
-  Top = 182
+  Left = 386
+  Top = 162
   Caption = 'Produto'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -15,7 +15,7 @@ inherited F_PRODUTO: TF_PRODUTO
           Width = 11
           Height = 13
           Caption = 'ID'
-          FocusControl = DBEdit1
+          FocusControl = editProdutoiD
         end
         object Label2: TLabel
           Left = 16
@@ -49,7 +49,7 @@ inherited F_PRODUTO: TF_PRODUTO
           Caption = 'C'#243'digo de barras'
           FocusControl = editCodBarras
         end
-        object DBEdit1: TDBEdit
+        object editProdutoiD: TDBEdit
           Left = 16
           Top = 40
           Width = 65
@@ -97,8 +97,119 @@ inherited F_PRODUTO: TF_PRODUTO
         end
       end
     end
+    object TabSheet1: TTabSheet
+      Caption = 'Hist'#243'rico de movimenta'#231#227'o de estoque'
+      ImageIndex = 2
+      object Label7: TLabel
+        Left = 16
+        Top = 24
+        Width = 37
+        Height = 13
+        Caption = 'Produto'
+      end
+      object btnExibirHistorico: TBitBtn
+        Left = 168
+        Top = 37
+        Width = 105
+        Height = 25
+        Caption = 'Exibir hist'#243'rico'
+        TabOrder = 0
+        OnClick = btnExibirHistoricoClick
+      end
+      object GroupBox1: TGroupBox
+        Left = 16
+        Top = 80
+        Width = 305
+        Height = 337
+        Caption = 'Entradas'
+        TabOrder = 1
+        object gridEntradas: TDBGrid
+          Left = 2
+          Top = 15
+          Width = 301
+          Height = 320
+          Align = alClient
+          DataSource = DS_Entradas
+          TabOrder = 0
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'MS Sans Serif'
+          TitleFont.Style = []
+        end
+      end
+      object GroupBox2: TGroupBox
+        Left = 341
+        Top = 80
+        Width = 321
+        Height = 337
+        Caption = 'Saidas'
+        TabOrder = 2
+        object gridSaidas: TDBGrid
+          Left = 2
+          Top = 15
+          Width = 317
+          Height = 320
+          Align = alClient
+          DataSource = DS_Saidas
+          TabOrder = 0
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'MS Sans Serif'
+          TitleFont.Style = []
+        end
+      end
+      object GroupBox3: TGroupBox
+        Left = 680
+        Top = 80
+        Width = 329
+        Height = 337
+        Caption = 'Pedidos'
+        TabOrder = 3
+        object gridPedidos: TDBGrid
+          Left = 2
+          Top = 15
+          Width = 325
+          Height = 320
+          Align = alClient
+          DataSource = DS_Pedidos
+          TabOrder = 0
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'MS Sans Serif'
+          TitleFont.Style = []
+        end
+      end
+      object editprodutoIDhistorico: TDBEdit
+        Left = 16
+        Top = 40
+        Width = 134
+        Height = 21
+        DataField = 'idProduto'
+        DataSource = DS
+        ReadOnly = True
+        TabOrder = 4
+      end
+    end
   end
   inherited DS: TDataSource
     DataSet = DM.M_Produto
+  end
+  object DS_Entradas: TDataSource
+    DataSet = DM.Q_Aux
+    Left = 344
+    Top = 16
+  end
+  object DS_Saidas: TDataSource
+    DataSet = DM.Q_Aux_2
+    Left = 384
+    Top = 16
+  end
+  object DS_Pedidos: TDataSource
+    DataSet = DM.Q_Aux_3
+    Left = 424
+    Top = 16
   end
 end

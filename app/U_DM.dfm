@@ -1,8 +1,8 @@
 object DM: TDM
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Left = 416
-  Top = 260
+  Left = 115
+  Top = 265
   Height = 591
   Width = 714
   object sistema_vendas: TDatabase
@@ -371,9 +371,8 @@ object DM: TDM
     object M_PedidoidCliente: TIntegerField
       FieldName = 'idCliente'
     end
-    object M_Pedidodata_pedido: TStringField
+    object M_Pedidodata_pedido: TDateTimeField
       FieldName = 'data_pedido'
-      Size = 45
     end
     object M_Pedidoprazo_pagamento: TIntegerField
       FieldName = 'prazo_pagamento'
@@ -415,11 +414,10 @@ object DM: TDM
       Origin = 'SISTEMA_VENDAS.pedido.idCliente'
       ProviderFlags = [pfInUpdate]
     end
-    object Q_Pedidodata_pedido: TStringField
+    object Q_Pedidodata_pedido: TDateTimeField
       FieldName = 'data_pedido'
       Origin = 'SISTEMA_VENDAS.pedido.data_pedido'
       ProviderFlags = [pfInUpdate]
-      Size = 45
     end
     object Q_Pedidoprazo_pagamento: TIntegerField
       FieldName = 'prazo_pagamento'
@@ -708,5 +706,15 @@ object DM: TDM
       Size = 40
       Lookup = True
     end
+  end
+  object Q_Aux_2: TQuery
+    DatabaseName = 'sistema_vendas'
+    Left = 312
+    Top = 24
+  end
+  object Q_Aux_3: TQuery
+    DatabaseName = 'sistema_vendas'
+    Left = 368
+    Top = 24
   end
 end

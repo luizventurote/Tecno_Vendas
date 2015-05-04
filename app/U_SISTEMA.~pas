@@ -260,8 +260,8 @@ begin
 
   // ATUALIZA TODO O ESTOQUE
   // ---------------------------------------------------------------------------
-  DM.Q_PermissoesDeUsuario.SQL.Text := 'EXEC UPDATE_ALL_ESTOQUE';
-  DM.Q_PermissoesDeUsuario.ExecSQL;
+  DM.Q_Aux.SQL.Text := 'EXEC UPDATE_ALL_ESTOQUE';
+  DM.Q_Aux.ExecSQL;
 
 end;
 

@@ -1,12 +1,12 @@
 inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
   Left = 404
-  Top = 242
+  Top = 232
   Caption = 'Contas a Receber'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
+    ActivePage = TabSheet1
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel

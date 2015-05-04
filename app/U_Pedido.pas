@@ -14,7 +14,7 @@ type
     Label2: TLabel;
     DBEdit2: TDBEdit;
     Label3: TLabel;
-    DBEdit3: TDBEdit;
+    editDataPedido: TDBEdit;
     Label4: TLabel;
     DBEdit4: TDBEdit;
     Label5: TLabel;
@@ -32,6 +32,21 @@ type
     btnAddProduto: TButton;
     editProdutoID: TDBEdit;
     Label8: TLabel;
+    TabSheet1: TTabSheet;
+    gridMaisVendidos: TDBGrid;
+    btnRsultadoMiasVendos: TBitBtn;
+    editDataInicial: TEdit;
+    editDataFinal: TEdit;
+    Label9: TLabel;
+    Label10: TLabel;
+    DS_Aux: TDataSource;
+    TabSheet2: TTabSheet;
+    DBGrid2: TDBGrid;
+    editClientesDataInicial: TEdit;
+    Label11: TLabel;
+    Label12: TLabel;
+    editClientesDataFinal: TEdit;
+    btnClientesSemVendas: TBitBtn;
     procedure btnAddProdutoClick(Sender: TObject);
     procedure editPedidoIDChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -41,6 +56,8 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure btnRsultadoMiasVendosClick(Sender: TObject);
+    procedure btnClientesSemVendasClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,6 +125,8 @@ begin
   // Habilita goup box de produtos
   gbProdutos.Enabled := true;
 
+  editDataPedido.Text := DateToStr(Date);
+
 end;
 
 procedure TF_PEDIDO.btnDeletarClick(Sender: TObject);
@@ -143,6 +162,28 @@ begin
 
   // Desabilita goup box de produtos
   gbProdutos.Enabled := false;
+
+end;
+
+procedure TF_PEDIDO.btnRsultadoMiasVendosClick(Sender: TObject);
+begin
+  inherited;
+
+  DM.Q_Aux.SQL.Text := 'select a.idproduto, b.descricao, SUM(a.qtd) quantidade from Produto_Pedido_Item a, Produto b, Pedido c where a.idproduto = b.idProduto AND data_pedido BETWEEN '+Chr(39) + editDataInicial.Text + Chr(39)+' AND '+Chr(39)+ editDataFinal.Text +Chr(39)+' group by a.idproduto, b.descricao order by SUM(a.qtd) desc';
+
+  DS_Aux.DataSet.Close;
+  DS_Aux.DataSet.Open;
+
+end;
+
+procedure TF_PEDIDO.btnClientesSemVendasClick(Sender: TObject);
+begin
+  inherited;
+
+  DM.Q_Aux.SQL.Text := 'SELECT * FROM Cliente WHERE idCliente not in ( SELECT idCliente FROM Pedido WHERE data_pedido  between '+Chr(39) + editClientesDataInicial.Text + Chr(39)+' and '+Chr(39) + editClientesDataFinal.Text + Chr(39)+' );';
+
+  DS_Aux.DataSet.Close;
+  DS_Aux.DataSet.Open;
 
 end;
 

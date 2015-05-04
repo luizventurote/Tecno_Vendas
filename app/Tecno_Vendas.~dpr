@@ -13,7 +13,8 @@ uses
   U_EntradaEstoque in 'U_EntradaEstoque.pas' {F_ENTRADA_ESTOQUE},
   U_Pedido in 'U_Pedido.pas' {F_PEDIDO},
   U_Faturamento in 'U_Faturamento.pas' {F_FATURAMENTO},
-  U_ContasReceber in 'U_ContasReceber.pas' {F_CONTAS_RECEBER};
+  U_ContasReceber in 'U_ContasReceber.pas' {F_CONTAS_RECEBER},
+  U_SaidaEstoque in 'U_SaidaEstoque.pas' {F_SAIDA_ESTOQUE};
 
 {$R *.res}
 
@@ -27,5 +28,7 @@ begin
   Application.CreateForm(TF_PEDIDO, F_PEDIDO);
   Application.CreateForm(TF_FATURAMENTO, F_FATURAMENTO);
   Application.CreateForm(TF_CONTAS_RECEBER, F_CONTAS_RECEBER);
+  Application.CreateForm(TF_SAIDA_ESTOQUE, F_SAIDA_ESTOQUE);
+  Application.CreateForm(TF_BASE1, F_BASE1);
   Application.Run;
 end.

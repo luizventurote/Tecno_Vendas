@@ -2,6 +2,7 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
   Left = 518
   Top = 188
   Caption = 'Saida de estoque'
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl

@@ -47,7 +47,10 @@ begin
       if DM.M_Usuario.Locate('senha', editSenha.Text, [lopartialkey, locaseinsensitive]) then
       begin
 
-        DM.usuario_ativo := editUsuario.Text;
+        // Salva o usuário ativo
+        DM.usuario_ativo      := editUsuario.Text;
+        DM.id_usuario_ativo   := DM.M_UsuarioidUsuario.AsInteger;
+        DM.nome_usuario_ativo := DM.M_Usuariologin.AsString;
 
         Application.CreateForm(TF_SISTEMA, F_SISTEMA);
         F_SISTEMA.show;

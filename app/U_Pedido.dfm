@@ -1,6 +1,6 @@
 inherited F_PEDIDO: TF_PEDIDO
-  Left = 430
-  Top = 157
+  Left = 453
+  Top = 232
   Caption = 'Pedido'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -31,7 +31,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Width = 23
           Height = 13
           Caption = 'Data'
-          FocusControl = DBEdit3
+          FocusControl = editDataPedido
         end
         object Label4: TLabel
           Left = 24
@@ -77,7 +77,7 @@ inherited F_PEDIDO: TF_PEDIDO
           ReadOnly = True
           TabOrder = 1
         end
-        object DBEdit3: TDBEdit
+        object editDataPedido: TDBEdit
           Left = 24
           Top = 120
           Width = 329
@@ -197,6 +197,116 @@ inherited F_PEDIDO: TF_PEDIDO
         end
       end
     end
+    object TabSheet1: TTabSheet
+      Caption = 'Produtos mais vendidos'
+      ImageIndex = 2
+      object Label9: TLabel
+        Left = 8
+        Top = 16
+        Width = 52
+        Height = 13
+        Caption = 'Data inicial'
+      end
+      object Label10: TLabel
+        Left = 240
+        Top = 16
+        Width = 45
+        Height = 13
+        Caption = 'Data final'
+      end
+      object gridMaisVendidos: TDBGrid
+        Left = 0
+        Top = 72
+        Width = 1033
+        Height = 365
+        Align = alCustom
+        DataSource = DS_Aux
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+      end
+      object btnRsultadoMiasVendos: TBitBtn
+        Left = 464
+        Top = 28
+        Width = 129
+        Height = 25
+        Caption = 'Exibir resultados'
+        TabOrder = 3
+        OnClick = btnRsultadoMiasVendosClick
+      end
+      object editDataInicial: TEdit
+        Left = 8
+        Top = 32
+        Width = 185
+        Height = 21
+        TabOrder = 0
+      end
+      object editDataFinal: TEdit
+        Left = 240
+        Top = 32
+        Width = 185
+        Height = 21
+        TabOrder = 2
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Clientes sem vendas'
+      ImageIndex = 3
+      object Label11: TLabel
+        Left = 8
+        Top = 16
+        Width = 52
+        Height = 13
+        Caption = 'Data inicial'
+      end
+      object Label12: TLabel
+        Left = 240
+        Top = 16
+        Width = 45
+        Height = 13
+        Caption = 'Data final'
+      end
+      object DBGrid2: TDBGrid
+        Left = 0
+        Top = 72
+        Width = 1033
+        Height = 365
+        Align = alCustom
+        DataSource = DS_Aux
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+      end
+      object editClientesDataInicial: TEdit
+        Left = 8
+        Top = 32
+        Width = 185
+        Height = 21
+        TabOrder = 1
+      end
+      object editClientesDataFinal: TEdit
+        Left = 240
+        Top = 32
+        Width = 185
+        Height = 21
+        TabOrder = 2
+      end
+      object btnClientesSemVendas: TBitBtn
+        Left = 464
+        Top = 28
+        Width = 129
+        Height = 25
+        Caption = 'Exibir resultados'
+        TabOrder = 3
+        OnClick = btnClientesSemVendasClick
+      end
+    end
   end
   inherited DS: TDataSource
     DataSet = DM.M_Pedido
@@ -209,6 +319,11 @@ inherited F_PEDIDO: TF_PEDIDO
   object DS_Produto: TDataSource
     DataSet = DM.M_Produto
     Left = 384
+    Top = 16
+  end
+  object DS_Aux: TDataSource
+    DataSet = DM.Q_Aux
+    Left = 424
     Top = 16
   end
 end

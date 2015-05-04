@@ -1,6 +1,6 @@
 object F_SISTEMA: TF_SISTEMA
   Left = 398
-  Top = 164
+  Top = 165
   Width = 934
   Height = 597
   Caption = 'TecnoVendas'
