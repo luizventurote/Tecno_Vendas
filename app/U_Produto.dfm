@@ -6,7 +6,7 @@ inherited F_PRODUTO: TF_PRODUTO
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
+    ActivePage = TabSheet1
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -119,61 +119,16 @@ inherited F_PRODUTO: TF_PRODUTO
       object GroupBox1: TGroupBox
         Left = 16
         Top = 80
-        Width = 305
+        Width = 993
         Height = 337
-        Caption = 'Entradas'
+        Caption = 'Movimenta'#231#227'o'
         TabOrder = 1
-        object gridEntradas: TDBGrid
-          Left = 2
-          Top = 15
-          Width = 301
-          Height = 320
-          Align = alClient
-          DataSource = DS_Entradas
-          TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
-        end
-      end
-      object GroupBox2: TGroupBox
-        Left = 341
-        Top = 80
-        Width = 321
-        Height = 337
-        Caption = 'Saidas'
-        TabOrder = 2
-        object gridSaidas: TDBGrid
-          Left = 2
-          Top = 15
-          Width = 317
-          Height = 320
-          Align = alClient
-          DataSource = DS_Saidas
-          TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
-        end
-      end
-      object GroupBox3: TGroupBox
-        Left = 680
-        Top = 80
-        Width = 329
-        Height = 337
-        Caption = 'Pedidos'
-        TabOrder = 3
-        object gridPedidos: TDBGrid
-          Left = 2
-          Top = 15
-          Width = 325
-          Height = 320
-          Align = alClient
-          DataSource = DS_Pedidos
+        object gridMovimentacao: TDBGrid
+          Left = 16
+          Top = 24
+          Width = 961
+          Height = 297
+          DataSource = DS_Movimentacao
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -190,26 +145,16 @@ inherited F_PRODUTO: TF_PRODUTO
         DataField = 'idProduto'
         DataSource = DS
         ReadOnly = True
-        TabOrder = 4
+        TabOrder = 2
       end
     end
   end
   inherited DS: TDataSource
     DataSet = DM.M_Produto
   end
-  object DS_Entradas: TDataSource
+  object DS_Movimentacao: TDataSource
     DataSet = DM.Q_Aux
     Left = 344
-    Top = 16
-  end
-  object DS_Saidas: TDataSource
-    DataSet = DM.Q_Aux_2
-    Left = 384
-    Top = 16
-  end
-  object DS_Pedidos: TDataSource
-    DataSet = DM.Q_Aux_3
-    Left = 424
     Top = 16
   end
 end

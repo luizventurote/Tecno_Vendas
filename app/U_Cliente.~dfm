@@ -12,65 +12,65 @@ inherited F_CLIENTE: TF_CLIENTE
         object Label1: TLabel
           Left = 16
           Top = 24
-          Width = 40
+          Width = 11
           Height = 13
-          Caption = 'idCliente'
+          Caption = 'ID'
           FocusControl = DBEdit1
         end
         object Label2: TLabel
           Left = 16
           Top = 64
-          Width = 26
+          Width = 28
           Height = 13
-          Caption = 'nome'
+          Caption = 'Nome'
           FocusControl = DBEdit2
         end
         object Label3: TLabel
           Left = 16
           Top = 104
-          Width = 38
+          Width = 42
           Height = 13
-          Caption = 'telefone'
+          Caption = 'Telefone'
           FocusControl = DBEdit3
         end
         object Label4: TLabel
           Left = 16
-          Top = 144
-          Width = 50
+          Top = 184
+          Width = 46
           Height = 13
-          Caption = 'logradouro'
+          Caption = 'Endere'#231'o'
           FocusControl = DBEdit4
         end
         object Label5: TLabel
           Left = 16
-          Top = 184
-          Width = 20
+          Top = 144
+          Width = 27
           Height = 13
-          Caption = 'cnpj'
+          Caption = 'CNPJ'
           FocusControl = editCNPJ
         end
         object Label6: TLabel
           Left = 16
           Top = 224
-          Width = 32
+          Width = 58
           Height = 13
-          Caption = 'estado'
+          Caption = 'UF / Estado'
           FocusControl = DBEdit6
         end
         object Label7: TLabel
           Left = 16
           Top = 264
-          Width = 19
+          Width = 22
           Height = 13
-          Caption = 'pais'
+          Caption = 'Pa'#237's'
           FocusControl = DBEdit7
         end
         object Label8: TLabel
           Left = 16
           Top = 304
-          Width = 35
+          Width = 37
           Height = 13
-          Caption = 'numero'
+          Caption = 'N'#250'mero'
           FocusControl = DBEdit8
         end
         object DBEdit1: TDBEdit
@@ -104,21 +104,21 @@ inherited F_CLIENTE: TF_CLIENTE
         end
         object DBEdit4: TDBEdit
           Left = 16
-          Top = 160
+          Top = 200
           Width = 458
           Height = 21
           DataField = 'logradouro'
           DataSource = DS
-          TabOrder = 3
+          TabOrder = 4
         end
         object editCNPJ: TDBEdit
           Left = 16
-          Top = 200
-          Width = 654
+          Top = 160
+          Width = 201
           Height = 21
           DataField = 'cnpj'
           DataSource = DS
-          TabOrder = 4
+          TabOrder = 3
           OnExit = editCNPJExit
         end
         object DBEdit6: TDBEdit
@@ -133,7 +133,7 @@ inherited F_CLIENTE: TF_CLIENTE
         object DBEdit7: TDBEdit
           Left = 16
           Top = 280
-          Width = 589
+          Width = 201
           Height = 21
           DataField = 'pais'
           DataSource = DS

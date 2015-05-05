@@ -56,6 +56,8 @@ begin
         F_SISTEMA.show;
         F_LOGIN.Hide;
 
+        DM.addLog('Usuário '+DM.usuario_ativo+'entrou no sistema.');
+
       end
       else
         ShowMessage('Senha errada!');

@@ -14,7 +14,8 @@ uses
   U_Pedido in 'U_Pedido.pas' {F_PEDIDO},
   U_Faturamento in 'U_Faturamento.pas' {F_FATURAMENTO},
   U_ContasReceber in 'U_ContasReceber.pas' {F_CONTAS_RECEBER},
-  U_SaidaEstoque in 'U_SaidaEstoque.pas' {F_SAIDA_ESTOQUE};
+  U_SaidaEstoque in 'U_SaidaEstoque.pas' {F_SAIDA_ESTOQUE},
+  U_Log in 'U_Log.pas' {F_LOG};
 
 {$R *.res}
 

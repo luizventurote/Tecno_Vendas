@@ -1,6 +1,6 @@
 object F_SISTEMA: TF_SISTEMA
   Left = 398
-  Top = 164
+  Top = 165
   Width = 934
   Height = 597
   Caption = 'TecnoVendas'
@@ -2494,6 +2494,10 @@ object F_SISTEMA: TF_SISTEMA
       object TrocarUsurio1: TMenuItem
         Caption = 'Trocar Usu'#225'rio'
         OnClick = TrocarUsurio1Click
+      end
+      object Logdosistema1: TMenuItem
+        Caption = 'Log do sistema'
+        OnClick = Logdosistema1Click
       end
       object Fechar1: TMenuItem
         Caption = 'Fechar'

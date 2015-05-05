@@ -2495,6 +2495,10 @@ object F_SISTEMA: TF_SISTEMA
         Caption = 'Trocar Usu'#225'rio'
         OnClick = TrocarUsurio1Click
       end
+      object Logdosistema1: TMenuItem
+        Caption = 'Log do sistema'
+        OnClick = Logdosistema1Click
+      end
       object Fechar1: TMenuItem
         Caption = 'Fechar'
         OnClick = Fechar1Click

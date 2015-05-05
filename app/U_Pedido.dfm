@@ -6,7 +6,7 @@ inherited F_PEDIDO: TF_PEDIDO
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
+    ActivePage = TabSheet2
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel

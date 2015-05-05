@@ -22,16 +22,10 @@ type
     TabSheet1: TTabSheet;
     btnExibirHistorico: TBitBtn;
     GroupBox1: TGroupBox;
-    GroupBox2: TGroupBox;
-    GroupBox3: TGroupBox;
-    gridEntradas: TDBGrid;
-    gridSaidas: TDBGrid;
-    gridPedidos: TDBGrid;
     Label7: TLabel;
-    DS_Entradas: TDataSource;
-    DS_Saidas: TDataSource;
-    DS_Pedidos: TDataSource;
+    DS_Movimentacao: TDataSource;
     editprodutoIDhistorico: TDBEdit;
+    gridMovimentacao: TDBGrid;
     procedure btnSalvarClick(Sender: TObject);
     procedure btnExibirHistoricoClick(Sender: TObject);
     procedure btnUltimoClick(Sender: TObject);
@@ -66,53 +60,35 @@ procedure TF_PRODUTO.btnExibirHistoricoClick(Sender: TObject);
 begin
   inherited;
 
-  DM.Q_Aux.SQL.Text := 'SELECT qtd_entradas AS entrada_estoque FROM Entrada_Estoque WHERE idProduto = ' + editprodutoIDhistorico.Text;
+  DM.Q_Aux.SQL.Text := 'SELECT '+Chr(39)+'Estoque'+Chr(39)+' ,qtd_estoque as qtd FROM Produto WHERE idProduto = '+ editprodutoIDhistorico.Text +' UNION ALL SELECT '+Chr(39)+'Entrada'+Chr(39)+', qtd_entradas as qtd FROM Entrada_Estoque WHERE idProduto = '+ editprodutoIDhistorico.Text +' UNION ALL SELECT '+Chr(39)+'Saida'+Chr(39)+', qtd_saida as qtd FROM Saida_Estoque WHERE idProduto = '+ editprodutoIDhistorico.Text +' UNION ALL SELECT '+Chr(39)+'Pedido'+Chr(39)+', qtd FROM Produto_Pedido_Item WHERE idProduto = '+ editprodutoIDhistorico.Text +'';
 
-  DS_Entradas.DataSet.Close;
-  DS_Entradas.DataSet.Open;
-
-  DM.Q_Aux_2.SQL.Text := 'SELECT qtd_saida AS saida_estoque FROM Saida_Estoque WHERE idProduto = '+ editprodutoIDhistorico.Text;
-
-  DS_Saidas.DataSet.Close;
-  DS_Saidas.DataSet.Open;
-
-  DM.Q_Aux_3.SQL.Text := 'SELECT qtd AS pedidos FROM Produto_Pedido_Item WHERE idProduto = '+ editprodutoIDhistorico.Text;
-
-  DS_Pedidos.DataSet.Close;
-  DS_Pedidos.DataSet.Open;
+  DS_Movimentacao.DataSet.Close;
+  DS_Movimentacao.DataSet.Open;
 
 end;
 
 procedure TF_PRODUTO.btnUltimoClick(Sender: TObject);
 begin
   inherited;
-  DS_Entradas.DataSet.Close;
-  DS_Saidas.DataSet.Close;
-  DS_Pedidos.DataSet.Close;
+  DS_Movimentacao.DataSet.Close;
 end;
 
 procedure TF_PRODUTO.btnProximoClick(Sender: TObject);
 begin
   inherited;
-  DS_Entradas.DataSet.Close;
-  DS_Saidas.DataSet.Close;
-  DS_Pedidos.DataSet.Close;
+  DS_Movimentacao.DataSet.Close;
 end;
 
 procedure TF_PRODUTO.btnAnteriorClick(Sender: TObject);
 begin
   inherited;
-  DS_Entradas.DataSet.Close;
-  DS_Saidas.DataSet.Close;
-  DS_Pedidos.DataSet.Close;
+  DS_Movimentacao.DataSet.Close;
 end;
 
 procedure TF_PRODUTO.btnPrimeiroClick(Sender: TObject);
 begin
   inherited;
-  DS_Entradas.DataSet.Close;
-  DS_Saidas.DataSet.Close;
-  DS_Pedidos.DataSet.Close;
+  DS_Movimentacao.DataSet.Close;
 end;
 
 end.

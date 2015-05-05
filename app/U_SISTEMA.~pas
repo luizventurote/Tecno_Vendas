@@ -26,6 +26,7 @@ type
     TrocarUsurio1: TMenuItem;
     Saidadeestoque1: TMenuItem;
     Organizarestoque1: TMenuItem;
+    Logdosistema1: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Fechar1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -41,6 +42,7 @@ type
     procedure TrocarUsurio1Click(Sender: TObject);
     procedure Saidadeestoque1Click(Sender: TObject);
     procedure Organizarestoque1Click(Sender: TObject);
+    procedure Logdosistema1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -262,6 +264,14 @@ begin
   // ---------------------------------------------------------------------------
   DM.Q_Aux.SQL.Text := 'EXEC UPDATE_ALL_ESTOQUE';
   DM.Q_Aux.ExecSQL;
+
+end;
+
+procedure TF_SISTEMA.Logdosistema1Click(Sender: TObject);
+begin
+
+  Application.CreateForm(TF_LOG, F_LOG);
+  F_LOG.ShowModal;
 
 end;
 

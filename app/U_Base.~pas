@@ -117,6 +117,8 @@ begin
   // Salva os dados
   DS.DataSet.Post;
 
+  DM.addLog('Os dados do registro foram salvos');
+
 end;
  
 
@@ -135,6 +137,7 @@ begin
       if (Application.MessageBox('Deseja Deletar ', 'Deletar', MB_YESNO + MB_ICONQUESTION) = id_yes) then
       begin
         DS.DataSet.Delete;
+        DM.addLog('Registro deletado');
       end;
 
     end
@@ -287,6 +290,8 @@ begin
 
   // Altera a tap
   PageControl1.ActivePageIndex := 0;
+
+  DM.addLog('Adicionar registro');
   
 end;
    
@@ -478,6 +483,9 @@ begin
   S := 'grid';
   ExportToCSV(DBGrid1, S+'-dados.csv');
   ShowMessage('Dados exportados com sucesso para o arquivo '+S+'-dados.csv.');
+
+  DM.addLog('Dados exportados para CSV');
+
 end;
 
 

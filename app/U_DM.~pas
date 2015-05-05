@@ -134,6 +134,8 @@ type
     M_Pedidovalor: TFloatField;
     M_Pedidoqtd: TIntegerField;
     M_PedidoCliente: TStringField;
+    Q_Aux_2: TQuery;
+    Q_Aux_3: TQuery;
     procedure M_UsuarioAfterPost(DataSet: TDataSet);
     procedure M_UsuarioAfterDelete(DataSet: TDataSet);
     procedure M_UsuarioAfterCancel(DataSet: TDataSet);

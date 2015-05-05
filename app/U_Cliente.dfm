@@ -6,7 +6,6 @@ inherited F_CLIENTE: TF_CLIENTE
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -15,7 +14,7 @@ inherited F_CLIENTE: TF_CLIENTE
           Width = 11
           Height = 13
           Caption = 'ID'
-          FocusControl = DBEdit1
+          FocusControl = editId
         end
         object Label2: TLabel
           Left = 16
@@ -23,7 +22,7 @@ inherited F_CLIENTE: TF_CLIENTE
           Width = 28
           Height = 13
           Caption = 'Nome'
-          FocusControl = DBEdit2
+          FocusControl = editnome
         end
         object Label3: TLabel
           Left = 16
@@ -73,7 +72,7 @@ inherited F_CLIENTE: TF_CLIENTE
           Caption = 'N'#250'mero'
           FocusControl = DBEdit8
         end
-        object DBEdit1: TDBEdit
+        object editId: TDBEdit
           Left = 16
           Top = 40
           Width = 134
@@ -84,7 +83,7 @@ inherited F_CLIENTE: TF_CLIENTE
           ReadOnly = True
           TabOrder = 0
         end
-        object DBEdit2: TDBEdit
+        object editnome: TDBEdit
           Left = 16
           Top = 80
           Width = 457

@@ -1,8 +1,9 @@
 object DM: TDM
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 115
-  Top = 265
+  Left = 407
+  Top = 280
   Height = 591
   Width = 714
   object sistema_vendas: TDatabase

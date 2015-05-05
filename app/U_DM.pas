@@ -169,6 +169,7 @@ type
     procedure M_SaidaEstoqueAfterDelete(DataSet: TDataSet);
     procedure M_SaidaEstoqueAfterInsert(DataSet: TDataSet);
     procedure M_SaidaEstoqueAfterPost(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -176,7 +177,13 @@ type
     usuario_ativo: string;
     id_usuario_ativo: integer;
     nome_usuario_ativo: string;
+    syslog: TStringList;
     function buscaProximoParametro(p:string):integer;
+
+
+    procedure addLog(Desc: String);
+    function getSystemLog: TStrings;
+    function closeSystemLog: integer;
   end;
 
 var
@@ -204,6 +211,7 @@ end;
 procedure TDM.DataModuleDestroy(Sender: TObject);
 begin
   sistema_vendas.Close;
+  DM.closeSystemLog();
 end;
 
 
@@ -375,6 +383,55 @@ end;
 procedure TDM.M_SaidaEstoqueAfterPost(DataSet: TDataSet);
 begin
   M_SaidaEstoque.ApplyUpdates(-1);
+end;
+
+// Construtor
+procedure TDM.DataModuleCreate(Sender: TObject);
+var
+  F: TextFile;
+begin
+
+  // Create the String List to store the log
+  Self.syslog := TStringList.Create;
+
+  if FileExists('log.txt') then
+  begin
+    Self.syslog.LoadFromFile('log.txt');
+  end
+  else
+  begin
+
+      AssignFile(F,'log.txt');
+
+      Rewrite(f); //abre o arquivo para escrita
+
+      Closefile(f); //fecha o handle de arquivo
+
+  end;
+
+end;
+
+// Add log
+procedure TDM.addLog(Desc: String);
+begin
+  Self.syslog.Add( DateToStr(date) + ' ' + TimeToStr(time) + ' | ' + usuario_ativo + ' | ' +Desc);
+end;
+
+// Get system log
+function TDM.getSystemLog;
+begin
+  Result := Self.syslog;
+end;
+
+// CLose system log
+function TDM.closeSystemLog;
+begin
+
+  // Save log to file
+  Self.syslog.SaveToFile('log.txt');
+
+  Result := 1;
+
 end;
 
 end.

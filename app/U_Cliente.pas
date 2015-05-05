@@ -10,9 +10,9 @@ uses
 type
   TF_CLIENTE = class(TF_BASE)
     Label1: TLabel;
-    DBEdit1: TDBEdit;
+    editId: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
+    editnome: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
@@ -26,6 +26,8 @@ type
     Label8: TLabel;
     DBEdit8: TDBEdit;
     procedure editCNPJExit(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +51,22 @@ begin
       MessageDlg('CNPJ informado é incorreto!',mtError, [mbOk],0);
       editCNPJ.SetFocus;
     End;
+
+end;
+
+procedure TF_CLIENTE.btnCancelarClick(Sender: TObject);
+begin
+  inherited;
+
+  DM.addLog('Cliente '+ editnome.Text +' deletado.');
+
+end;
+
+procedure TF_CLIENTE.btnEditarClick(Sender: TObject);
+begin
+  inherited;
+
+  DM.addLog('Cliente '+ editId.Text +' alterado');
 
 end;
 
