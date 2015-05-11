@@ -12,7 +12,6 @@ type
     Label1: TLabel;
     editProdutoiD: TDBEdit;
     Label2: TLabel;
-    DBMemo1: TDBMemo;
     Label3: TLabel;
     editEstoque: TDBEdit;
     Label4: TLabel;
@@ -26,6 +25,7 @@ type
     DS_Movimentacao: TDataSource;
     editprodutoIDhistorico: TDBEdit;
     gridMovimentacao: TDBGrid;
+    DBEdit1: TDBEdit;
     procedure btnSalvarClick(Sender: TObject);
     procedure btnExibirHistoricoClick(Sender: TObject);
     procedure btnUltimoClick(Sender: TObject);

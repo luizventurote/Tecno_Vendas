@@ -2,9 +2,9 @@ object DM: TDM
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 407
-  Top = 280
-  Height = 591
+  Left = 126
+  Top = 171
+  Height = 569
   Width = 714
   object sistema_vendas: TDatabase
     AliasName = 'ODBC_VENDAS'
@@ -214,12 +214,11 @@ object DM: TDM
       Origin = 'SISTEMA_VENDAS.produto.idProduto'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object Q_Produtodescricao: TMemoField
+    object Q_Produtodescricao: TStringField
       FieldName = 'descricao'
       Origin = 'SISTEMA_VENDAS.produto.descricao'
       ProviderFlags = [pfInUpdate]
-      BlobType = ftMemo
-      Size = 1
+      Size = 50
     end
     object Q_Produtoqtd_estoque: TIntegerField
       FieldName = 'qtd_estoque'
@@ -251,10 +250,9 @@ object DM: TDM
     object M_ProdutoidProduto: TIntegerField
       FieldName = 'idProduto'
     end
-    object M_Produtodescricao: TMemoField
+    object M_Produtodescricao: TStringField
       FieldName = 'descricao'
-      BlobType = ftMemo
-      Size = 1
+      Size = 50
     end
     object M_Produtoqtd_estoque: TIntegerField
       FieldName = 'qtd_estoque'
@@ -271,8 +269,9 @@ object DM: TDM
       FieldName = 'Produto'
       LookupDataSet = Q_Produto
       LookupKeyFields = 'idProduto'
-      LookupResultField = 'idProduto'
+      LookupResultField = 'descricao'
       KeyFields = 'idProduto'
+      Size = 50
       Lookup = True
     end
   end
@@ -348,11 +347,11 @@ object DM: TDM
     object M_EntradaEstqProduto: TStringField
       FieldKind = fkLookup
       FieldName = 'Produto'
-      LookupDataSet = Q_Produto
+      LookupDataSet = M_Produto
       LookupKeyFields = 'idProduto'
       LookupResultField = 'descricao'
       KeyFields = 'idProduto'
-      Size = 30
+      Size = 50
       Lookup = True
     end
   end
@@ -600,8 +599,24 @@ object DM: TDM
     object M_PedidoProdutoidProduto: TIntegerField
       FieldName = 'idProduto'
     end
-    object M_PedidoProdutoidPedido: TIntegerField
-      FieldName = 'idPedido'
+    object M_PedidoProdutoProduto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Produto'
+      LookupDataSet = Q_Produto
+      LookupKeyFields = 'idProduto'
+      LookupResultField = 'descricao'
+      KeyFields = 'idProduto'
+      Size = 50
+      Lookup = True
+    end
+    object M_PedidoProdutoValor: TFloatField
+      FieldKind = fkLookup
+      FieldName = 'Valor'
+      LookupDataSet = Q_Produto
+      LookupKeyFields = 'idProduto'
+      LookupResultField = 'valor'
+      KeyFields = 'idProduto'
+      Lookup = True
     end
     object M_PedidoProdutoqtd: TIntegerField
       FieldName = 'qtd'
@@ -717,5 +732,54 @@ object DM: TDM
     DatabaseName = 'sistema_vendas'
     Left = 368
     Top = 24
+  end
+  object P_Duplicata: TDataSetProvider
+    DataSet = Q_Duplicata
+    Left = 424
+    Top = 328
+  end
+  object Q_Duplicata: TQuery
+    DatabaseName = 'sistema_vendas'
+    SQL.Strings = (
+      'select * from duplicata')
+    Left = 336
+    Top = 328
+    object Q_DuplicataidDuplicata: TIntegerField
+      FieldName = 'idDuplicata'
+      Origin = 'SISTEMA_VENDAS.duplicata.idDuplicata'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object Q_DuplicataidFaturamento: TIntegerField
+      FieldName = 'idFaturamento'
+      Origin = 'SISTEMA_VENDAS.duplicata.idFaturamento'
+      ProviderFlags = [pfInUpdate]
+    end
+    object Q_Duplicatadata: TStringField
+      FieldName = 'data'
+      Origin = 'SISTEMA_VENDAS.duplicata.data'
+      ProviderFlags = [pfInUpdate]
+      Size = 50
+    end
+  end
+  object M_Duplicata: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_Duplicata'
+    AfterInsert = M_SaidaEstoqueAfterInsert
+    AfterPost = M_SaidaEstoqueAfterPost
+    AfterCancel = M_SaidaEstoqueAfterCancel
+    AfterDelete = M_SaidaEstoqueAfterDelete
+    Left = 512
+    Top = 328
+    object M_DuplicataidDuplicata: TIntegerField
+      FieldName = 'idDuplicata'
+    end
+    object M_DuplicataidFaturamento: TIntegerField
+      FieldName = 'idFaturamento'
+    end
+    object M_Duplicatadata: TStringField
+      FieldName = 'data'
+      Size = 50
+    end
   end
 end

@@ -1,12 +1,12 @@
 inherited F_PEDIDO: TF_PEDIDO
-  Left = 453
-  Top = 232
+  Left = 388
+  Top = 161
   Caption = 'Pedido'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = TabSheet2
+    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -23,7 +23,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Width = 32
           Height = 13
           Caption = 'Cliente'
-          FocusControl = DBEdit2
+          FocusControl = editCliente
         end
         object Label3: TLabel
           Left = 24
@@ -39,7 +39,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Width = 98
           Height = 13
           Caption = 'Prazo do pagamento'
-          FocusControl = DBEdit4
+          FocusControl = editPrazo
         end
         object Label5: TLabel
           Left = 24
@@ -47,7 +47,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Width = 47
           Height = 13
           Caption = 'Valor total'
-          FocusControl = DBEdit5
+          FocusControl = editTotalValor
         end
         object Label6: TLabel
           Left = 24
@@ -55,7 +55,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Width = 78
           Height = 13
           Caption = 'Quantidade total'
-          FocusControl = DBEdit6
+          FocusControl = editTotalQtd
         end
         object editPedidoID: TDBEdit
           Left = 24
@@ -67,7 +67,7 @@ inherited F_PEDIDO: TF_PEDIDO
           TabOrder = 0
           OnChange = editPedidoIDChange
         end
-        object DBEdit2: TDBEdit
+        object editCliente: TDBEdit
           Left = 24
           Top = 80
           Width = 49
@@ -87,7 +87,7 @@ inherited F_PEDIDO: TF_PEDIDO
           ReadOnly = True
           TabOrder = 2
         end
-        object DBEdit4: TDBEdit
+        object editPrazo: TDBEdit
           Left = 24
           Top = 160
           Width = 134
@@ -96,7 +96,7 @@ inherited F_PEDIDO: TF_PEDIDO
           DataSource = DS
           TabOrder = 3
         end
-        object DBEdit5: TDBEdit
+        object editTotalValor: TDBEdit
           Left = 24
           Top = 200
           Width = 134
@@ -105,7 +105,7 @@ inherited F_PEDIDO: TF_PEDIDO
           DataSource = DS
           TabOrder = 4
         end
-        object DBEdit6: TDBEdit
+        object editTotalQtd: TDBEdit
           Left = 24
           Top = 240
           Width = 134
@@ -140,7 +140,7 @@ inherited F_PEDIDO: TF_PEDIDO
             FocusControl = DBLookupComboBox2
           end
           object Label8: TLabel
-            Left = 304
+            Left = 392
             Top = 24
             Width = 55
             Height = 13
@@ -148,9 +148,9 @@ inherited F_PEDIDO: TF_PEDIDO
           end
           object gridProdutos: TDBGrid
             Left = 8
-            Top = 80
+            Top = 88
             Width = 569
-            Height = 297
+            Height = 249
             DataSource = DS_ProdutoItem
             ReadOnly = True
             TabOrder = 0
@@ -163,21 +163,21 @@ inherited F_PEDIDO: TF_PEDIDO
           object DBLookupComboBox2: TDBLookupComboBox
             Left = 64
             Top = 40
-            Width = 218
+            Width = 313
             Height = 21
             DataField = 'Produto'
             DataSource = DS_Produto
             TabOrder = 1
           end
           object editProdutoQtd: TEdit
-            Left = 304
+            Left = 392
             Top = 40
-            Width = 121
+            Width = 89
             Height = 21
             TabOrder = 2
           end
           object btnAddProduto: TButton
-            Left = 443
+            Left = 499
             Top = 37
             Width = 74
             Height = 23
@@ -193,6 +193,15 @@ inherited F_PEDIDO: TF_PEDIDO
             DataField = 'idProduto'
             DataSource = DS_Produto
             TabOrder = 4
+          end
+          object btnRemoverItem: TBitBtn
+            Left = 8
+            Top = 352
+            Width = 137
+            Height = 25
+            Caption = 'Remover item do pedido'
+            TabOrder = 5
+            OnClick = btnRemoverItemClick
           end
         end
       end

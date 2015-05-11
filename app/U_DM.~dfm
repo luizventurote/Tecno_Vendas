@@ -1,9 +1,10 @@
 object DM: TDM
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 115
-  Top = 265
-  Height = 591
+  Left = 215
+  Top = 286
+  Height = 569
   Width = 714
   object sistema_vendas: TDatabase
     AliasName = 'ODBC_VENDAS'
@@ -213,12 +214,11 @@ object DM: TDM
       Origin = 'SISTEMA_VENDAS.produto.idProduto'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object Q_Produtodescricao: TMemoField
+    object Q_Produtodescricao: TStringField
       FieldName = 'descricao'
       Origin = 'SISTEMA_VENDAS.produto.descricao'
       ProviderFlags = [pfInUpdate]
-      BlobType = ftMemo
-      Size = 1
+      Size = 50
     end
     object Q_Produtoqtd_estoque: TIntegerField
       FieldName = 'qtd_estoque'
@@ -250,10 +250,9 @@ object DM: TDM
     object M_ProdutoidProduto: TIntegerField
       FieldName = 'idProduto'
     end
-    object M_Produtodescricao: TMemoField
+    object M_Produtodescricao: TStringField
       FieldName = 'descricao'
-      BlobType = ftMemo
-      Size = 1
+      Size = 50
     end
     object M_Produtoqtd_estoque: TIntegerField
       FieldName = 'qtd_estoque'
@@ -270,8 +269,9 @@ object DM: TDM
       FieldName = 'Produto'
       LookupDataSet = Q_Produto
       LookupKeyFields = 'idProduto'
-      LookupResultField = 'idProduto'
+      LookupResultField = 'descricao'
       KeyFields = 'idProduto'
+      Size = 50
       Lookup = True
     end
   end
@@ -347,11 +347,11 @@ object DM: TDM
     object M_EntradaEstqProduto: TStringField
       FieldKind = fkLookup
       FieldName = 'Produto'
-      LookupDataSet = Q_Produto
+      LookupDataSet = M_Produto
       LookupKeyFields = 'idProduto'
       LookupResultField = 'descricao'
       KeyFields = 'idProduto'
-      Size = 30
+      Size = 50
       Lookup = True
     end
   end
@@ -599,8 +599,24 @@ object DM: TDM
     object M_PedidoProdutoidProduto: TIntegerField
       FieldName = 'idProduto'
     end
-    object M_PedidoProdutoidPedido: TIntegerField
-      FieldName = 'idPedido'
+    object M_PedidoProdutoProduto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Produto'
+      LookupDataSet = Q_Produto
+      LookupKeyFields = 'idProduto'
+      LookupResultField = 'descricao'
+      KeyFields = 'idProduto'
+      Size = 50
+      Lookup = True
+    end
+    object M_PedidoProdutoValor: TFloatField
+      FieldKind = fkLookup
+      FieldName = 'Valor'
+      LookupDataSet = Q_Produto
+      LookupKeyFields = 'idProduto'
+      LookupResultField = 'valor'
+      KeyFields = 'idProduto'
+      Lookup = True
     end
     object M_PedidoProdutoqtd: TIntegerField
       FieldName = 'qtd'

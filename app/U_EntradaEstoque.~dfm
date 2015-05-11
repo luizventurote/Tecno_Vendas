@@ -1,6 +1,6 @@
 inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
   Left = 401
-  Top = 110
+  Top = 111
   Caption = 'Entrada no estoque'
   OldCreateOrder = True
   PixelsPerInch = 96

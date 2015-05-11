@@ -1,12 +1,11 @@
 inherited F_PRODUTO: TF_PRODUTO
-  Left = 386
-  Top = 162
+  Left = 571
+  Top = 202
   Caption = 'Produto'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = TabSheet1
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -23,11 +22,10 @@ inherited F_PRODUTO: TF_PRODUTO
           Width = 48
           Height = 13
           Caption = 'Descri'#231#227'o'
-          FocusControl = DBMemo1
         end
         object Label3: TLabel
           Left = 16
-          Top = 176
+          Top = 112
           Width = 113
           Height = 13
           Caption = 'Quantidade em estoque'
@@ -35,7 +33,7 @@ inherited F_PRODUTO: TF_PRODUTO
         end
         object Label4: TLabel
           Left = 16
-          Top = 216
+          Top = 152
           Width = 24
           Height = 13
           Caption = 'Valor'
@@ -43,7 +41,7 @@ inherited F_PRODUTO: TF_PRODUTO
         end
         object Label5: TLabel
           Left = 16
-          Top = 256
+          Top = 192
           Width = 80
           Height = 13
           Caption = 'C'#243'digo de barras'
@@ -58,40 +56,40 @@ inherited F_PRODUTO: TF_PRODUTO
           DataSource = DS
           TabOrder = 0
         end
-        object DBMemo1: TDBMemo
-          Left = 16
-          Top = 80
-          Width = 185
-          Height = 89
-          DataField = 'descricao'
-          DataSource = DS
-          TabOrder = 1
-        end
         object editEstoque: TDBEdit
           Left = 16
-          Top = 192
+          Top = 128
           Width = 134
           Height = 21
           DataField = 'qtd_estoque'
           DataSource = DS
           ReadOnly = True
-          TabOrder = 2
+          TabOrder = 1
         end
         object DBEdit3: TDBEdit
           Left = 16
-          Top = 232
+          Top = 168
           Width = 134
           Height = 21
           DataField = 'valor'
           DataSource = DS
-          TabOrder = 3
+          TabOrder = 2
         end
         object editCodBarras: TDBEdit
           Left = 16
-          Top = 272
+          Top = 208
           Width = 134
           Height = 21
           DataField = 'cod_barra'
+          DataSource = DS
+          TabOrder = 3
+        end
+        object DBEdit1: TDBEdit
+          Left = 16
+          Top = 80
+          Width = 217
+          Height = 21
+          DataField = 'descricao'
           DataSource = DS
           TabOrder = 4
         end

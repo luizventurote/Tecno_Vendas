@@ -6,7 +6,7 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = TabSheet1
+    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -23,7 +23,7 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
           Width = 32
           Height = 13
           Caption = 'Cliente'
-          FocusControl = DBEdit2
+          FocusControl = editCliente
         end
         object Label3: TLabel
           Left = 24
@@ -64,9 +64,10 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
           Height = 21
           DataField = 'idContasReceber'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 0
         end
-        object DBEdit2: TDBEdit
+        object editCliente: TDBEdit
           Left = 24
           Top = 80
           Width = 49
@@ -113,7 +114,7 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
           DataSource = DS
           TabOrder = 5
         end
-        object DBLookupComboBox1: TDBLookupComboBox
+        object lookCliente: TDBLookupComboBox
           Left = 80
           Top = 80
           Width = 217
@@ -138,9 +139,9 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
       ImageIndex = 2
       object DBGrid2: TDBGrid
         Left = 0
-        Top = 64
+        Top = 0
         Width = 1033
-        Height = 373
+        Height = 437
         Align = alCustom
         DataSource = DS_ContasAtrasadas
         TabOrder = 0
@@ -149,15 +150,6 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
         TitleFont.Height = -11
         TitleFont.Name = 'MS Sans Serif'
         TitleFont.Style = []
-      end
-      object btnAtualizarContas: TBitBtn
-        Left = 16
-        Top = 16
-        Width = 75
-        Height = 25
-        Caption = 'Atualizar'
-        TabOrder = 1
-        OnClick = btnAtualizarContasClick
       end
     end
   end

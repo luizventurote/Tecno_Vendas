@@ -27188,7 +27188,7 @@ object F_BASE: TF_BASE
     Top = 104
     Width = 1041
     Height = 465
-    ActivePage = tbDados
+    ActivePage = tbFiltros
     Align = alCustom
     TabOrder = 10
     object tbDados: TTabSheet

@@ -1,6 +1,6 @@
 inherited F_FATURAMENTO: TF_FATURAMENTO
   Left = 289
-  Top = 142
+  Top = 143
   Caption = 'Faturamento'
   OldCreateOrder = True
   PixelsPerInch = 96
