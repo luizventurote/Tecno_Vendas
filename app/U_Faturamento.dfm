@@ -27,7 +27,7 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
         end
         object Label3: TLabel
           Left = 16
-          Top = 104
+          Top = 144
           Width = 103
           Height = 13
           Caption = 'N'#250'mero da nota fiscal'
@@ -35,11 +35,32 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
         end
         object Label4: TLabel
           Left = 16
-          Top = 144
+          Top = 184
           Width = 23
           Height = 13
           Caption = 'Data'
           FocusControl = editData
+        end
+        object Label5: TLabel
+          Left = 16
+          Top = 104
+          Width = 77
+          Height = 13
+          Caption = 'Prazo do pedido'
+        end
+        object labelAlert: TLabel
+          Left = 232
+          Top = 84
+          Width = 174
+          Height = 13
+          Caption = 'Aten'#231#227'o! Esse pedido j'#225' foi faturado.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          Visible = False
         end
         object editIdFaturamento: TDBEdit
           Left = 16
@@ -60,10 +81,11 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
           DataSource = DS
           ReadOnly = True
           TabOrder = 1
+          OnChange = editPedidoChange
         end
         object DBEdit3: TDBEdit
           Left = 16
-          Top = 120
+          Top = 160
           Width = 209
           Height = 21
           DataField = 'num_nota_fiscal'
@@ -72,7 +94,7 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
         end
         object editData: TDBEdit
           Left = 16
-          Top = 160
+          Top = 200
           Width = 209
           Height = 21
           DataField = 'data'
@@ -89,84 +111,13 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
           DataSource = DS
           TabOrder = 4
         end
-        object btnDuplicata: TBitBtn
-          Left = 888
-          Top = 24
-          Width = 129
-          Height = 33
-          Caption = 'Duplicata'
+        object editPrazo: TEdit
+          Left = 16
+          Top = 120
+          Width = 121
+          Height = 21
+          ReadOnly = True
           TabOrder = 5
-          Visible = False
-          OnClick = btnDuplicataClick
-        end
-        object gbDuplicata: TGroupBox
-          Left = 456
-          Top = 72
-          Width = 561
-          Height = 345
-          Caption = 'Duplicata'
-          TabOrder = 6
-          Visible = False
-          object Label5: TLabel
-            Left = 8
-            Top = 24
-            Width = 53
-            Height = 13
-            Caption = 'idDuplicata'
-            FocusControl = DBEdit1
-          end
-          object Label6: TLabel
-            Left = 8
-            Top = 64
-            Width = 67
-            Height = 13
-            Caption = 'idFaturamento'
-            FocusControl = DBEdit2
-          end
-          object Label7: TLabel
-            Left = 8
-            Top = 104
-            Width = 21
-            Height = 13
-            Caption = 'data'
-            FocusControl = DBEdit4
-          end
-          object DBEdit1: TDBEdit
-            Left = 8
-            Top = 40
-            Width = 81
-            Height = 21
-            DataField = 'idDuplicata'
-            DataSource = DS_Duplicata
-            TabOrder = 0
-          end
-          object DBEdit2: TDBEdit
-            Left = 8
-            Top = 80
-            Width = 89
-            Height = 21
-            DataField = 'idFaturamento'
-            DataSource = DS_Duplicata
-            TabOrder = 1
-          end
-          object DBEdit4: TDBEdit
-            Left = 8
-            Top = 120
-            Width = 137
-            Height = 21
-            DataField = 'data'
-            DataSource = DS_Duplicata
-            TabOrder = 2
-          end
-          object BitBtn1: TBitBtn
-            Left = 8
-            Top = 152
-            Width = 137
-            Height = 33
-            Caption = 'Gerar duplicata'
-            TabOrder = 3
-            OnClick = BitBtn1Click
-          end
         end
       end
     end

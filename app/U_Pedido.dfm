@@ -103,6 +103,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Height = 21
           DataField = 'valor'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 4
         end
         object editTotalQtd: TDBEdit
@@ -112,6 +113,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Height = 21
           DataField = 'qtd'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 5
         end
         object DBLookupComboBox1: TDBLookupComboBox

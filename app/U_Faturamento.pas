@@ -18,21 +18,17 @@ type
     Label4: TLabel;
     editData: TDBEdit;
     lookPedido: TDBLookupComboBox;
-    btnDuplicata: TBitBtn;
-    gbDuplicata: TGroupBox;
-    Label5: TLabel;
-    DBEdit1: TDBEdit;
     DS_Duplicata: TDataSource;
-    Label6: TLabel;
-    DBEdit2: TDBEdit;
-    Label7: TLabel;
-    DBEdit4: TDBEdit;
-    BitBtn1: TBitBtn;
+    editPrazo: TEdit;
+    Label5: TLabel;
+    labelAlert: TLabel;
     procedure btnAdicionarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure btnDuplicataClick(Sender: TObject);
+    procedure editPedidoChange(Sender: TObject);
+    procedure btnDeletarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,8 +63,15 @@ begin
   // Insere a data
   editData.Text := DateToStr(Date);
 
+  // Gera a duplicata
+  DM.Q_Aux.SQL.Text := 'INSERT INTO Duplicata (idDuplicata, idFaturamento, data) VALUES (:idFaturamento, :idFaturamento, :data)';
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdFaturamento.Text;
+  DM.Q_Aux.ParamByName('data').AsString := DateToStr(Date + StrToInt( editPrazo.text ));
+  DM.Q_Aux.ExecSQL;
+  DM.Q_Aux.Close;
+
   inherited;
-  
+
 end;
 
 procedure TF_FATURAMENTO.btnEditarClick(Sender: TObject);
@@ -124,8 +127,44 @@ begin
   // Insere dados no final da tabela
   DS_Duplicata.DataSet.Append;
 
-  // Exibe o form da duplicata
-  gbDuplicata.Visible := true;
+end;
+
+procedure TF_FATURAMENTO.editPedidoChange(Sender: TObject);
+begin
+  inherited;
+
+  // Prazo
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT prazo_pagamento as prazo FROM Pedido WHERE idPedido = :idpedido';
+  DM.Q_Aux.ParamByName('idpedido').AsString := editPedido.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  editPrazo.Text := DM.Q_Aux.FieldByName('prazo').AsString;
+
+  // Pedido já faturado
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT TOP(1) idPedido as pedido FROM Faturamento WHERE idPedido = :idpedido';
+  DM.Q_Aux.ParamByName('idpedido').AsString := editPedido.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  //editPrazo.Text := DM.Q_Aux.FieldByName('prazo').AsString;
+
+  if DM.Q_Aux.FieldByName('pedido').AsString <> '' then begin
+    //ShowMessage('Já faturado');
+    btnSalvar.Enabled := false;
+    labelAlert.Visible := true;
+  end else begin
+    btnSalvar.Enabled := true;
+    labelAlert.Visible := false;
+  end;
+
+end;
+
+procedure TF_FATURAMENTO.btnDeletarClick(Sender: TObject);
+begin
+  //inherited;
+
+  ShowMessage('Não é possível deletar faturamentos!');
 
 end;
 

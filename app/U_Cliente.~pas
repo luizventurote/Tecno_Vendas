@@ -28,6 +28,7 @@ type
     procedure editCNPJExit(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
+    procedure btnDeletarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,6 +68,45 @@ begin
   inherited;
 
   DM.addLog('Cliente '+ editId.Text +' alterado');
+
+end;
+
+procedure TF_CLIENTE.btnDeletarClick(Sender: TObject);
+var
+  error: integer;
+begin
+
+  // Errors
+  error := 0;
+
+  // Verifica Pedido
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT * FROM Pedido WHERE idCliente = :idCliente';
+  DM.Q_Aux.ParamByName('idCliente').AsString := editId.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+
+  if DM.Q_Aux.FieldByName('idCliente').AsString <> '' then begin
+    ShowMessage('Não é possível deletar um cliente com registro de pedidos.');
+    error:=1;
+  end;
+
+  // Verifica Contas a Receber
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT * FROM Contas_Receber WHERE idCliente = :idCliente';
+  DM.Q_Aux.ParamByName('idCliente').AsString := editId.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+
+  if DM.Q_Aux.FieldByName('idCliente').AsString <> '' then begin
+    ShowMessage('Não é possível deletar um cliente com registro de contas a receber.');
+    error:=1;
+  end;
+
+  // Verifica se não possui nenhum tipo de erro
+  if error = 0 then begin
+    inherited;
+  end;
 
 end;
 

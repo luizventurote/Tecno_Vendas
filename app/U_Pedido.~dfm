@@ -6,6 +6,7 @@ inherited F_PEDIDO: TF_PEDIDO
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
+    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -102,6 +103,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Height = 21
           DataField = 'valor'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 4
         end
         object editTotalQtd: TDBEdit
@@ -111,6 +113,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Height = 21
           DataField = 'qtd'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 5
         end
         object DBLookupComboBox1: TDBLookupComboBox
@@ -162,7 +165,7 @@ inherited F_PEDIDO: TF_PEDIDO
           object DBLookupComboBox2: TDBLookupComboBox
             Left = 64
             Top = 40
-            Width = 218
+            Width = 313
             Height = 21
             DataField = 'Produto'
             DataSource = DS_Produto

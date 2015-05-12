@@ -12,7 +12,7 @@ type
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
+    editCliente: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
@@ -21,16 +21,19 @@ type
     editVencimento: TDBEdit;
     Label6: TLabel;
     editDataBaixa: TDBEdit;
-    DBLookupComboBox1: TDBLookupComboBox;
+    lookCliente: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
     TabSheet1: TTabSheet;
     DBGrid2: TDBGrid;
     DS_ContasAtrasadas: TDataSource;
-    btnAtualizarContas: TBitBtn;
     procedure btnSalvarClick(Sender: TObject);
     procedure editVencimentoChange(Sender: TObject);
     procedure editVencimentoExit(Sender: TObject);
     procedure btnAtualizarContasClick(Sender: TObject);
+    procedure btnPesquisarClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnAdicionarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,6 +61,13 @@ begin
     end;
 
     inherited;
+
+    // Libera a alteração do cliente
+    editCliente.ReadOnly := false;
+    lookCliente.Visible := true;
+
+    // Libera a alteração do vencimento
+    editVencimento.ReadOnly := false;
 
   except
     showmessage('data invalida');
@@ -113,6 +123,57 @@ begin
 
   DS_ContasAtrasadas.DataSet.Close;
   DS_ContasAtrasadas.DataSet.Open;
+
+end;
+
+procedure TF_CONTAS_RECEBER.btnPesquisarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Contas em atraso
+  DM.Q_Aux.SQL.Text := 'SELECT nome, vencimento, DATEDIFF ( DAY , GETDATE() , convert(datetime,vencimento,103) ) atraso from Contas_Receber con, Cliente cli WHERE con.idCliente = cli.idCliente AND DATEDIFF ( DAY , GETDATE() , convert(datetime,vencimento,103) ) < 0';
+  DS_ContasAtrasadas.DataSet.Close;
+  DS_ContasAtrasadas.DataSet.Open;
+end;
+
+procedure TF_CONTAS_RECEBER.btnEditarClick(Sender: TObject);
+begin
+
+  // Bloqueia a alteração do cliente
+  editCliente.ReadOnly := true;
+  lookCliente.Visible := false;
+
+  // Bloqueia a alteração do vencimento
+  editVencimento.ReadOnly := true;
+
+  // Salva os dados
+  inherited;
+
+end;
+
+procedure TF_CONTAS_RECEBER.btnAdicionarClick(Sender: TObject);
+begin
+  inherited;
+
+  // Libera a alteração do cliente
+  editCliente.ReadOnly := false;
+  lookCliente.Visible := true;
+
+  // Libera a alteração do vencimento
+  editVencimento.ReadOnly := false;
+
+end;
+
+procedure TF_CONTAS_RECEBER.btnCancelarClick(Sender: TObject);
+begin
+  inherited;
+               
+    // Libera a alteração do cliente
+    editCliente.ReadOnly := false;
+    lookCliente.Visible := true;
+
+    // Libera a alteração do vencimento
+    editVencimento.ReadOnly := false;
 
 end;
 

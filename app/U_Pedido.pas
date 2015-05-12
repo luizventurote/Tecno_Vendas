@@ -104,6 +104,14 @@ begin
       DM.Q_Aux.First;
       editTotalValor.Text := DM.Q_Aux.FieldByName('valor').AsString;
 
+      // Quantidade
+      DM.Q_Aux.Close;
+      DM.Q_Aux.SQL.Text := 'SELECT SUM(qtd) AS qtd FROM Produto_Pedido_Item as item, Produto as prod WHERE item.idProduto = prod.idProduto AND idPedido = :idpedido';
+      DM.Q_Aux.ParamByName('idpedido').AsString := editPedidoID.Text;
+      DM.Q_Aux.Open;
+      DM.Q_Aux.First;
+      editTotalQtd.Text := DM.Q_Aux.FieldByName('qtd').AsString;
+
     end else begin
       ShowMessage('Adicione a quantidade.');
     end;
@@ -193,11 +201,36 @@ begin
 end;
 
 procedure TF_PEDIDO.btnCancelarClick(Sender: TObject);
+var
+  error: integer;
 begin
+
+  // Errors
+  error := 0;
+
+  // Verifica Pedido
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT * FROM Pedido WHERE idPedido = :idPedido';
+  DM.Q_Aux.ParamByName('idPedido').AsString := editPedidoID.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+
+  if DM.Q_Aux.FieldByName('idPedido').AsString = '' then begin
+    error:=1;
+
+    // APAGA OS REGISTROS NO BANCO
+    DM.Q_Aux.SQL.Text := 'DELETE FROM Produto_Pedido_Item WHERE idPedido = :idPedido';
+    DM.Q_Aux.ParamByName('idPedido').AsString := editPedidoID.Text;
+    DM.Q_Aux.ExecSQL;
+
+  end;
+
   inherited;
 
   // Desabilita goup box de produtos
   gbProdutos.Enabled := false;
+
+
 
 end;
 
@@ -269,6 +302,22 @@ begin
   DS_ProdutoItem.DataSet.Delete;
 
   DM.M_PedidoProduto.ApplyUpdates(-1);
+
+  // Valor
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT SUM((valor * qtd)) AS valor FROM Produto_Pedido_Item as item, Produto as prod WHERE item.idProduto = prod.idProduto AND idPedido = :idpedido';
+  DM.Q_Aux.ParamByName('idpedido').AsString := editPedidoID.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  editTotalValor.Text := DM.Q_Aux.FieldByName('valor').AsString;
+
+  // Quantidade
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT SUM(qtd) AS qtd FROM Produto_Pedido_Item as item, Produto as prod WHERE item.idProduto = prod.idProduto AND idPedido = :idpedido';
+  DM.Q_Aux.ParamByName('idpedido').AsString := editPedidoID.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  editTotalQtd.Text := DM.Q_Aux.FieldByName('qtd').AsString;
 
 end;
 
