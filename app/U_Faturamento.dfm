@@ -1,6 +1,6 @@
 inherited F_FATURAMENTO: TF_FATURAMENTO
-  Left = 286
-  Top = 252
+  Left = 289
+  Top = 116
   Caption = 'Faturamento'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -140,6 +140,24 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
           Height = 21
           Enabled = False
           TabOrder = 7
+        end
+        object gpDuplicata: TGroupBox
+          Left = 16
+          Top = 272
+          Width = 161
+          Height = 73
+          Caption = 'Duplicata'
+          TabOrder = 8
+          Visible = False
+          object btnGerarDuplicata: TBitBtn
+            Left = 16
+            Top = 24
+            Width = 129
+            Height = 33
+            Caption = 'Gerar duplicata'
+            TabOrder = 0
+            OnClick = btnGerarDuplicataClick
+          end
         end
       end
     end

@@ -434,3 +434,16 @@
 25/05/2015 01:13:03 | admin | Adicionar registro
 25/05/2015 01:13:09 | admin | Os dados do registro foram salvos
 25/05/2015 01:13:35 | admin | Os dados do registro foram salvos
+25/05/2015 09:17:04 | admin | Usuário admin entrou no sistema.
+25/05/2015 09:28:37 | admin | Usuário admin entrou no sistema.
+25/05/2015 09:28:50 | admin | Registro deletado
+25/05/2015 09:29:38 | admin | Usuário admin entrou no sistema.
+25/05/2015 09:30:19 | admin | Usuário admin entrou no sistema.
+25/05/2015 09:30:28 | admin | Registro deletado
+25/05/2015 09:30:37 | admin | Os dados do registro foram salvos
+25/05/2015 09:32:59 | admin | Usuário admin entrou no sistema.
+25/05/2015 09:33:28 | admin | Registro deletado
+25/05/2015 09:33:39 | admin | Os dados do registro foram salvos
+25/05/2015 09:34:49 | admin | Usuário admin entrou no sistema.
+25/05/2015 09:35:06 | admin | Registro deletado
+25/05/2015 09:35:18 | admin | Os dados do registro foram salvos

@@ -25,12 +25,16 @@ type
     editCliente: TEdit;
     Label6: TLabel;
     editClienteId: TEdit;
+    gpDuplicata: TGroupBox;
+    btnGerarDuplicata: TBitBtn;
     procedure btnAdicionarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnDuplicataClick(Sender: TObject);
     procedure editPedidoChange(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
+    procedure btnGerarDuplicataClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -96,6 +100,8 @@ begin
 
   end;
 
+  gpDuplicata.Visible := false;
+
   inherited;
 
 end;
@@ -113,23 +119,23 @@ begin
   error := 0;
 
   // Verifica duplicata
-  {DM.Q_Aux.Close;
-  DM.Q_Aux.SQL.Text := 'SELECT * FROM Duplicata WHERE idFaturamento = :idFaturamento';
-  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdFaturamento.Text;
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT * FROM Contas_Receber WHERE idContasReceber = :editIdFaturamento';
+  DM.Q_Aux.ParamByName('editIdFaturamento').AsString := editIdFaturamento.Text;
   DM.Q_Aux.Open;
   DM.Q_Aux.First;
 
-  if DM.Q_Aux.FieldByName('idFaturamento').AsString <> '' then begin
+  if DM.Q_Aux.FieldByName('idContasReceber').AsString <> '' then begin
     error:=1;
   end;
 
    // Verifica se não possui nenhum tipo de erro
   if error = 0 then begin
 
-    //btnDuplicata.Visible := true;
+    gpDuplicata.Visible := true;
 
     inherited;
-  end;  }
+  end;
 
   inherited;
 
@@ -214,6 +220,59 @@ begin
     inherited;
   end;
 
+end;
+
+procedure TF_FATURAMENTO.btnGerarDuplicataClick(Sender: TObject);
+var
+  error: integer;
+begin
+  inherited;
+
+  // Errors
+  error := 0;
+
+  // Verifica se possui um registro na tabea de contas a receber
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT * FROM Contas_Receber WHERE idDuplicata = :idFaturamento';
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdFaturamento.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+
+  if DM.Q_Aux.FieldByName('idContasReceber').AsString <> '' then begin
+    error:=1;
+    ShowMessage('Esse faturamento já possui duplicata!');
+  end;
+
+  // Verifica se não possui nenhum tipo de erro
+  if error = 0 then begin
+
+    // Insere a data
+    editData.Text := DateToStr(Date);
+
+    // Gera a duplicata
+    DM.Q_Aux.SQL.Text := 'INSERT INTO Contas_Receber (idContasReceber, idCliente, idDuplicata, num_nota_fiscal, vencimento) VALUES (:idContasReceber, :idCliente, :idContasReceber, :num_nota_fiscal, :vencimento)';
+    DM.Q_Aux.ParamByName('idContasReceber').AsString := editIdFaturamento.Text;
+    DM.Q_Aux.ParamByName('idCliente').AsString := editClienteId.Text;
+    DM.Q_Aux.ParamByName('idContasReceber').AsString := editIdFaturamento.Text;
+    DM.Q_Aux.ParamByName('num_nota_fiscal').AsString := editnotaFiscal.Text;
+    DM.Q_Aux.ParamByName('vencimento').AsString := DateToStr( StrToDate(editData.Text) + StrToInt(editPrazo.Text) );
+    DM.Q_Aux.ExecSQL;
+    DM.Q_Aux.Close;
+
+    ShowMessage('Duplicata gerada com sucesso!');
+
+  end;
+
+  gpDuplicata.Visible := false;
+
+end;
+
+procedure TF_FATURAMENTO.btnCancelarClick(Sender: TObject);
+begin
+  inherited;
+
+  gpDuplicata.Visible := false;
+  
 end;
 
 end.
