@@ -1,6 +1,1 @@
-idCliente;nome;telefone;logradouro;cnpj;estado;pais;numer
-1;Carlos José Antônio;37114955;Centro;;RJ;Brasil;15
-4;Kiko;99748562;Vila do Chaves;;AC;México;1
-7;Maurício Silva;25449687;Av brasil;;RJ;Brasil;1
-8;Lucas Bone;37489657;Rua Carlos Silva;;ES;Brasil;1
-10;Ronaldo;37114589;;;;
+idContasReceber;idCliente;idDuplicata;num_nota_fiscal;vencimento;data_baixa;Cliente;Duplicat

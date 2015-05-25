@@ -81,12 +81,10 @@ type
     Q_ContasReceberdata_baixa: TStringField;
     M_ContasReceberidContasReceber: TIntegerField;
     M_ContasReceberidCliente: TIntegerField;
-    M_ContasReceberidDuplicata: TIntegerField;
     M_ContasRecebernum_nota_fiscal: TIntegerField;
     M_ContasRecebervencimento: TStringField;
     M_ContasReceberdata_baixa: TStringField;
     M_ContasReceberCliente: TStringField;
-    M_ContasReceberDuplicata: TStringField;
     M_PedidoProduto: TClientDataSet;
     P_PedidoProduto: TDataSetProvider;
     Q_PedidoProduto: TQuery;
@@ -137,15 +135,6 @@ type
     M_PedidoProdutoProduto: TStringField;
     M_PedidoProdutoValor: TFloatField;
     M_EntradaEstqProduto: TStringField;
-    P_Duplicata: TDataSetProvider;
-    Q_Duplicata: TQuery;
-    M_Duplicata: TClientDataSet;
-    Q_DuplicataidDuplicata: TIntegerField;
-    Q_DuplicataidFaturamento: TIntegerField;
-    Q_Duplicatadata: TStringField;
-    M_DuplicataidDuplicata: TIntegerField;
-    M_DuplicataidFaturamento: TIntegerField;
-    M_Duplicatadata: TStringField;
     procedure M_UsuarioAfterPost(DataSet: TDataSet);
     procedure M_UsuarioAfterDelete(DataSet: TDataSet);
     procedure M_UsuarioAfterCancel(DataSet: TDataSet);

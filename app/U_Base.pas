@@ -638,18 +638,6 @@ DataCol: Integer; Column: TColumn; State: TGridDrawState);
 var
 t: String;
 begin
-  // número da coluna, começando em zero
-  if DataCol = 1 then
-    begin
-
-      with DBGrid1.Canvas do
-      begin
-        // pega o texto do campo memo
-        t:=Column.Field.Value;
-        TextOut(Rect.Left+2,Rect.Top+2,t);
-      end;
-
-  end;
 
 end;
 

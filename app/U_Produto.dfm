@@ -1,6 +1,6 @@
 inherited F_PRODUTO: TF_PRODUTO
-  Left = 571
-  Top = 202
+  Left = 345
+  Top = 227
   Caption = 'Produto'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -54,6 +54,7 @@ inherited F_PRODUTO: TF_PRODUTO
           Height = 21
           DataField = 'idProduto'
           DataSource = DS
+          Enabled = False
           TabOrder = 0
         end
         object editEstoque: TDBEdit
@@ -63,6 +64,7 @@ inherited F_PRODUTO: TF_PRODUTO
           Height = 21
           DataField = 'qtd_estoque'
           DataSource = DS
+          Enabled = False
           ReadOnly = True
           TabOrder = 1
         end

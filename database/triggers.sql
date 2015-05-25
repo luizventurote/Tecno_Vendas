@@ -71,3 +71,39 @@ AS BEGIN
 	DEALLOCATE CursorFaturamento
 
 END
+
+
+
+CREATE TRIGGER TGR_DOWN_ESTOQUE_PRODUTO
+ON Produto_Pedido_Item 
+FOR INSERT 
+AS BEGIN 
+
+	DECLARE 
+	@idProduto_aux		INT,
+	@qtd_aux			INT
+
+	SELECT @idProduto_aux=idProduto, @qtd_aux=qtd FROM INSERTED 
+	
+		
+	exec DOWN_ESTOQUE @idProduto = @idProduto_aux, @qtd_baixada = @qtd_aux
+	
+END
+
+
+
+CREATE TRIGGER TGR_UP_ESTOQUE_PRODUTO
+ON Produto_Pedido_Item 
+FOR DELETE 
+AS BEGIN 
+
+	DECLARE 
+	@idProduto_aux		INT,
+	@qtd_aux			INT
+
+	SELECT @idProduto_aux=idProduto, @qtd_aux=qtd FROM INSERTED 
+	
+		
+	exec UP_ESTOQUE @idProduto = @idProduto_aux, @qtd_up = @qtd_aux
+	
+END

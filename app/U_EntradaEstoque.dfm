@@ -1,6 +1,6 @@
 inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
   Left = 349
-  Top = 183
+  Top = 184
   Caption = 'Entrada no estoque'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -17,29 +17,30 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
         end
         object Label4: TLabel
           Left = 16
-          Top = 144
+          Top = 104
           Width = 115
           Height = 13
           Caption = 'Quantidade de Entredas'
         end
         object Label5: TLabel
-          Left = 16
-          Top = 64
+          Left = 752
+          Top = 24
           Width = 36
           Height = 13
           Caption = 'Usuario'
           FocusControl = cbUsuario
+          Visible = False
         end
         object Label2: TLabel
           Left = 16
-          Top = 104
+          Top = 64
           Width = 37
           Height = 13
           Caption = 'Produto'
         end
         object cbUsuario: TDBLookupComboBox
-          Left = 64
-          Top = 80
+          Left = 800
+          Top = 40
           Width = 217
           Height = 21
           DataField = 'Usuario'
@@ -48,8 +49,8 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
           Visible = False
         end
         object editUsuario: TDBEdit
-          Left = 16
-          Top = 80
+          Left = 752
+          Top = 40
           Width = 41
           Height = 21
           TabStop = False
@@ -57,11 +58,12 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
           DataSource = DS
           ReadOnly = True
           TabOrder = 2
+          Visible = False
           OnExit = editUsuarioExit
         end
         object editProduto: TDBEdit
           Left = 16
-          Top = 120
+          Top = 80
           Width = 41
           Height = 21
           TabStop = False
@@ -82,7 +84,7 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
         end
         object editEntradas: TDBEdit
           Left = 16
-          Top = 160
+          Top = 120
           Width = 134
           Height = 21
           DataField = 'qtd_entradas'
@@ -91,7 +93,7 @@ inherited F_ENTRADA_ESTOQUE: TF_ENTRADA_ESTOQUE
         end
         object DBLookupComboBox1: TDBLookupComboBox
           Left = 64
-          Top = 120
+          Top = 80
           Width = 217
           Height = 21
           DataField = 'Produto'

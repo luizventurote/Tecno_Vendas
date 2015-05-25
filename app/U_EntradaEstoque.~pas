@@ -14,14 +14,16 @@ type
     Label5: TLabel;
     cbUsuario: TDBLookupComboBox;
     Label2: TLabel;
-    DBLookupComboBox2: TDBLookupComboBox;
     editUsuario: TDBEdit;
     editProduto: TDBEdit;
     DBEdit3: TDBEdit;
     editEntradas: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
     procedure btnSalvarClick(Sender: TObject);
     procedure btnAdicionarClick(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure editUsuarioExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,13 +39,26 @@ uses U_DM;
 
 {$R *.dfm}
 
-procedure TF_ENTRADA_ESTOQUE.btnSalvarClick(Sender: TObject);
+procedure TF_ENTRADA_ESTOQUE.btnSalvarClick(Sender: TObject);    
+var
+  errors: integer;
 begin
 
   // Seta o usuário que está logado no sistema
   editUsuario.Text := IntToStr(dm.id_usuario_ativo);
 
-  inherited;
+  // Errors
+  errors:= 0;
+
+  if (editEntradas.Text <> '') AND (editProduto.Text <> '') AND (editUsuario.Text <> '') then begin
+
+  end else begin
+    errors:=errors+1; ShowMessage('Você precisa inserir valores em todos os campos para prosseguir.');
+  end;
+
+  if errors = 0 then begin
+    inherited;
+  end;
 
 end;
 
@@ -58,8 +73,20 @@ end;
 
 procedure TF_ENTRADA_ESTOQUE.btnDeletarClick(Sender: TObject);
 begin
+  //inherited;
+  ShowMessage('Não é possível deletar registros');
+end;
+
+procedure TF_ENTRADA_ESTOQUE.btnEditarClick(Sender: TObject);
+begin
+  //inherited;
+  ShowMessage('Não é possível alterar registros!');
+end;
+
+procedure TF_ENTRADA_ESTOQUE.editUsuarioExit(Sender: TObject);
+begin
   inherited;
-  //ShowMessage('Não é possível deletar registros');
+  editUsuario.Text := IntToStr(dm.id_usuario_ativo);
 end;
 
 end.

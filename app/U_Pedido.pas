@@ -195,6 +195,16 @@ begin
     // Desabilita goup box de produtos
     gbProdutos.Enabled := false;
 
+    // Deleta os itens do pedido
+    DM.Q_PermissoesDeUsuario.SQL.Text := 'DELETE FROM Produto_Pedido_Item WHERE idPedido = :idPedido';
+    DM.Q_PermissoesDeUsuario.ParamByName('idPedido').AsString := editPedidoID.Text;
+    DM.Q_PermissoesDeUsuario.ExecSQL;
+
+    // ATUALIZA TODO O ESTOQUE
+    // ---------------------------------------------------------------------------
+    DM.Q_Aux.SQL.Text := 'EXEC UPDATE_ALL_ESTOQUE';
+    DM.Q_Aux.ExecSQL;
+
     inherited;
   end;
 

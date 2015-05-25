@@ -1,12 +1,11 @@
 inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
-  Left = 518
-  Top = 189
+  Left = 349
+  Top = 161
   Caption = 'Saida de estoque'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -15,7 +14,7 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
           Width = 11
           Height = 13
           Caption = 'ID'
-          FocusControl = DBEdit1
+          FocusControl = editIdSaida
         end
         object Label2: TLabel
           Left = 24
@@ -31,7 +30,7 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
           Width = 37
           Height = 13
           Caption = 'Produto'
-          FocusControl = DBEdit3
+          FocusControl = editProduto
         end
         object Label4: TLabel
           Left = 24
@@ -39,15 +38,16 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
           Width = 103
           Height = 13
           Caption = 'Quantidade de saidas'
-          FocusControl = DBEdit4
+          FocusControl = editQtd
         end
-        object DBEdit1: TDBEdit
+        object editIdSaida: TDBEdit
           Left = 24
           Top = 40
-          Width = 134
+          Width = 49
           Height = 21
           DataField = 'idSaidaEstoque'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 0
         end
         object editUsuario: TDBEdit
@@ -57,18 +57,21 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
           Height = 21
           DataField = 'idUsuario'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 1
+          OnExit = editUsuarioExit
         end
-        object DBEdit3: TDBEdit
+        object editProduto: TDBEdit
           Left = 24
           Top = 120
           Width = 49
           Height = 21
           DataField = 'idProduto'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 2
         end
-        object DBEdit4: TDBEdit
+        object editQtd: TDBEdit
           Left = 24
           Top = 160
           Width = 134
@@ -85,6 +88,7 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
           DataField = 'Usuario'
           DataSource = DS
           TabOrder = 4
+          Visible = False
         end
         object DBLookupComboBox2: TDBLookupComboBox
           Left = 80

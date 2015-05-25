@@ -1,12 +1,11 @@
 inherited F_FATURAMENTO: TF_FATURAMENTO
-  Left = 425
-  Top = 245
+  Left = 286
+  Top = 252
   Caption = 'Faturamento'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -27,15 +26,15 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
         end
         object Label3: TLabel
           Left = 16
-          Top = 144
+          Top = 184
           Width = 103
           Height = 13
           Caption = 'N'#250'mero da nota fiscal'
-          FocusControl = DBEdit3
+          FocusControl = editnotaFiscal
         end
         object Label4: TLabel
           Left = 16
-          Top = 184
+          Top = 224
           Width = 23
           Height = 13
           Caption = 'Data'
@@ -43,14 +42,14 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
         end
         object Label5: TLabel
           Left = 16
-          Top = 104
+          Top = 144
           Width = 77
           Height = 13
           Caption = 'Prazo do pedido'
         end
         object labelAlert: TLabel
-          Left = 232
-          Top = 84
+          Left = 16
+          Top = 412
           Width = 174
           Height = 13
           Caption = 'Aten'#231#227'o! Esse pedido j'#225' foi faturado.'
@@ -61,6 +60,13 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
           Font.Style = []
           ParentFont = False
           Visible = False
+        end
+        object Label6: TLabel
+          Left = 16
+          Top = 104
+          Width = 32
+          Height = 13
+          Caption = 'Cliente'
         end
         object editIdFaturamento: TDBEdit
           Left = 16
@@ -83,9 +89,9 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
           TabOrder = 1
           OnChange = editPedidoChange
         end
-        object DBEdit3: TDBEdit
+        object editnotaFiscal: TDBEdit
           Left = 16
-          Top = 160
+          Top = 200
           Width = 209
           Height = 21
           DataField = 'num_nota_fiscal'
@@ -94,7 +100,7 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
         end
         object editData: TDBEdit
           Left = 16
-          Top = 200
+          Top = 240
           Width = 209
           Height = 21
           DataField = 'data'
@@ -113,11 +119,27 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
         end
         object editPrazo: TEdit
           Left = 16
-          Top = 120
+          Top = 160
           Width = 121
           Height = 21
           ReadOnly = True
           TabOrder = 5
+        end
+        object editCliente: TEdit
+          Left = 96
+          Top = 120
+          Width = 313
+          Height = 21
+          Enabled = False
+          TabOrder = 6
+        end
+        object editClienteId: TEdit
+          Left = 16
+          Top = 120
+          Width = 73
+          Height = 21
+          Enabled = False
+          TabOrder = 7
         end
       end
     end
@@ -126,7 +148,6 @@ inherited F_FATURAMENTO: TF_FATURAMENTO
     DataSet = DM.M_Faturamento
   end
   object DS_Duplicata: TDataSource
-    DataSet = DM.M_Duplicata
     Left = 344
     Top = 16
   end

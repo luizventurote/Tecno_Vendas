@@ -1,12 +1,11 @@
 inherited F_PEDIDO: TF_PEDIDO
   Left = 388
-  Top = 161
+  Top = 162
   Caption = 'Pedido'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -103,6 +102,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Height = 21
           DataField = 'valor'
           DataSource = DS
+          Enabled = False
           ReadOnly = True
           TabOrder = 4
         end
@@ -113,6 +113,7 @@ inherited F_PEDIDO: TF_PEDIDO
           Height = 21
           DataField = 'qtd'
           DataSource = DS
+          Enabled = False
           ReadOnly = True
           TabOrder = 5
         end

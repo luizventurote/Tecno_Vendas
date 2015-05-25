@@ -1,6 +1,6 @@
 inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
   Left = 349
-  Top = 161
+  Top = 162
   Caption = 'Saida de estoque'
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -17,16 +17,17 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
           FocusControl = editIdSaida
         end
         object Label2: TLabel
-          Left = 24
-          Top = 64
+          Left = 688
+          Top = 32
           Width = 36
           Height = 13
           Caption = 'Usu'#225'rio'
           FocusControl = editUsuario
+          Visible = False
         end
         object Label3: TLabel
           Left = 24
-          Top = 104
+          Top = 64
           Width = 37
           Height = 13
           Caption = 'Produto'
@@ -34,7 +35,7 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
         end
         object Label4: TLabel
           Left = 24
-          Top = 144
+          Top = 104
           Width = 103
           Height = 13
           Caption = 'Quantidade de saidas'
@@ -47,23 +48,25 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
           Height = 21
           DataField = 'idSaidaEstoque'
           DataSource = DS
+          Enabled = False
           ReadOnly = True
           TabOrder = 0
         end
         object editUsuario: TDBEdit
-          Left = 24
-          Top = 80
+          Left = 688
+          Top = 48
           Width = 49
           Height = 21
           DataField = 'idUsuario'
           DataSource = DS
           ReadOnly = True
           TabOrder = 1
+          Visible = False
           OnExit = editUsuarioExit
         end
         object editProduto: TDBEdit
           Left = 24
-          Top = 120
+          Top = 80
           Width = 49
           Height = 21
           DataField = 'idProduto'
@@ -73,7 +76,7 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
         end
         object editQtd: TDBEdit
           Left = 24
-          Top = 160
+          Top = 120
           Width = 134
           Height = 21
           DataField = 'qtd_saida'
@@ -81,8 +84,8 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
           TabOrder = 3
         end
         object DBLookupComboBox1: TDBLookupComboBox
-          Left = 80
-          Top = 80
+          Left = 744
+          Top = 48
           Width = 274
           Height = 21
           DataField = 'Usuario'
@@ -92,7 +95,7 @@ inherited F_SAIDA_ESTOQUE: TF_SAIDA_ESTOQUE
         end
         object DBLookupComboBox2: TDBLookupComboBox
           Left = 80
-          Top = 120
+          Top = 80
           Width = 273
           Height = 21
           DataField = 'Produto'

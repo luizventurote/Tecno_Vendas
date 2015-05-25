@@ -513,9 +513,6 @@ object DM: TDM
     object M_ContasReceberidCliente: TIntegerField
       FieldName = 'idCliente'
     end
-    object M_ContasReceberidDuplicata: TIntegerField
-      FieldName = 'idDuplicata'
-    end
     object M_ContasRecebernum_nota_fiscal: TIntegerField
       FieldName = 'num_nota_fiscal'
     end
@@ -534,15 +531,6 @@ object DM: TDM
       LookupKeyFields = 'idCliente'
       LookupResultField = 'nome'
       KeyFields = 'idCliente'
-      Lookup = True
-    end
-    object M_ContasReceberDuplicata: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Duplicata'
-      LookupDataSet = Q_Faturamento
-      LookupKeyFields = 'idFaturamento'
-      LookupResultField = 'idFaturamento'
-      KeyFields = 'idDuplicata'
       Lookup = True
     end
   end
@@ -732,54 +720,5 @@ object DM: TDM
     DatabaseName = 'sistema_vendas'
     Left = 368
     Top = 24
-  end
-  object P_Duplicata: TDataSetProvider
-    DataSet = Q_Duplicata
-    Left = 424
-    Top = 328
-  end
-  object Q_Duplicata: TQuery
-    DatabaseName = 'sistema_vendas'
-    SQL.Strings = (
-      'select * from duplicata')
-    Left = 336
-    Top = 328
-    object Q_DuplicataidDuplicata: TIntegerField
-      FieldName = 'idDuplicata'
-      Origin = 'SISTEMA_VENDAS.duplicata.idDuplicata'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object Q_DuplicataidFaturamento: TIntegerField
-      FieldName = 'idFaturamento'
-      Origin = 'SISTEMA_VENDAS.duplicata.idFaturamento'
-      ProviderFlags = [pfInUpdate]
-    end
-    object Q_Duplicatadata: TStringField
-      FieldName = 'data'
-      Origin = 'SISTEMA_VENDAS.duplicata.data'
-      ProviderFlags = [pfInUpdate]
-      Size = 50
-    end
-  end
-  object M_Duplicata: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'P_Duplicata'
-    AfterInsert = M_SaidaEstoqueAfterInsert
-    AfterPost = M_SaidaEstoqueAfterPost
-    AfterCancel = M_SaidaEstoqueAfterCancel
-    AfterDelete = M_SaidaEstoqueAfterDelete
-    Left = 512
-    Top = 328
-    object M_DuplicataidDuplicata: TIntegerField
-      FieldName = 'idDuplicata'
-    end
-    object M_DuplicataidFaturamento: TIntegerField
-      FieldName = 'idFaturamento'
-    end
-    object M_Duplicatadata: TStringField
-      FieldName = 'data'
-      Size = 50
-    end
   end
 end

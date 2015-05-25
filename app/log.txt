@@ -246,3 +246,191 @@
 11/05/2015 23:45:00 | admin | Os dados do registro foram salvos
 11/05/2015 23:45:04 | admin | Os dados do registro foram salvos
 11/05/2015 23:45:10 | admin | Os dados do registro foram salvos
+23/05/2015 15:03:01 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:04:59 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:05:21 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:06:01 | admin | Adicionar registro
+23/05/2015 15:06:28 | admin | Os dados do registro foram salvos
+23/05/2015 15:06:47 | admin | Adicionar registro
+23/05/2015 15:07:11 | admin | Os dados do registro foram salvos
+23/05/2015 15:07:42 | admin | Adicionar registro
+23/05/2015 15:08:39 | admin | Adicionar registro
+23/05/2015 15:09:18 | admin | Os dados do registro foram salvos
+23/05/2015 15:15:26 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:15:32 | admin | Adicionar registro
+23/05/2015 15:16:13 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:16:16 | admin | Adicionar registro
+23/05/2015 15:17:09 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:17:16 | admin | Adicionar registro
+23/05/2015 15:17:59 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:18:03 | admin | Adicionar registro
+23/05/2015 15:19:56 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:20:02 | admin | Adicionar registro
+23/05/2015 15:24:21 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:24:32 | admin | Adicionar registro
+23/05/2015 15:28:15 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:28:51 | admin | Adicionar registro
+23/05/2015 15:30:25 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:30:33 | admin | Adicionar registro
+23/05/2015 15:31:36 | admin | Registro deletado
+23/05/2015 15:31:38 | admin | Registro deletado
+23/05/2015 15:31:38 | admin | Registro deletado
+23/05/2015 15:31:39 | admin | Registro deletado
+23/05/2015 15:31:39 | admin | Registro deletado
+23/05/2015 15:31:40 | admin | Registro deletado
+23/05/2015 15:31:40 | admin | Registro deletado
+23/05/2015 15:31:48 | admin | Adicionar registro
+23/05/2015 15:32:23 | admin | Registro deletado
+23/05/2015 15:32:26 | admin | Registro deletado
+23/05/2015 15:34:12 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:34:19 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:34:31 | admin | Registro deletado
+23/05/2015 15:34:32 | admin | Registro deletado
+23/05/2015 15:34:33 | admin | Registro deletado
+23/05/2015 15:34:33 | admin | Registro deletado
+23/05/2015 15:34:33 | admin | Registro deletado
+23/05/2015 15:40:52 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:41:08 | admin | Dados exportados para CSV
+23/05/2015 15:41:25 | admin | Registro deletado
+23/05/2015 15:41:27 | admin | Registro deletado
+23/05/2015 15:43:29 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:43:32 | admin | Adicionar registro
+23/05/2015 15:44:17 | admin | Os dados do registro foram salvos
+23/05/2015 15:44:28 | admin | Cliente 11 alterado
+23/05/2015 15:44:40 | admin | Os dados do registro foram salvos
+23/05/2015 15:45:14 | admin | Adicionar registro
+23/05/2015 15:45:34 | admin | Adicionar registro
+23/05/2015 15:46:20 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:46:23 | admin | Adicionar registro
+23/05/2015 15:46:49 | admin | Os dados do registro foram salvos
+23/05/2015 15:47:31 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:48:17 | admin | Adicionar registro
+23/05/2015 15:49:16 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:49:28 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:49:37 | admin | Adicionar registro
+23/05/2015 15:49:48 | admin | Os dados do registro foram salvos
+23/05/2015 15:50:34 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:50:41 | admin | Adicionar registro
+23/05/2015 15:50:46 | admin | Os dados do registro foram salvos
+23/05/2015 15:53:01 | admin | Adicionar registro
+23/05/2015 15:53:21 | admin | Usuário admin entrou no sistema.
+23/05/2015 15:53:25 | admin | Adicionar registro
+23/05/2015 17:06:11 | admin | Usuário admin entrou no sistema.
+23/05/2015 17:07:02 | admin | Usuário admin entrou no sistema.
+23/05/2015 17:07:46 | admin | Adicionar registro
+23/05/2015 17:08:02 | admin | Adicionar registro
+23/05/2015 17:13:31 | admin | Usuário admin entrou no sistema.
+23/05/2015 17:13:39 | admin | Adicionar registro
+23/05/2015 17:13:45 | admin | Os dados do registro foram salvos
+23/05/2015 17:21:57 | admin | Usuário admin entrou no sistema.
+23/05/2015 17:22:13 | admin | Adicionar registro
+23/05/2015 17:33:38 | admin | Usuário admin entrou no sistema.
+23/05/2015 17:34:00 | admin | Usuário admin entrou no sistema.
+23/05/2015 17:36:07 | admin | Usuário admin entrou no sistema.
+23/05/2015 17:36:26 | admin | Usuário admin entrou no sistema.
+23/05/2015 17:36:55 | admin | Os dados do registro foram salvos
+23/05/2015 17:36:59 | admin | Adicionar registro
+23/05/2015 17:37:44 | admin | Usuário admin entrou no sistema.
+23/05/2015 17:37:49 | admin | Registro deletado
+23/05/2015 17:37:52 | admin | Adicionar registro
+23/05/2015 18:00:54 | admin | Usuário admin entrou no sistema.
+24/05/2015 22:03:11 | admin | Usuário admin entrou no sistema.
+24/05/2015 22:04:05 | admin | Os dados do registro foram salvos
+24/05/2015 23:43:25 | admin | Usuário admin entrou no sistema.
+24/05/2015 23:43:34 | admin | Os dados do registro foram salvos
+24/05/2015 23:43:45 | admin | Os dados do registro foram salvos
+24/05/2015 23:44:54 | admin | Registro deletado
+24/05/2015 23:44:55 | admin | Registro deletado
+24/05/2015 23:45:03 | admin | Registro deletado
+24/05/2015 23:45:05 | admin | Adicionar registro
+24/05/2015 23:45:14 | admin | Os dados do registro foram salvos
+24/05/2015 23:45:32 | admin | Os dados do registro foram salvos
+24/05/2015 23:55:52 | admin | Usuário admin entrou no sistema.
+24/05/2015 23:56:00 | admin | Os dados do registro foram salvos
+24/05/2015 23:59:43 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:00:50 | admin | Adicionar registro
+25/05/2015 00:01:07 | admin | Os dados do registro foram salvos
+25/05/2015 00:01:19 | admin | Adicionar registro
+25/05/2015 00:01:25 | admin | Os dados do registro foram salvos
+25/05/2015 00:01:42 | admin | Os dados do registro foram salvos
+25/05/2015 00:05:55 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:06:00 | admin | Registro deletado
+25/05/2015 00:06:06 | admin | Registro deletado
+25/05/2015 00:06:34 | admin | Os dados do registro foram salvos
+25/05/2015 00:06:35 | admin | Registro deletado
+25/05/2015 00:07:19 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:07:36 | admin | Adicionar registro
+25/05/2015 00:07:48 | admin | Os dados do registro foram salvos
+25/05/2015 00:21:01 | ADMIN | Usuário ADMIN entrou no sistema.
+25/05/2015 00:21:08 | ADMIN | Registro deletado
+25/05/2015 00:21:11 | ADMIN | Adicionar registro
+25/05/2015 00:21:25 | ADMIN | Os dados do registro foram salvos
+25/05/2015 00:23:27 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:23:32 | admin | Registro deletado
+25/05/2015 00:25:28 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:25:34 | admin | Adicionar registro
+25/05/2015 00:26:04 | admin | Os dados do registro foram salvos
+25/05/2015 00:26:06 | admin | Adicionar registro
+25/05/2015 00:26:43 | admin | Os dados do registro foram salvos
+25/05/2015 00:27:05 | admin | Registro deletado
+25/05/2015 00:27:22 | admin | Adicionar registro
+25/05/2015 00:27:55 | admin | Os dados do registro foram salvos
+25/05/2015 00:29:25 | admin | Cliente 14 alterado
+25/05/2015 00:29:43 | admin | Os dados do registro foram salvos
+25/05/2015 00:29:48 | admin | Cliente 14 alterado
+25/05/2015 00:30:13 | admin | Os dados do registro foram salvos
+25/05/2015 00:30:14 | admin | Cliente 14 alterado
+25/05/2015 00:30:25 | admin | Os dados do registro foram salvos
+25/05/2015 00:30:38 | admin | Cliente 13 alterado
+25/05/2015 00:30:40 | admin | Os dados do registro foram salvos
+25/05/2015 00:30:55 | admin | Adicionar registro
+25/05/2015 00:31:19 | admin | Os dados do registro foram salvos
+25/05/2015 00:31:22 | admin | Adicionar registro
+25/05/2015 00:31:34 | admin | Os dados do registro foram salvos
+25/05/2015 00:31:45 | admin | Os dados do registro foram salvos
+25/05/2015 00:31:53 | admin | Os dados do registro foram salvos
+25/05/2015 00:31:57 | admin | Os dados do registro foram salvos
+25/05/2015 00:32:00 | admin | Adicionar registro
+25/05/2015 00:32:32 | admin | Os dados do registro foram salvos
+25/05/2015 00:32:40 | admin | Adicionar registro
+25/05/2015 00:32:46 | admin | Os dados do registro foram salvos
+25/05/2015 00:32:48 | admin | Adicionar registro
+25/05/2015 00:32:51 | admin | Os dados do registro foram salvos
+25/05/2015 00:32:53 | admin | Adicionar registro
+25/05/2015 00:32:56 | admin | Os dados do registro foram salvos
+25/05/2015 00:32:58 | admin | Adicionar registro
+25/05/2015 00:33:58 | admin | Adicionar registro
+25/05/2015 00:34:08 | admin | Cliente 15 alterado
+25/05/2015 00:34:13 | admin | Os dados do registro foram salvos
+25/05/2015 00:34:18 | admin | Adicionar registro
+25/05/2015 00:34:53 | admin | Os dados do registro foram salvos
+25/05/2015 00:35:32 | admin | Registro deletado
+25/05/2015 00:38:44 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:38:56 | admin | Registro deletado
+25/05/2015 00:39:21 | admin | Adicionar registro
+25/05/2015 00:39:35 | admin | Os dados do registro foram salvos
+25/05/2015 00:40:52 | admin | Adicionar registro
+25/05/2015 00:40:58 | admin | Os dados do registro foram salvos
+25/05/2015 00:41:07 | admin | Adicionar registro
+25/05/2015 00:41:33 | admin | Os dados do registro foram salvos
+25/05/2015 00:41:51 | admin | Adicionar registro
+25/05/2015 00:41:57 | admin | Os dados do registro foram salvos
+25/05/2015 00:42:14 | admin | Adicionar registro
+25/05/2015 00:44:56 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:46:47 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:48:52 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:49:56 | admin | Registro deletado
+25/05/2015 00:52:59 | admin | Usuário admin entrou no sistema.
+25/05/2015 00:53:05 | admin | Registro deletado
+25/05/2015 00:53:15 | admin | Adicionar registro
+25/05/2015 00:53:26 | admin | Os dados do registro foram salvos
+25/05/2015 00:55:47 | admin | Os dados do registro foram salvos
+25/05/2015 01:07:19 | admin | Usuário admin entrou no sistema.
+25/05/2015 01:10:22 | admin | Usuário admin entrou no sistema.
+25/05/2015 01:12:00 | admin | Usuário admin entrou no sistema.
+25/05/2015 01:12:49 | admin | Usuário admin entrou no sistema.
+25/05/2015 01:12:54 | admin | Registro deletado
+25/05/2015 01:13:01 | admin | Registro deletado
+25/05/2015 01:13:03 | admin | Adicionar registro
+25/05/2015 01:13:09 | admin | Os dados do registro foram salvos
+25/05/2015 01:13:35 | admin | Os dados do registro foram salvos

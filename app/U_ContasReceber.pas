@@ -13,14 +13,10 @@ type
     editIdContasReceber: TDBEdit;
     Label2: TLabel;
     editCliente: TDBEdit;
-    Label3: TLabel;
-    editDuplicata: TDBEdit;
     Label4: TLabel;
     editNota: TDBEdit;
     Label5: TLabel;
     editVencimento: TDBEdit;
-    lookCliente: TDBLookupComboBox;
-    DBLookupComboBox2: TDBLookupComboBox;
     TabSheet1: TTabSheet;
     DBGrid2: TDBGrid;
     DS_ContasAtrasadas: TDataSource;
@@ -29,6 +25,7 @@ type
     editDataBaixa: TDBEdit;
     btnDarBaixar: TBitBtn;
     btnCAncelarBaixa: TBitBtn;
+    editClienteName: TEdit;
     procedure btnSalvarClick(Sender: TObject);
     procedure editVencimentoChange(Sender: TObject);
     procedure editVencimentoExit(Sender: TObject);
@@ -43,6 +40,9 @@ type
     procedure btnDeletarClick(Sender: TObject);
     procedure btnDarBaixarClick(Sender: TObject);
     procedure btnCAncelarBaixaClick(Sender: TObject);
+    procedure editClienteChange(Sender: TObject);
+    procedure editClienteExit(Sender: TObject);
+    procedure editClienteNameChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,11 +69,6 @@ begin
   // Errors
   errors:= 0;
 
-  // Verifica campos vazios
-  if (editCliente.Text = '') AND (editDuplicata.Text = '') AND (editNota.Text = '') then begin
-    errors:=1; ShowMessage('Você precisa inserir valores em todos os campos para prosseguir.');
-  end;
-
   // Verifica data antes de salvar
   try
 
@@ -87,7 +82,6 @@ begin
 
     // Libera a alteração do cliente
     editCliente.ReadOnly := false;
-    lookCliente.Visible := true;
 
     // Libera a alteração do vencimento
     editVencimento.ReadOnly := false;
@@ -125,7 +119,7 @@ begin
   // Atualizar número da nota fical
   DM.Q_Aux.Close;
   DM.Q_Aux.SQL.Text := 'SELECT num_nota_fiscal as nota, data FROM Faturamento WHERE idFaturamento = :idFaturamento';
-  DM.Q_Aux.ParamByName('idFaturamento').AsString := editDuplicata.Text;
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdContasReceber.Text;
   DM.Q_Aux.Open;
   DM.Q_Aux.First;
   editNota.Text := DM.Q_Aux.FieldByName('nota').AsString;
@@ -169,7 +163,7 @@ begin
 
   // Oculta grupo de baixa
   gpBaixa.Visible := false;
-  
+
 end;
 
 procedure TF_CONTAS_RECEBER.btnEditarClick(Sender: TObject);
@@ -177,7 +171,6 @@ begin
 
   // Bloqueia a alteração do cliente
   editCliente.ReadOnly := true;
-  lookCliente.Visible := false;
 
   // Bloqueia a alteração do vencimento
   editVencimento.ReadOnly := true;
@@ -199,7 +192,6 @@ begin
 
   // Libera a alteração do cliente
   editCliente.ReadOnly := false;
-  lookCliente.Visible := true;
 
   // Libera a alteração do vencimento
   editVencimento.ReadOnly := false;
@@ -215,7 +207,6 @@ begin
 
     // Libera a alteração do cliente
     editCliente.ReadOnly := false;
-    lookCliente.Visible := true;
 
     // Libera a alteração do vencimento
     editVencimento.ReadOnly := false;
@@ -229,11 +220,19 @@ begin
   // Atualizar número da nota fical
   DM.Q_Aux.Close;
   DM.Q_Aux.SQL.Text := 'SELECT num_nota_fiscal as nota, data FROM Faturamento WHERE idFaturamento = :idFaturamento';
-  DM.Q_Aux.ParamByName('idFaturamento').AsString := editDuplicata.Text;
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdContasReceber.Text;
   DM.Q_Aux.Open;
   DM.Q_Aux.First;
   editNota.Text := DM.Q_Aux.FieldByName('nota').AsString;
   editVencimento.Text := DM.Q_Aux.FieldByName('data').AsString;
+
+  // Atualizar o cliente
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT c.idCliente as cliente_id FROM Faturamento f, Pedido p, Cliente c WHERE f.idPedido = p.idPedido AND p.idCliente = c.idCliente AND f.idFaturamento = :idFaturamento';
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdContasReceber.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  editCliente.Text := DM.Q_Aux.FieldByName('cliente_id').AsString;
 
 end;
 
@@ -242,27 +241,35 @@ begin
   inherited;
 
   // Atualizar número da nota fical
-  DM.Q_Aux.Close;
+  {DM.Q_Aux.Close;
   DM.Q_Aux.SQL.Text := 'SELECT num_nota_fiscal as nota, data FROM Faturamento WHERE idFaturamento = :idFaturamento';
   DM.Q_Aux.ParamByName('idFaturamento').AsString := editDuplicata.Text;
   DM.Q_Aux.Open;
   DM.Q_Aux.First;
   editNota.Text := DM.Q_Aux.FieldByName('nota').AsString;
-  editVencimento.Text := DM.Q_Aux.FieldByName('data').AsString;
+  editVencimento.Text := DM.Q_Aux.FieldByName('data').AsString;    }
 
 end;
 
 procedure TF_CONTAS_RECEBER.editIdContasReceberChange(Sender: TObject);
 begin
   inherited;
-
+      {
   // Data baixa
   DM.Q_Aux.Close;
   DM.Q_Aux.SQL.Text := 'SELECT data_baixa as data FROM Contas_Receber WHERE idContasReceber = :idContasReceber';
   DM.Q_Aux.ParamByName('idContasReceber').AsString := editIdContasReceber.Text;
   DM.Q_Aux.Open;
   DM.Q_Aux.First;
-  editDataBaixa.text := DM.Q_Aux.FieldByName('data').AsString;
+  editDataBaixa.text := DM.Q_Aux.FieldByName('data').AsString;    }
+
+  // Atualizar o cliente
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT c.idCliente as cliente_id FROM Faturamento f, Pedido p, Cliente c WHERE f.idPedido = p.idPedido AND p.idCliente = c.idCliente AND f.idFaturamento = :idFaturamento';
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdContasReceber.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  editCliente.Text := DM.Q_Aux.FieldByName('cliente_id').AsString;
 
 end;
 
@@ -278,7 +285,7 @@ end;
 procedure TF_CONTAS_RECEBER.btnDarBaixarClick(Sender: TObject);
 begin
   inherited;
-
+  
   DM.Q_Aux.SQL.Text := 'UPDATE Contas_Receber SET data_baixa = :data WHERE idContasReceber = :idContasReceber';
   DM.Q_Aux.ParamByName('idContasReceber').AsString := editIdContasReceber.Text;
   DM.Q_Aux.ParamByName('data').AsString := DateToStr(Date);
@@ -309,6 +316,51 @@ begin
   DM.Q_Aux.Open;
   DM.Q_Aux.First;
   editDataBaixa.text := DM.Q_Aux.FieldByName('data').AsString;
+
+end;
+
+procedure TF_CONTAS_RECEBER.editClienteChange(Sender: TObject);
+begin
+  inherited;
+
+  // Atualizar o cliente
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT c.idCliente as cliente_id, c.nome as cliente_nome FROM Faturamento f, Pedido p, Cliente c WHERE f.idPedido = p.idPedido AND p.idCliente = c.idCliente AND f.idFaturamento = :idFaturamento';
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdContasReceber.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  editCliente.Text := DM.Q_Aux.FieldByName('cliente_id').AsString;
+  editClienteName.Text := DM.Q_Aux.FieldByName('cliente_nome').AsString;
+
+end;
+
+procedure TF_CONTAS_RECEBER.editClienteExit(Sender: TObject);
+begin
+  inherited;
+
+  // Atualizar o cliente
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT c.idCliente as cliente_id, c.nome as cliente_nome FROM Faturamento f, Pedido p, Cliente c WHERE f.idPedido = p.idPedido AND p.idCliente = c.idCliente AND f.idFaturamento = :idFaturamento';
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdContasReceber.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  editCliente.Text := DM.Q_Aux.FieldByName('cliente_id').AsString;
+  editClienteName.Text := DM.Q_Aux.FieldByName('cliente_nome').AsString;
+
+end;
+
+procedure TF_CONTAS_RECEBER.editClienteNameChange(Sender: TObject);
+begin
+  inherited;
+
+  // Atualizar o cliente
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT c.idCliente as cliente_id, c.nome as cliente_nome FROM Faturamento f, Pedido p, Cliente c WHERE f.idPedido = p.idPedido AND p.idCliente = c.idCliente AND f.idFaturamento = :idFaturamento';
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdContasReceber.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  editCliente.Text := DM.Q_Aux.FieldByName('cliente_id').AsString;
+  editClienteName.Text := DM.Q_Aux.FieldByName('cliente_nome').AsString;
 
 end;
 

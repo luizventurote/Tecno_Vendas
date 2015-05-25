@@ -1,12 +1,14 @@
 inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
-  Left = 348
-  Top = 188
+  Left = 263
+  Top = 164
   Caption = 'Contas a Receber'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
+  inherited btnAdicionar: TBitBtn
+    Visible = False
+  end
   inherited PageControl1: TPageControl
-    ActivePage = tbDados
     inherited tbDados: TTabSheet
       inherited grDados: TGroupBox
         object Label1: TLabel
@@ -25,17 +27,9 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
           Caption = 'Cliente'
           FocusControl = editCliente
         end
-        object Label3: TLabel
-          Left = 24
-          Top = 104
-          Width = 45
-          Height = 13
-          Caption = 'Duplicata'
-          FocusControl = editDuplicata
-        end
         object Label4: TLabel
           Left = 24
-          Top = 144
+          Top = 104
           Width = 103
           Height = 13
           Caption = 'N'#250'mero da nota fiscal'
@@ -43,7 +37,7 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
         end
         object Label5: TLabel
           Left = 24
-          Top = 184
+          Top = 144
           Width = 56
           Height = 13
           Caption = 'Vencimento'
@@ -67,66 +61,41 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
           Height = 21
           DataField = 'idCliente'
           DataSource = DS
+          ReadOnly = True
           TabOrder = 1
-        end
-        object editDuplicata: TDBEdit
-          Left = 24
-          Top = 120
-          Width = 49
-          Height = 21
-          DataField = 'idDuplicata'
-          DataSource = DS
-          TabOrder = 2
-          OnChange = editDuplicataChange
+          OnChange = editClienteChange
+          OnExit = editClienteExit
         end
         object editNota: TDBEdit
           Left = 24
-          Top = 160
+          Top = 120
           Width = 134
           Height = 21
           DataField = 'num_nota_fiscal'
           DataSource = DS
           ReadOnly = True
-          TabOrder = 3
+          TabOrder = 2
           OnExit = editNotaExit
         end
         object editVencimento: TDBEdit
           Left = 24
-          Top = 200
+          Top = 160
           Width = 273
           Height = 21
           DataField = 'vencimento'
           DataSource = DS
           ReadOnly = True
-          TabOrder = 4
+          TabOrder = 3
           OnChange = editVencimentoChange
           OnExit = editVencimentoExit
         end
-        object lookCliente: TDBLookupComboBox
-          Left = 80
-          Top = 80
-          Width = 217
-          Height = 21
-          DataField = 'Cliente'
-          DataSource = DS
-          TabOrder = 5
-        end
-        object DBLookupComboBox2: TDBLookupComboBox
-          Left = 80
-          Top = 120
-          Width = 217
-          Height = 21
-          DataField = 'Duplicata'
-          DataSource = DS
-          TabOrder = 6
-        end
         object gpBaixa: TGroupBox
           Left = 24
-          Top = 240
+          Top = 200
           Width = 353
           Height = 121
           Caption = 'Baixa'
-          TabOrder = 7
+          TabOrder = 4
           Visible = False
           object Label7: TLabel
             Left = 16
@@ -165,6 +134,15 @@ inherited F_CONTAS_RECEBER: TF_CONTAS_RECEBER
             TabOrder = 2
             OnClick = btnCAncelarBaixaClick
           end
+        end
+        object editClienteName: TEdit
+          Left = 80
+          Top = 80
+          Width = 217
+          Height = 21
+          ReadOnly = True
+          TabOrder = 5
+          OnChange = editClienteNameChange
         end
       end
     end

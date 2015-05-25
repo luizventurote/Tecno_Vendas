@@ -14,7 +14,7 @@ type
     Label2: TLabel;
     editPedido: TDBEdit;
     Label3: TLabel;
-    DBEdit3: TDBEdit;
+    editnotaFiscal: TDBEdit;
     Label4: TLabel;
     editData: TDBEdit;
     lookPedido: TDBLookupComboBox;
@@ -22,10 +22,12 @@ type
     editPrazo: TEdit;
     Label5: TLabel;
     labelAlert: TLabel;
+    editCliente: TEdit;
+    Label6: TLabel;
+    editClienteId: TEdit;
     procedure btnAdicionarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
-    procedure BitBtn1Click(Sender: TObject);
     procedure btnDuplicataClick(Sender: TObject);
     procedure editPedidoChange(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
@@ -56,19 +58,43 @@ begin
 end;
 
 procedure TF_FATURAMENTO.btnSalvarClick(Sender: TObject);
+var
+  error: integer;
 begin
 
   lookPedido.Visible  := true;
 
-  // Insere a data
-  editData.Text := DateToStr(Date);
+  // Errors
+  error := 0;
 
-  // Gera a duplicata
-  DM.Q_Aux.SQL.Text := 'INSERT INTO Duplicata (idDuplicata, idFaturamento, data) VALUES (:idFaturamento, :idFaturamento, :data)';
-  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdFaturamento.Text;
-  DM.Q_Aux.ParamByName('data').AsString := DateToStr(Date + StrToInt( editPrazo.text ));
-  DM.Q_Aux.ExecSQL;
+  // Verifica se possui um registro na tabea de contas a receber
   DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT * FROM Contas_Receber WHERE idDuplicata = :idFaturamento';
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdFaturamento.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+
+  if DM.Q_Aux.FieldByName('idContasReceber').AsString <> '' then begin
+    error:=1;
+  end;
+
+  // Verifica se não possui nenhum tipo de erro
+  if error = 0 then begin
+
+    // Insere a data
+    editData.Text := DateToStr(Date);
+
+    // Gera a duplicata
+    DM.Q_Aux.SQL.Text := 'INSERT INTO Contas_Receber (idContasReceber, idCliente, idDuplicata, num_nota_fiscal, vencimento) VALUES (:idContasReceber, :idCliente, :idContasReceber, :num_nota_fiscal, :vencimento)';
+    DM.Q_Aux.ParamByName('idContasReceber').AsString := editIdFaturamento.Text;
+    DM.Q_Aux.ParamByName('idCliente').AsString := editClienteId.Text;
+    DM.Q_Aux.ParamByName('idContasReceber').AsString := editIdFaturamento.Text;
+    DM.Q_Aux.ParamByName('num_nota_fiscal').AsString := editnotaFiscal.Text;
+    DM.Q_Aux.ParamByName('vencimento').AsString := DateToStr( StrToDate(editData.Text) + StrToInt(editPrazo.Text) );
+    DM.Q_Aux.ExecSQL;
+    DM.Q_Aux.Close;
+
+  end;
 
   inherited;
 
@@ -87,7 +113,7 @@ begin
   error := 0;
 
   // Verifica duplicata
-  DM.Q_Aux.Close;
+  {DM.Q_Aux.Close;
   DM.Q_Aux.SQL.Text := 'SELECT * FROM Duplicata WHERE idFaturamento = :idFaturamento';
   DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdFaturamento.Text;
   DM.Q_Aux.Open;
@@ -103,16 +129,9 @@ begin
     //btnDuplicata.Visible := true;
 
     inherited;
-  end;
-  
-end;
+  end;  }
 
-procedure TF_FATURAMENTO.BitBtn1Click(Sender: TObject);
-begin
   inherited;
-
-  DS_Duplicata.DataSet.Post;
-  DM.M_Duplicata.ApplyUpdates(-1);
 
 end;
 
@@ -158,13 +177,42 @@ begin
     labelAlert.Visible := false;
   end;
 
+  // Atualizar cliente
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT * FROM Pedido p, Cliente c WHERE p.idCliente = c.idCliente AND p.idPedido = :idPedido';
+  DM.Q_Aux.ParamByName('idPedido').AsString := editPedido.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+  editClienteId.Text := DM.Q_Aux.FieldByName('idCliente').AsString;
+  editCliente.Text := DM.Q_Aux.FieldByName('nome').AsString;
+
+
 end;
 
 procedure TF_FATURAMENTO.btnDeletarClick(Sender: TObject);
+var
+  error: integer;
 begin
-  //inherited;
 
-  ShowMessage('Não é possível deletar faturamentos!');
+  // Errors
+  error := 0;
+
+  // Verifica Pedido
+  DM.Q_Aux.Close;
+  DM.Q_Aux.SQL.Text := 'SELECT * FROM Contas_Receber WHERE idDuplicata = :idFaturamento';
+  DM.Q_Aux.ParamByName('idFaturamento').AsString := editIdFaturamento.Text;
+  DM.Q_Aux.Open;
+  DM.Q_Aux.First;
+
+  if DM.Q_Aux.FieldByName('idContasReceber').AsString <> '' then begin
+    ShowMessage('Não é possível deletar um faturamento com registro em contas a receber.');
+    error:=1;
+  end;
+
+  // Verifica se não possui nenhum tipo de erro
+  if error = 0 then begin
+    inherited;
+  end;
 
 end;
 
