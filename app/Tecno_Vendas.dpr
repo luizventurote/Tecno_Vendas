@@ -15,7 +15,8 @@ uses
   U_Faturamento in 'U_Faturamento.pas' {F_FATURAMENTO},
   U_ContasReceber in 'U_ContasReceber.pas' {F_CONTAS_RECEBER},
   U_SaidaEstoque in 'U_SaidaEstoque.pas' {F_SAIDA_ESTOQUE},
-  U_Log in 'U_Log.pas' {F_LOG};
+  U_Log in 'U_Log.pas' {F_LOG},
+  u_relatorios in 'u_relatorios.pas' {f_relatorios};
 
 {$R *.res}
 
@@ -30,5 +31,6 @@ begin
   Application.CreateForm(TF_FATURAMENTO, F_FATURAMENTO);
   Application.CreateForm(TF_CONTAS_RECEBER, F_CONTAS_RECEBER);
   Application.CreateForm(TF_SAIDA_ESTOQUE, F_SAIDA_ESTOQUE);
+  Application.CreateForm(Tf_relatorios, f_relatorios);
   Application.Run;
 end.

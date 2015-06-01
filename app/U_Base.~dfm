@@ -1,6 +1,6 @@
 object F_BASE: TF_BASE
-  Left = 399
-  Top = 207
+  Left = 260
+  Top = 134
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'TelaBase'
@@ -27188,7 +27188,7 @@ object F_BASE: TF_BASE
     Top = 104
     Width = 1041
     Height = 465
-    ActivePage = tbDados
+    ActivePage = tbFiltros
     Align = alCustom
     TabOrder = 10
     object tbDados: TTabSheet
@@ -27279,20 +27279,39 @@ object F_BASE: TF_BASE
             9F6ED5AA74CA9D66CCB08CF2EADFFFFFFFFFFFFFFFFFFFFFFFFF}
         end
       end
-      object DBGrid1: TDBGrid
+      object DBGrid1: TDBGridBeleza
         Left = 0
         Top = 105
         Width = 1033
         Height = 332
+        Hint = 'Clique no Titulo da Coluna para Ordenar'
         Align = alClient
+        BorderStyle = bsNone
+        Color = clWhite
         DataSource = DS
+        FixedColor = cl3DLight
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
+        TitleFont.Color = clWhite
         TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
-        OnDrawColumnCell = DBGrid1DrawColumnCell
+        Cor_2 = clCream
+        Direcao_Cor2 = dg_Vertical
+        Direcao_Enter = dg_Horiz
+        ClickTituloOrdenar = True
+        MarcarLinhaInteira = False
+        CorLinhaMarcada = clSilver
+        BloquearExportacoes = False
       end
     end
   end

@@ -30,6 +30,5 @@ begin
   Application.CreateForm(TF_FATURAMENTO, F_FATURAMENTO);
   Application.CreateForm(TF_CONTAS_RECEBER, F_CONTAS_RECEBER);
   Application.CreateForm(TF_SAIDA_ESTOQUE, F_SAIDA_ESTOQUE);
-  Application.CreateForm(TF_LOG, F_LOG);
   Application.Run;
 end.

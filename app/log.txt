@@ -452,3 +452,4 @@
 01/06/2015 08:44:17 | admin | Usuário admin entrou no sistema.
 01/06/2015 08:44:58 | admin | Usuário admin entrou no sistema.
 01/06/2015 08:45:29 | admin | Usuário admin entrou no sistema.
+01/06/2015 09:37:15 | admin | Usuário admin entrou no sistema.

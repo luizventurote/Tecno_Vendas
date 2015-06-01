@@ -27278,6 +27278,15 @@ object F_BASE: TF_BASE
             C8CACAC8CACAC8CACAC8CACAC8CACAC8C7C7C5DBDBD9C3C3C1FFFFFFFFFFFFC5
             9F6ED5AA74CA9D66CCB08CF2EADFFFFFFFFFFFFFFFFFFFFFFFFF}
         end
+        object BitBtn1: TBitBtn
+          Left = 760
+          Top = 64
+          Width = 75
+          Height = 25
+          Caption = 'BitBtn1'
+          TabOrder = 1
+          OnClick = BitBtn1Click
+        end
       end
       object DBGrid1: TDBGridBeleza
         Left = 0

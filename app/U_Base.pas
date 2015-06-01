@@ -31,6 +31,7 @@ type
     grDados: TGroupBox;
     btnExportExcel: TBitBtn;
     DBGrid1: TDBGridBeleza;
+    BitBtn1: TBitBtn;
     procedure btnEditarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
@@ -53,6 +54,7 @@ type
     procedure ExportToCSV(const aGrid : TDBGrid; const FileName : String);
     procedure btnExportExcelClick(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -64,6 +66,8 @@ var
   F_BASE: TF_BASE;
 
 implementation
+
+uses u_relatorios;
 
 {$R *.dfm}
 
@@ -641,5 +645,23 @@ begin
 
 end;
 
+
+procedure TF_BASE.BitBtn1Click(Sender: TObject);
+begin
+
+  f_relatorios := tf_relatorios.Create(Application);
+  with f_relatorios do
+  begin
+      try
+          Assimila_Relat_q('F_BASE', 0, DS.DataSet, DS.DataSet, '', '');
+          ShowModal;
+      finally
+          Relatorios_sis.close;
+          relats_usur.close;
+          Free;
+      end;
+  end;
+
+end;
 
 end.
