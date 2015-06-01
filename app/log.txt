@@ -447,3 +447,8 @@
 25/05/2015 09:34:49 | admin | Usuário admin entrou no sistema.
 25/05/2015 09:35:06 | admin | Registro deletado
 25/05/2015 09:35:18 | admin | Os dados do registro foram salvos
+01/06/2015 08:42:23 | admin | Usuário admin entrou no sistema.
+01/06/2015 08:42:59 | admin | Usuário admin entrou no sistema.
+01/06/2015 08:44:17 | admin | Usuário admin entrou no sistema.
+01/06/2015 08:44:58 | admin | Usuário admin entrou no sistema.
+01/06/2015 08:45:29 | admin | Usuário admin entrou no sistema.

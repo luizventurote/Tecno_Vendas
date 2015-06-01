@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, DB, Grids, DBGrids, DBCtrls,
-  ComCtrls, ToolWin, U_DM, ExcelXP, Excel97, Excel2000;
+  ComCtrls, ToolWin, U_DM, ExcelXP, Excel97, Excel2000, DBGridBeleza;
 
 type
   TF_BASE = class(TForm)
@@ -28,9 +28,9 @@ type
     tbDados: TTabSheet;
     tbFiltros: TTabSheet;
     grFiltros: TGroupBox;
-    DBGrid1: TDBGrid;
     grDados: TGroupBox;
     btnExportExcel: TBitBtn;
+    DBGrid1: TDBGridBeleza;
     procedure btnEditarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
